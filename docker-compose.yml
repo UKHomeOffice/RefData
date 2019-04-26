@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 
 volumes:
@@ -17,17 +17,27 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mysecretpassword
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
     ports:
       - 5433:5432
+    networks:
+      - db
+    labels:
+      - "traefik.enable=false"
 
   flyway_build:
     build: .
     container_name: flyway_build
     image: quay.io/ukhomeofficedigital/refdata:latest
 
-  flyway:
+  public_refdata_flyway:
     image: quay.io/ukhomeofficedigital/refdata:latest
-    container_name: flyway
+    container_name: public_refdata_flyway
     command: /mnt/docker/run.sh
     working_dir: /mnt
     environment:
@@ -46,17 +56,22 @@ services:
       FLYWAY_PLACEHOLDERS_REFERENCE_AUTHENTICATOR_USER: authenticatorreference
       FLYWAY_PLACEHOLDERS_REFERENCE_AUTHENTICATOR_PASSWORD: auth1234
       FLYWAY_PLACEHOLDERS_REFERENCE_ANON_USER: webanon
-      FLYWAY_PLACEHOLDERS_REFERENCE_SERVICE_USER: servicereferance
-      FLYWAY_PLACEHOLDERS_REFERENCE_READONLY_USER: readonlyreferance
+      FLYWAY_PLACEHOLDERS_REFERENCE_SERVICE_USER: servicereference
+      FLYWAY_PLACEHOLDERS_REFERENCE_READONLY_USER: readonlyreference
       FLYWAY_PLACEHOLDERS_GOVERNANCE_AUTHENTICATOR_USER: authenticatorgovernance
       FLYWAY_PLACEHOLDERS_GOVERNANCE_AUTHENTICATOR_PASSWORD: auth1234
       FLYWAY_PLACEHOLDERS_GOVERNANCE_ANON_USER: webanongovernance
       FLYWAY_PLACEHOLDERS_GOVERNANCE_SERVICE_USER: servicegovernance
       FLYWAY_PLACEHOLDERS_GOVERNANCE_READONLY_USER: readonlygovernance
     volumes:
-      - ${PWD}:/mnt
+      - ${PUBLIC_REFDATA_FLYWAY}:/mnt
     depends_on:
+      - postgres_refdata
       - flyway_build
+    networks:
+      - db
+    labels:
+      - "traefik.enable=false"
 
   postgrest_reference:
     image: quay.io/ukhomeofficedigital/postgrest
@@ -70,11 +85,21 @@ services:
       PGRST_ROLE_CLAIM_KEY: .refdbrole
       PGRST_DB_SCHEMA: reference
       PGRST_SERVER_PROXY_URI: "http://localhost:3000/"
-      KEYCLOAK_URL: "http://keycloak:8080/keycloak"
+      KEYCLOAK_URL: "${SCHEME}://keycloak.${DOMAINNAME}"
       KEYCLOAK_REALM: dev
     command: /usr/local/bin/getKeycloakKey.sh
     depends_on:
       - postgres_refdata
+      - public_refdata_flyway
+    networks:
+      - web
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:postgrest_reference.${DOMAINNAME}"
+      - "traefik.port=3000"
+      - "traefik.protocol=http"
+      - "traefik.docker.network=web"
 
   postgrest_governance:
     image: quay.io/ukhomeofficedigital/postgrest
@@ -88,13 +113,27 @@ services:
       PGRST_ROLE_CLAIM_KEY: .govdbrole
       PGRST_DB_SCHEMA: governance
       PGRST_SERVER_PROXY_URI: "http://localhost:3000/"
-      KEYCLOAK_URL: "http://keycloak:8080/keycloak"
+      KEYCLOAK_URL: "${SCHEME}://keycloak.${DOMAINNAME}"
       KEYCLOAK_REALM: dev
     command: /usr/local/bin/getKeycloakKey.sh
     depends_on:
       - postgres_refdata
+      - public_refdata_flyway
+    networks:
+      - web
+      - db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:postgrest_governance.${DOMAINNAME}"
+      - "traefik.port=3000"
+      - "traefik.protocol=http"
+      - "traefik.docker.network=web"
+
 
 networks:
-  default:
+  db:
     external:
-      name: local_dev
+      name: db
+  web:
+    external:
+      name: web
