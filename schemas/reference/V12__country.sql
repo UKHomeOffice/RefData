@@ -17,7 +17,7 @@ COMMENT ON COLUMN country.name IS '{"label": "Country name", "description": "Cou
 COMMENT ON COLUMN country.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "Country 2 Character alpha code", "summaryview": "true"}';
 COMMENT ON COLUMN country.iso31661alpha3 IS '{"label": "3 digit alpha code", "description": "Country 3 Character alpha code", "summaryview": "true"}';
 COMMENT ON COLUMN country.continent IS '{"label": "Continent", "description": "Countinent country is part of", "summaryview": "true"}';
-COMMENT ON COLUMN country.dial IS '{"label": "Phone dial code", "description": "Country dailing prefix", "summaryview": "true"}';
+COMMENT ON COLUMN country.dial IS '{"label": "Phone dial code", "description": "Country dialing prefix", "summaryview": "true"}';
 COMMENT ON COLUMN country.iso31661numeric IS '{"label": "3 digit numeric code", "description": "Country numeric ISO code", "summaryview": "true"}';
 COMMENT ON COLUMN country.validfrom IS '{"label": "Valid from date", "description": "Item valid from date", "summaryview" : "false"}';
 COMMENT ON COLUMN country.validto IS '{"label": "Valid to date", "description": "Item valid to date", "summaryview" : "false"}';
