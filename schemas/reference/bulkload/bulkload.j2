@@ -1,3 +1,4 @@
+
 /*
   MINISTRY
 */
@@ -917,28 +918,3 @@ UPDATE
     area = EXCLUDED.area;
 
 DROP TABLE tmpworkarea;
-
-/*
- SECURITYCLEARANCE
-*/
-
-CREATE TEMP TABLE tmpsecurityclearance AS SELECT * FROM securityclearance WITH NO DATA;
-
-COPY tmpsecurityclearance FROM STDIN CSV HEADER;
-{% include securityclearance %}
-
-\.
-
-
-INSERT INTO securityclearance
-  SELECT  *
-  FROM tmpsecurityclearance
-ON CONFLICT (id) DO
-UPDATE
-  SET
-    name = EXCLUDED.name,
-    description = EXCLUDED.description,
-    validfrom = Excluded.validfrom,
-    validto = Excluded.validto;
-
-DROP TABLE tmpsecurityclearance;
