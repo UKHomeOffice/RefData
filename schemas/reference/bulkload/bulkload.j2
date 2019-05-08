@@ -122,7 +122,9 @@ INSERT INTO gender
 ON CONFLICT (id) DO
 UPDATE
   SET
-    gender = EXCLUDED.gender;
+    gender = EXCLUDED.gender,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpgender;
 
@@ -145,7 +147,9 @@ INSERT INTO sex
 ON CONFLICT (id) DO
 UPDATE
   SET
-    name = EXCLUDED.name;
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpsex;
 
@@ -168,7 +172,9 @@ INSERT INTO title
 ON CONFLICT (id) DO
 UPDATE
   SET
-    title = EXCLUDED.title;
+    title = EXCLUDED.title,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmptitle;
 
@@ -192,7 +198,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     ethnicity = EXCLUDED.ethnicity,
-    subethnicity = EXCLUDED.subethnicity;
+    subethnicity = EXCLUDED.subethnicity,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpethnicity;
 
@@ -216,7 +224,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     code = EXCLUDED.code,
-    description = EXCLUDED.description;
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpmarital;
 
@@ -239,7 +249,9 @@ INSERT INTO religion
 ON CONFLICT (id) DO
 UPDATE
   SET
-    name = EXCLUDED.name;
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpreligion;
 
@@ -352,7 +364,9 @@ INSERT INTO bffunctiontypes
 ON CONFLICT (id) DO
 UPDATE
   SET
-    bffunction = EXCLUDED.bffunction;
+    bffunction = EXCLUDED.bffunction,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpbffunctiontypes;
 
@@ -384,7 +398,9 @@ UPDATE
     bordercrossing = EXCLUDED.bordercrossing,
     roadterminal = EXCLUDED.roadterminal,
     portclassification = EXCLUDED.portclassification,
-    description = EXCLUDED.description;
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpbflocationtype;
 
@@ -412,7 +428,9 @@ UPDATE
     designator = EXCLUDED.designator,
     alliance = EXCLUDED.alliance,
     aviation = EXCLUDED.aviation,
-    maritime = EXCLUDED.maritime;
+    maritime = EXCLUDED.maritime,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpcarrierlist;
 
@@ -436,7 +454,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     description = EXCLUDED.description,
-    competence = EXCLUDED.competence;
+    competence = EXCLUDED.competence,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpcompetence;
 
@@ -459,7 +479,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     description = EXCLUDED.description,
-    name = EXCLUDED.name;
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 
 DROP TABLE tmpcrewrole;
@@ -483,7 +505,9 @@ INSERT INTO criminalrecordtype
 ON CONFLICT (id) DO
 UPDATE
   SET
-    recordname = EXCLUDED.recordname;
+    recordname = EXCLUDED.recordname,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpcriminalrecordtype;
 
@@ -508,7 +532,9 @@ UPDATE
   SET
     code = EXCLUDED.code,
     shortdescription = EXCLUDED.shortdescription,
-    longdescription = EXCLUDED.longdescription;
+    longdescription = EXCLUDED.longdescription,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpdocumenttype;
 
@@ -532,7 +558,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     code = EXCLUDED.code,
-    description = EXCLUDED.description;
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpdogrole;
 
@@ -555,7 +583,9 @@ INSERT INTO employmenttypes
 ON CONFLICT (id) DO
 UPDATE
   SET
-    name = EXCLUDED.name;
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpemploymenttypes;
 
@@ -578,7 +608,9 @@ INSERT INTO eventstatus
 ON CONFLICT (id) DO
 UPDATE
   SET
-    status = EXCLUDED.status;
+    status = EXCLUDED.status,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpeventstatus;
 
@@ -602,7 +634,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     type = EXCLUDED.type,
-    description = EXCLUDED.description;
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpfinancialinstrument;
 
@@ -654,7 +688,9 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     name = EXCLUDED.name,
-    parentgradetypeid = EXCLUDED.parentgradetypeid;
+    parentgradetypeid = EXCLUDED.parentgradetypeid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpgrade;
 
@@ -710,7 +746,9 @@ INSERT INTO legtypes
 ON CONFLICT (id) DO
 UPDATE
   SET
-    description = EXCLUDED.description;
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmplegtypes;
 
@@ -733,7 +771,9 @@ INSERT INTO modeoftransport
 ON CONFLICT (id) DO
 UPDATE
   SET
-    type = EXCLUDED.type;
+    type = EXCLUDED.type,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpmodeoftransport;
 
@@ -756,7 +796,9 @@ INSERT INTO modetypes
 ON CONFLICT (id) DO
 UPDATE
   SET
-    class = EXCLUDED.class;
+    class = EXCLUDED.class,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpmodetypes;
 
@@ -779,7 +821,9 @@ INSERT INTO targetgroup
 ON CONFLICT (id) DO
 UPDATE
   SET
-    type = EXCLUDED.type;
+    type = EXCLUDED.type,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmptargetgroup;
 
@@ -802,7 +846,9 @@ INSERT INTO tdaapprovalstatus
 ON CONFLICT (id) DO
 UPDATE
   SET
-    status = EXCLUDED.status;
+    status = EXCLUDED.status,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmptdaapprovalstatus;
 
@@ -825,7 +871,9 @@ INSERT INTO tdareasons
 ON CONFLICT (id) DO
 UPDATE
   SET
-    reason = EXCLUDED.reason;
+    reason = EXCLUDED.reason,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmptdareasons;
 
@@ -848,7 +896,9 @@ INSERT INTO technicalprojectstatus
 ON CONFLICT (id) DO
 UPDATE
   SET
-    status = EXCLUDED.status;
+    status = EXCLUDED.status,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmptechnicalprojectstatus;
 
@@ -914,7 +964,9 @@ INSERT INTO workarea
 ON CONFLICT (id) DO
 UPDATE
   SET
-    area = EXCLUDED.area;
+    area = EXCLUDED.area,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
 
 DROP TABLE tmpworkarea;
 
