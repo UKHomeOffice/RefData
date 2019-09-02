@@ -1145,3 +1145,27 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpmedicalassistance;
+
+
+/*
+ INTELLIGENCE SERVICE LEVEL AGREEMENT
+*/
+
+CREATE TEMP TABLE tmpintelligenceservicelevelagreement AS SELECT * FROM intelligenceservicelevelagreement WITH NO DATA;
+
+COPY tmpintelligenceservicelevelagreement FROM STDIN CSV HEADER;
+{% include intelligenceservicelevelagreement %}
+
+\.
+
+INSERT INTO intelligenceservicelevelagreement
+  SELECT  *
+  FROM tmpintelligenceservicelevelagreement
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpintelligenceservicelevelagreement;
