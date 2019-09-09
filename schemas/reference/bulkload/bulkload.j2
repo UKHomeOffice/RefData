@@ -1145,3 +1145,27 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpmedicalassistance;
+
+
+/*
+  CONTAINERSIZE
+*/
+
+CREATE TEMP TABLE tmpcontainersize AS SELECT * FROM containersize WITH NO DATA;
+
+COPY tmpcontainersize FROM STDIN CSV HEADER;
+{% include containersize %}
+
+\.
+
+INSERT INTO containersize
+  SELECT *
+  FROM tmpcontainersize
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    size = EXCLUDED.size,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcontainersize;
