@@ -4,6 +4,7 @@ CREATE TABLE relevantpowers (
   description TEXT NOT NULL,
   url VARCHAR(100),
   sop BOOLEAN NOT NULL,
+  legalgateway BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -16,6 +17,7 @@ COMMENT ON COLUMN relevantpowers.code IS '{"label": "Legal code", "description":
 COMMENT ON COLUMN relevantpowers.description IS '{"label": "Description", "description": "A short description of the power.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.url IS '{"label": "URL", "description": "Link to the full power in legislation.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.sop IS '{"label": "sop", "description": "Valid power for search of person.", "summaryview": "false"}';
+COMMENT ON COLUMN relevantpowers.legalgateway IS '{"label": "legalgateway", "description": "Is this a legal gateway?", "summaryview": "false"}';
 COMMENT ON COLUMN relevantpowers.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN relevantpowers.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 

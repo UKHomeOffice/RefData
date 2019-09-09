@@ -19,7 +19,7 @@ id,type,validfrom,validto
 18,Plane,,
 19,Train (freight),,
 20,Train (passenger),,
-21,Transporter (i.e. vehicle carrier),,
+21,Transporter (i.e. vehicle),,
 22,Container,,
 23,Drone,,
 24,Small van (car size),,
@@ -41,9 +41,9 @@ id,type,validfrom,validto
 40,Mirco light,,
 41,Gyroplane,,
 42,Business jet,,
-43,Single engine light aircraft
-44,Twin engine light aircraft
-45,Other unspecified aircraft
+43,Single engine light aircraft,,
+44,Twin engine light aircraft,,
+45,Other unspecified aircraft,,
 46,Cruise liner,,
 47,General cargo,,
 48,Ferry,,
