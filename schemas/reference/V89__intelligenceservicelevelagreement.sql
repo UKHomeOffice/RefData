@@ -7,7 +7,7 @@ CREATE TABLE intelligenceservicelevelagreement (
 );
 
 -- Table comment
-COMMENT ON TABLE intelligenceservicelevelagreement IS '{"label": "Service Level Agreement", "description": "Descriptions of activities related to SLAs.": "28/08/2019", "dataversion": 1}';
+COMMENT ON TABLE intelligenceservicelevelagreement IS '{"label": "Service Level Agreement", "description": "Descriptions of activities related to SLAs.", "schemalastupdated": "28/08/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN intelligenceservicelevelagreement.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN intelligenceservicelevelagreement.description IS '{"label": "Description", "description": "Description of the activity", "summaryview": "true"}';
