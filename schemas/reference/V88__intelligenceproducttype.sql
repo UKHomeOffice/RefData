@@ -13,7 +13,7 @@ CREATE TABLE intelligenceproducttype (
 COMMENT ON TABLE intelligenceproducttype IS '{"label": "intelligenceproducttype", "description": "Types of intelligence product.", "schemalastupdated": "28/08/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN intelligenceproducttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN intelligenceproducttype.name IS '{"label": "Name", "Name": "Name of the product.", "summaryview": "true"}';
+COMMENT ON COLUMN intelligenceproducttype.name IS '{"label": "Name", "description": "Name of the product.", "summaryview": "true"}';
 COMMENT ON COLUMN intelligenceproducttype.description IS '{"label": "Description", "description": "A description of the product.", "summaryview": "true"}';
 COMMENT ON COLUMN intelligenceproducttype.incoming IS '{"label": "Incoming?", "description": "Incoming?", "summaryview": "false"}';
 COMMENT ON COLUMN intelligenceproducttype.outgoing IS '{"label": "Outgoing?", "description": "Outgoing?", "summaryview": "false"}';
