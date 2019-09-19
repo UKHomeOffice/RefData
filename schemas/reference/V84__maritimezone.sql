@@ -1,6 +1,6 @@
 CREATE TABLE maritimezone (
   id INTEGER NOT NULL PRIMARY KEY,
-  code CHAR(2) NOT NULL,
+  code CHAR(3) NOT NULL,
   name VARCHAR(40),
   area json,
   validfrom TIMESTAMP WITH TIME ZONE,
