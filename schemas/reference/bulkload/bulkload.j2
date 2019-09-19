@@ -775,6 +775,7 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     type = EXCLUDED.type,
+    ien = EXCLUDED.ien,
     validfrom = EXCLUDED.validfrom,
     validto = EXCLUDED.validto;
 
