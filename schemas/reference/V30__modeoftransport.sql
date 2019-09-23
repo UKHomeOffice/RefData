@@ -1,6 +1,7 @@
 CREATE TABLE modeoftransport (
   id INT4 NOT NULL PRIMARY KEY,
   type VARCHAR(30) NOT NULL,
+  ien BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -10,6 +11,7 @@ COMMENT ON TABLE modeoftransport IS '{"label": "Mode of transportation", "descri
 -- Column comments
 COMMENT ON COLUMN modeoftransport.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN modeoftransport.type IS '{"label": "Type", "description": "Types of transport.", "summaryview": "true"}';
+COMMENT ON COLUMN modeoftransport.ien IS '{"label": "IEN", "description": "Applicable to the IEN forms", "summaryview": "true"}';
 COMMENT ON COLUMN modeoftransport.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN modeoftransport.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
