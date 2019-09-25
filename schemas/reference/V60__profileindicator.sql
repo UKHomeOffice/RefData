@@ -9,11 +9,12 @@ CREATE TABLE profileindicator (
   rail BOOLEAN NOT NULL,
   air BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  cash BOOLEAN
 );
 
 -- Table comment
-COMMENT ON TABLE profileindicator IS '{"label": "Profile Indicator", "description": "A list of reasons for conducting a search on a particular vehicle.", "schemalastupdated": "15/07/2019", "dataversion": 1}';
+COMMENT ON TABLE profileindicator IS '{"label": "Profile Indicator", "description": "A list of reasons for conducting a search on a particular vehicle.", "schemalastupdated": "25/09/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN profileindicator.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN profileindicator.description IS '{"label": "Indicator", "description": "Reason for selecting the vehicle to search.", "summaryview": "true"}';
@@ -26,6 +27,7 @@ COMMENT ON COLUMN profileindicator.rail IS '{"label": "Rail", "description": "Ra
 COMMENT ON COLUMN profileindicator.air IS '{"label": "Air", "description": "Air selection tag.", "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN profileindicator.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN profileindicator.cash IS '{"label": "Cash", "description": "For use on cash form.", "summaryview": "true"}';
 
 -- GRANTs
 GRANT SELECT ON profileindicator TO ${serviceuser};
