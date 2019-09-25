@@ -8,9 +8,9 @@ CREATE TABLE profileindicator (
   land BOOLEAN NOT NULL,
   rail BOOLEAN NOT NULL,
   air BOOLEAN NOT NULL,
+  cash BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE,
-  cash BOOLEAN
+  validto TIMESTAMP WITH TIME ZONE
 );
 
 -- Table comment
@@ -25,9 +25,9 @@ COMMENT ON COLUMN profileindicator.sea IS '{"label": "Sea", "description": "Mari
 COMMENT ON COLUMN profileindicator.land IS '{"label": "Land", "description": "Land selection tag.", "summaryview": "ture"}';
 COMMENT ON COLUMN profileindicator.rail IS '{"label": "Rail", "description": "Rail selection tag.", "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.air IS '{"label": "Air", "description": "Air selection tag.", "summaryview": "true"}';
+COMMENT ON COLUMN profileindicator.cash IS '{"label": "Cash", "description": "For use on cash form.", "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN profileindicator.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
-COMMENT ON COLUMN profileindicator.cash IS '{"label": "Cash", "description": "For use on cash form.", "summaryview": "true"}';
 
 -- GRANTs
 GRANT SELECT ON profileindicator TO ${serviceuser};
