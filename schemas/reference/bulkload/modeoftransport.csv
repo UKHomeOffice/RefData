@@ -1,6 +1,6 @@
 id,type,ien,validfrom,validto
 1,Horse box,f,,
-2,Hot air baloon,f,,
+2,Hot air balloon,f,,
 3,Pedal cycle,f,,
 4,Motorcycle,f,,
 5,Mobility vehicle,f,,
@@ -38,7 +38,7 @@ id,type,ien,validfrom,validto
 37,Airship,f,,
 38,Glider,f,,
 39,Hand glider,f,,
-40,Mirco light,f,,
+40,Mircolight,f,,
 41,Gyroplane,f,,
 42,Business jet,f,,
 43,Single engine light aircraft,f,,
