@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Ensure environment values are not exposed in drone output
+set +x
+
+echo "Exporting environment variables"
+
 export DB_REF_DEFAULT_DBNAME=${DB_REF_DEFAULT_DBNAME}
 export DB_REF_HOSTNAME=${DB_REF_HOSTNAME}
 export DB_REF_PORT=${DB_REF_PORT}
@@ -17,12 +22,12 @@ export FLYWAY_PLACEHOLDERS_REFERENCESCHEMA=${DB_REF_REFERENCE_SCHEMA}
 export FLYWAY_PLACEHOLDERS_GOVERNANCEOWNERNAME=${DB_REF_GOVERNANCE_OWNER_USERNAME}
 export FLYWAY_PLACEHOLDERS_GOVERNANCEOWNERPASSWORD=${DB_REF_GOVERNANCE_OWNER_PASSWORD}
 export FLYWAY_PLACEHOLDERS_GOVERNANCESCHEMA=${DB_REF_GOVERNANCE_SCHEMA}
+export PGPASSWORD=${DB_REF_DEFAULT_PASSWORD}
 
 export BASEPATH="${PWD}"
 echo "Running from base path: ${BASEPATH}"
 
 echo "Checking if postgres is up and ready for connections"
-export PGPASSWORD=${DB_REF_DEFAULT_PASSWORD}
 i=0
 pg_isready -d ${URL} -U ${DB_REF_DEFAULT_USERNAME} -t 60
 PG_EXIT=$?
