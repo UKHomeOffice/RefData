@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-set -x
+
+# Ensure that secrets are not exposed in drone output
+set +x
+
+echo "Exporting environment variables"
+
 export DB_REF_DEFAULT_DBNAME=${DB_REF_DEFAULT_DBNAME}
 export DB_REF_HOSTNAME=${DB_REF_HOSTNAME}
 export DB_REF_PORT=${DB_REF_PORT}
@@ -27,8 +32,8 @@ export GOVERNANCE_READONLY_USERNAME=${DB_REF_GOVERNANCE_READONLY_USERNAME}
 
 export REFDB_URL="postgresql://${GOVERNANCE_OWNERNAME}:${GOVERNANCE_OWNERPASSWORD}@${DB_REF_HOSTNAME}:${DB_REF_PORT}/${DB_REF_DEFAULT_DBNAME}${DB_REF_OPTIONS}"
 
-# Clear reference DB
+echo "Clear reference DB"
 psql ${REFDB_URL} -c "drop database if exists ${DB_REF_REFERENCE_DBNAME};"
 
-# Clear roles and schemas
+echo "Clear roles and schemas"
 psql ${ROOT_URL} -c "drop table if exists flyway_schema_history; drop role if exists ${GOVERNANCE_AUTHENTICATOR_USERNAME}; drop role if exists ${REFERENCE_AUTHENTICATOR_USERNAME}; drop role if exists ${GOVERNANCE_ANON_USERNAME}; drop role if exists ${GOVERNANCE_SERVICE_USERNAME}; drop role if exists ${GOVERNANCE_READONLY_USERNAME}; drop role if exists ${GOVERNANCE_OWNERNAME}; drop role if exists ${REFERENCE_OWNERNAME}; drop role if exists ${REFERENCE_ANONUSERNAME}; drop role if exists ${REFERENCE_SERVICEUSERNAME}; drop role if exists ${REFERENCE_READONLYUSERNAME};"

@@ -7,6 +7,7 @@ pipeline:
     image: quay.io/ukhomeofficedigital/cop-secrets
     environment:
       - DRONE_SERVER=https://drone.acp.homeoffice.gov.uk
+      - DEPLOY_ENV=dev
     secrets:
       - source: DEV_DRONE_AWS_ACCESS_KEY_ID
         target: AWS_ACCESS_KEY_ID
@@ -21,6 +22,7 @@ pipeline:
     image: quay.io/ukhomeofficedigital/cop-secrets
     environment:
       - DRONE_SERVER=https://drone.acp.homeoffice.gov.uk
+      - DEPLOY_ENV=staging
     secrets:
       - source: STAGING_DRONE_AWS_ACCESS_KEY_ID
         target: AWS_ACCESS_KEY_ID
@@ -29,13 +31,14 @@ pipeline:
       - source: DRONE_PUBLIC_TOKEN
         target: DRONE_TOKEN
     when:
-      event: deployment
-      environment: staging
+      branch: master
+      event: push
 
   synch_production_secrets:
     image: quay.io/ukhomeofficedigital/cop-secrets
     environment:
       - DRONE_SERVER=https://drone.acp.homeoffice.gov.uk
+      - DEPLOY_ENV=production
     secrets:
       - source: PRODUCTION_DRONE_AWS_ACCESS_KEY_ID
         target: AWS_ACCESS_KEY_ID
@@ -44,8 +47,8 @@ pipeline:
       - source: DRONE_PUBLIC_TOKEN
         target: DRONE_TOKEN
     when:
-      event: deployment
-      environment: production
+      branch: master
+      event: push
 
   deploy_to_dev:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
@@ -74,7 +77,7 @@ pipeline:
         target: DB_REF_PRIVATE_GITKEY
       - source: DB_REF_PRIVATE_GITREPO
         target: DB_REF_PRIVATE_GITREPO
-      - source: DB_REF_PROTOCOL
+      - source: PROTOCOL_POSTGRES
         target: DB_REF_PROTOCOL
       - source: DB_REF_REFERENCE_ANON_USERNAME
         target: DB_REF_REFERENCE_ANON_USERNAME
@@ -152,7 +155,7 @@ pipeline:
         target: DB_REF_PRIVATE_GITKEY
       - source: DB_REF_PRIVATE_GITREPO
         target: DB_REF_PRIVATE_GITREPO
-      - source: DB_REF_PROTOCOL
+      - source: PROTOCOL_POSTGRES
         target: DB_REF_PROTOCOL
       - source: DB_REF_REFERENCE_ANON_USERNAME
         target: DB_REF_REFERENCE_ANON_USERNAME
@@ -230,7 +233,7 @@ pipeline:
         target: DB_REF_PRIVATE_GITKEY
       - source: DB_REF_PRIVATE_GITREPO
         target: DB_REF_PRIVATE_GITREPO
-      - source: DB_REF_PROTOCOL
+      - source: PROTOCOL_POSTGRES
         target: DB_REF_PROTOCOL
       - source: DB_REF_REFERENCE_ANON_USERNAME
         target: DB_REF_REFERENCE_ANON_USERNAME
