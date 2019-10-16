@@ -16,7 +16,8 @@ pipeline:
       - source: DRONE_PUBLIC_TOKEN
         target: DRONE_TOKEN
     when:
-      event: push
+      environment: secrets
+      event: deployment
 
   synch_staging_secrets:
     image: quay.io/ukhomeofficedigital/cop-secrets
@@ -31,8 +32,8 @@ pipeline:
       - source: DRONE_PUBLIC_TOKEN
         target: DRONE_TOKEN
     when:
-      branch: master
-      event: push
+      environment: secrets
+      event: deployment
 
   synch_production_secrets:
     image: quay.io/ukhomeofficedigital/cop-secrets
@@ -47,8 +48,8 @@ pipeline:
       - source: DRONE_PUBLIC_TOKEN
         target: DRONE_TOKEN
     when:
-      branch: master
-      event: push
+      environment: secrets
+      event: deployment
 
   deploy_to_dev:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
