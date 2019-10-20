@@ -1170,3 +1170,130 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpcontainersize;
+
+
+/*
+  TRAININGLEVELS
+*/
+
+CREATE TEMP TABLE tmptraininglevels AS SELECT * FROM traininglevels WITH NO DATA;
+
+COPY tmptraininglevels FROM STDIN CSV HEADER;
+{% include traininglevels %}
+
+\.
+
+INSERT INTO traininglevels
+  SELECT *
+  FROM tmptraininglevels
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validpst = EXCLUDED.validpst,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptraininglevels;
+
+
+/*
+  LASTTRAINED
+*/
+
+CREATE TEMP TABLE tmplasttrained AS SELECT * FROM lasttrained WITH NO DATA;
+
+COPY tmplasttrained FROM STDIN CSV HEADER;
+{% include lasttrained %}
+
+\.
+
+INSERT INTO lasttrained
+  SELECT *
+  FROM tmplasttrained
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validpst = EXCLUDED.validpst,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmplasttrained;
+
+
+/*
+  SUBJECTBEHAVIOUR
+*/
+
+CREATE TEMP TABLE tmpsubjectbehaviour AS SELECT * FROM subjectbehaviour WITH NO DATA;
+
+COPY tmpsubjectbehaviour FROM STDIN CSV HEADER;
+{% include subjectbehaviour %}
+
+\.
+
+INSERT INTO subjectbehaviour
+  SELECT *
+  FROM tmpsubjectbehaviour
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validpst = EXCLUDED.validpst,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpsubjectbehaviour;
+
+
+/*
+  BEHAVIOURSIGNS
+*/
+
+CREATE TEMP TABLE tmpbehavioursigns AS SELECT * FROM behavioursigns WITH NO DATA;
+
+COPY tmpbehavioursigns FROM STDIN CSV HEADER;
+{% include behavioursigns %}
+
+\.
+
+INSERT INTO behavioursigns
+  SELECT *
+  FROM tmpbehavioursigns
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    warning = EXCLUDED.warning,
+    danger = EXCLUDED.danger,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbehavioursigns;
+
+
+/*
+  PSTMETHODS
+*/
+
+CREATE TEMP TABLE tmppstmethods AS SELECT * FROM pstmethods WITH NO DATA;
+
+COPY tmppstmethods FROM STDIN CSV HEADER;
+{% include pstmethods %}
+
+\.
+
+INSERT INTO pstmethods
+  SELECT *
+  FROM tmppstmethods
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    method = EXCLUDED.method,
+    pressure = EXCLUDED.pressure,
+    nerve = EXCLUDED.nerve,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmppstmethods;
