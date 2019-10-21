@@ -107,7 +107,7 @@ id,name,twolettercode,designator,alliance,aviation,sea,land,rail,validfrom,valid
 106,Vietnam Airlines,VN,738,SkyTeam,t,f,f,f,,
 107,Virgin Atlantic Airways,VS,932,,t,f,f,f,,
 108,VLM Airlines (Cityjet),VG,,,t,f,f,f,,
-109,P & O Ferries,,,,f,t,f,f,,
+109,P'&'O Ferries,,,,f,t,f,f,,
 110,Brittany Ferries,,,,f,t,f,f,,
 111,Stena Line,,,,f,t,f,f,,
 112,Condor Ferries,,,,f,t,f,f,,
