@@ -4,6 +4,7 @@ CREATE TABLE reasons (
     reason VARCHAR(100) NOT NULL,
     subreason BOOLEAN,
     document BOOLEAN,
+    vehicle BOOLEAN,
     validfrom TIMESTAMP WITH TIME ZONE,
     validto TIMESTAMP WITH TIME ZONE
 );
@@ -16,6 +17,7 @@ COMMENT ON COLUMN reasons.reasoncode IS '{"label": "Reason code", "description":
 COMMENT ON COLUMN reasons.reason IS '{"label": "Description", "description": "The reason for the seizure.", "summaryview": "false"}';
 COMMENT ON COLUMN reasons.subreason IS '{"label": "Subform", "description": "To indicate whether this is a subcategory of a higher level reason.", "summaryview": "false"}';
 COMMENT ON COLUMN reasons.document IS '{"label": "Document", "description": "To indicate whether this reason is linked to a document seizure.", "summaryview": "false"}';
+COMMENT ON COLUMN reasons.vehicle IS '{"label": "Vehicle", "description": "Yo indicate whether this reason is lined to a vehicle seizure.", "summaryview": "false"}';
 COMMENT ON COLUMN reasons.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN reasons.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
