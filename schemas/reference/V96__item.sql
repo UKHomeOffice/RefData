@@ -1,7 +1,7 @@
 CREATE TABLE item (
   id INT4 NOT NULL PRIMARY KEY,
-  name varchar(40) NOT NULL,
-  description varchar(100),
+  name varchar(45) NOT NULL,
+  description varchar(200),
   cites bool,
   poao bool,
   cbrn bool,
