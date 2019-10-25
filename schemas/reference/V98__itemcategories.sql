@@ -19,3 +19,4 @@ COMMENT ON COLUMN itemcategories.validto IS '{"label": "Valid to date", "descrip
 -- GRANTs
 GRANT SELECT ON itemcategories TO ${anonuser};
 GRANT SELECT ON itemcategories TO ${serviceuser};
+GRANT SELECT ON itemcategories TO ${readonlyuser};
