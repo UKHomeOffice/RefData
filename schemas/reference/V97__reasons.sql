@@ -10,7 +10,7 @@ CREATE TABLE reasons (
 );
 
 -- Table comment
-COMMENT ON TABLE reasons IS '{"label": "Forged Document codes", "description": "Summary list of forged document codes.", "schemalastupdated": "23/10/19", "dataversion": 1}';
+COMMENT ON TABLE reasons IS '{"label": "Reasons behind seizure", "description": "Summary list of reasons for a seizure.", "schemalastupdated": "23/10/19", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN reasons.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN reasons.reasoncode IS '{"label": "Reason code", "description": "Code identifying the reason for seizure.", "summaryview": "false"}';
