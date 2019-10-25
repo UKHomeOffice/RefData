@@ -10,7 +10,7 @@ CREATE TABLE intelligenceproducttype (
 );
 
 -- Table comment
-COMMENT ON TABLE intelligenceproducttype IS '{"label": "intelligenceproducttype", "description": "Types of intelligence product.", "schemalastupdated": "28/08/2019", "dataversion": 1}';
+COMMENT ON TABLE intelligenceproducttype IS '{"label": "Intelligence product type", "description": "Types of intelligence product.", "schemalastupdated": "28/08/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN intelligenceproducttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN intelligenceproducttype.name IS '{"label": "Name", "description": "Name of the product.", "summaryview": "true"}';
