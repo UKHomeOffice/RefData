@@ -1,8 +1,9 @@
 id, unit, validform, validto
-1, document,,
+1, Document,,
 2, £ GBP,,
-3, Kilogram (kg),,
+3, Kilogram (Kg),,
 4, Litre (L),,
-5, item,,
+5, Item,,
 6, gram (g),,
 7, millilitre (ml),,
+8, Stick,,
