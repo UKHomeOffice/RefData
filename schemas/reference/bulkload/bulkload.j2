@@ -337,7 +337,6 @@ INSERT INTO currency
 ON CONFLICT (id) DO
 UPDATE
   SET
-    iso31661alpha2 = EXCLUDED.iso31661alpha2,
     currency = EXCLUDED.currency,
     currencycode = EXCLUDED.currencycode,
     countryid = EXCLUDED.countryid,
