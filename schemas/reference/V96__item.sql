@@ -2,6 +2,7 @@ CREATE TABLE item (
   id INT4 NOT NULL PRIMARY KEY,
   name varchar(45) NOT NULL,
   description varchar(200),
+  itemcategoriesid INT4 NOT NULL,
   cites bool,
   poao bool,
   cbrn bool,
@@ -30,11 +31,12 @@ CREATE TABLE item (
 );
 
  -- Table comment
-COMMENT ON TABLE item IS '{"label": "Items", "description": "Items that cross the border", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE item IS '{"label": "Items", "description": "Items that cross the border", "schemalastupdated": "06/11/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN item.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN item.name IS '{"label": "Name", "description": "Name of Item", "summaryview": "true"}';
 COMMENT ON COLUMN item.description IS '{"label": "Description", "description": "Description of item", "summaryview": "true"}';
+COMMENT ON COLUMN item.itemcategoriesid IS '{"label": "Item Categories ID", "description": "Mapping for the item level categories", "summaryview": "false"}';
 COMMENT ON COLUMN item.cites IS '{"label": "CITES", "description": "Is this a Convention on International Trade in Endangered Species of Wild Fauna and Flora Item?", "summaryview": "true"}';
 COMMENT ON COLUMN item.poao IS '{"label": "POAO", "description": "Is this a Product of Animal Origin Item?", "summaryview": "true"}';
 COMMENT ON COLUMN item.cbrn IS '{"label": "CBRN", "description": "Is this a Chemical, Biological, Radioactive or Nuclear Item?", "summaryview": "true"}';
