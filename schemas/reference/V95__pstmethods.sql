@@ -8,7 +8,7 @@ CREATE TABLE pstmethods (
 );
 
  -- Table comment
-COMMENT ON TABLE pstmethods IS '{"label": "PST Methodss", "description": "A list of PST methods", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE pstmethods IS '{"label": "PST Methods", "description": "A list of PST methods", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN pstmethods.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN pstmethods.method IS '{"label": "Method", "description": "Technique method", "summaryview": "true"}';
