@@ -21,7 +21,7 @@ CREATE TABLE port (
   fixedpcp BOOLEAN NULL,
   portablepcp BOOLEAN NULL,
   egates BOOLEAN NULL,
-  islargeport BOOLEAN NULL,
+  nonoperational BOOLEAN NULL,
   portsizeid int4 NULL,
   validfrom TIMESTAMP WITH TIME ZONE NULL,
   validto TIMESTAMP WITH TIME ZONE NULL
@@ -52,7 +52,7 @@ COMMENT ON COLUMN port.helipad IS '{"label": "Helipad", "description": "Ii this 
 COMMENT ON COLUMN port.fixedpcp IS '{"label": "Fixed PCP", "description": "Fixed PCP location.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.portablepcp IS '{"label": "Portable PCP", "description": "Portable PCP location.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.egates IS '{"label": "Egates", "description": "Egate location.", "summaryview" : "false"}';
-COMMENT ON COLUMN port.islargeport IS '{"label": "Large Port", "description": "Is a large port.", "summaryview" : "false"}';
+COMMENT ON COLUMN port.nonoperational IS '{"label": "Non Operational", "description": "Is this a non-operational location", "summaryview" : "false"}';
 COMMENT ON COLUMN port.portsizeid IS '{"label": "BF port size", "description": "Links to Border Force port size list.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
