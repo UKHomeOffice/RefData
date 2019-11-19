@@ -5,3 +5,5 @@ id,name,validfrom,validto
 4,Credit card,,
 5,Debit card,,
 6,Third party payment,,
+7,Telesales,,
+8,Online,,
