@@ -1295,3 +1295,27 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmppstmethods;
+
+
+/*
+  OCCUPATION
+*/
+
+CREATE TEMP TABLE tmpoccupation AS SELECT * FROM occupation WITH NO DATA;
+
+COPY tmpoccupation FROM STDIN CSV HEADER;
+{% include occupation %}
+
+\.
+
+INSERT INTO occupation
+  SELECT *
+  FROM tmpoccupation
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    occupation = EXCLUDED.occupation,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpoccupation;
