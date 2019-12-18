@@ -51,6 +51,17 @@ pipeline:
       environment: secrets
       event: deployment
 
+  validate_schema:
+    image: python:3.6.1-alpine
+    environment:
+      - WORKDIR=/mnt/schemas/reference
+    commands:
+      - /mnt/docker/validateSchema.sh
+    when:
+      branch:
+        exclude: master
+      event: push
+
   deploy_to_dev:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
     secrets:
