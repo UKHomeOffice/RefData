@@ -3,6 +3,7 @@ CREATE TABLE command (
   name VARCHAR(100)  NOT NULL,
   divisionid INT4 NOT NULL REFERENCES division(id),
   code VARCHAR(8) NOT NULL,
+  operationalcommand BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -14,6 +15,7 @@ COMMENT ON COLUMN command.id IS '{"label": "Identifier", "description": "Unique 
 COMMENT ON COLUMN command.name IS '{"label": "Name", "description": "The name of the command.", "summaryview": "true"}';
 COMMENT ON COLUMN command.code IS '{"label": "Code", "description": "The code of the command.", "summaryview": "true"}';
 COMMENT ON COLUMN command.divisionid IS '{"label": "Division ID", "description": "Link to the division entity.", "summaryview" : "false"}';
+COMMENT ON COLUMN command.operationalcommand IS '{"label": "Operational Command", "description": "Does this Command cover a geographic area containing ports?", "summaryview" : "false"}';
 COMMENT ON COLUMN command.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN command.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
