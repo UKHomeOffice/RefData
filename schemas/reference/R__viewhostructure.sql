@@ -34,3 +34,8 @@ FROM
        OR ( team.directorateid = directorate.id AND team.branchid IS NULL )
        OR ( team.departmentid = department.id AND team.directorateid IS NULL )
        OR ( team.ministryid = ministry.id AND team.departmentid IS NULL );
+
+
+-- GRANTs
+GRANT SELECT ON viewhostructure TO ${serviceuser};
+GRANT SELECT ON viewhostructure TO ${readonlyuser};
