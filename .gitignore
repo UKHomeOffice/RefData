@@ -6,3 +6,4 @@ postgres_data_refdata/*
 *.env
 private-refdata/*
 .DS_Store
+/docker
