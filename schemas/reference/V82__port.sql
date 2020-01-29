@@ -23,6 +23,7 @@ CREATE TABLE port (
   egates BOOLEAN NULL,
   nonoperational BOOLEAN NULL,
   portsizeid int4 NULL,
+  juxtaposed BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE NULL,
   validto TIMESTAMP WITH TIME ZONE NULL
 );
@@ -54,6 +55,7 @@ COMMENT ON COLUMN port.portablepcp IS '{"label": "Portable PCP", "description": 
 COMMENT ON COLUMN port.egates IS '{"label": "Egates", "description": "Egate location.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.nonoperational IS '{"label": "Non Operational", "description": "Is this a non-operational location", "summaryview" : "false"}';
 COMMENT ON COLUMN port.portsizeid IS '{"label": "BF port size", "description": "Links to Border Force port size list.", "summaryview" : "false"}';
+COMMENT ON COLUMN port.juxtaposed IS '{"label": "Juxtaposed", "description": "Is this Port juxtaposed?.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
