@@ -5,7 +5,12 @@ CREATE TABLE searchtype (
   description TEXT,
   usedonobject BOOLEAN,
   usedonhuman BOOLEAN,
-  sop BOOLEAN,
+  searchofperson BOOLEAN,
+  Searchofbags BOOLEAN,
+  Searchofvehicle BOOLEAN,
+  Searchofaccfreight BOOLEAN,
+  Searchofunaccfreight BOOLEAN,
+  Searchofcontainers BOOLEAN,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -18,7 +23,12 @@ COMMENT ON COLUMN searchtype.type IS '{"label": "Search type", "description": "T
 COMMENT ON COLUMN searchtype.description IS '{"label": "Description", "description": "A description of the search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.usedonobject IS '{"label": "Object", "description": "Allowed to be used on objects.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.usedonhuman IS '{"label": "Human", "description": "Allowed to be used on humans.", "summaryview": "true"}';
-COMMENT ON COLUMN searchtype.sop IS '{"label": "Search of Person", "description": "Valid for search of person.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofperson IS '{"label": "Search of person", "description": "Involves the search of a person.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.Searchofbags IS '{"label": "Search of Bags", "description": "Involves the search of a bag.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.Searchofvehicle IS '{"label": "Search of vehicle", "description": "Involves the search of a vehicle.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.Searchofaccfreight IS '{"label": "Search of ACC freight", "description": "Involves the search of an ACC freight.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.Searchofunaccfreight IS '{"label": "Search of Non-ACC freight", "description": "Involves the search of a Non-ACC freight.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.Searchofcontainers IS '{"label": "Search of containers", "description": "Involves the search of a container.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.relevantpowerid IS '{"label": "Relevant power ID", "description": "A link to the relevant power entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN searchtype.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN searchtype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
@@ -26,3 +36,6 @@ COMMENT ON COLUMN searchtype.validto IS '{"label": "Valid to date", "description
 -- GRANTs
 GRANT SELECT ON searchtype TO ${serviceuser};
 GRANT SELECT ON searchtype TO ${readonlyuser};
+
+
+
