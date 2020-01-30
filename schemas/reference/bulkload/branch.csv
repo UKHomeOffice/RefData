@@ -23,3 +23,4 @@ id,name,directorateid,code,validfrom,validto
 22,North,2,BFNORTH,,
 23,Central,2,BFCENT,,
 24,Logistics,2,BFLOGIST,,
+25,Human Resources,2,HUMRE,,
