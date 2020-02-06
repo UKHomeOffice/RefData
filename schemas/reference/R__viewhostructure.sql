@@ -28,7 +28,7 @@ CREATE OR REPLACE VIEW viewhostructure AS
       LEFT JOIN branch ON team.branchid = branch.id
       LEFT JOIN directorate ON team.directorateid = directorate.id
       LEFT JOIN department ON team.departmentid = department.id
-      LEFT JOIN ministry ON team.ministryid = ministry.id
+      LEFT JOIN ministry ON team.ministryid = ministry.id;
 
 
 -- GRANTs
