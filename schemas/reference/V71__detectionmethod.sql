@@ -3,6 +3,7 @@ CREATE TABLE detectionmethod (
   name VARCHAR(60) NOT NULL,
   detectionequipment BOOLEAN NOT NULL,
   basicequipment BOOLEAN NOT NULL,
+  searchtype BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -14,6 +15,7 @@ COMMENT ON COLUMN detectionmethod.id IS '{"label": "Identifier", "description": 
 COMMENT ON COLUMN detectionmethod.name IS '{"label": "Detection method", "description": "The type of detection method.", "summaryview": "true"}';
 COMMENT ON COLUMN detectionmethod.detectionequipment IS '{"label": "Detection equipment", "description": "Epuipment used in detection events.", "summaryview": "true"}';
 COMMENT ON COLUMN detectionmethod.basicequipment IS '{"label": "Basic equipment", "description": "Equipment is considered basic.", "summaryview": "true"}';
+COMMENT ON COLUMN detectionmethod.searchtype IS '{"label": "Search Type", "description": "Is this a method of searching rather than a physical object/tool/machine.", "summaryview": "true"}';
 COMMENT ON COLUMN detectionmethod.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN detectionmethod.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
