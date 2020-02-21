@@ -1354,6 +1354,12 @@ ON CONFLICT (id) DO
 UPDATE
   SET
     name = EXCLUDED.name,
+    tobaccobrand = EXCLUDED.tobaccobrand,
+    alcoholbrand = EXCLUDED.alcoholbrand,
+    vehiclebrand = EXCLUDED.vehiclebrand,
+    iprbrand = EXCLUDED.iprbrand,
+    goodsbrand = EXCLUDED.goodsbrand,
+    commoditybrand = EXCLUDED.commoditybrand,
     validfrom = EXCLUDED.validfrom,
     validto = EXCLUDED.validto;
 
