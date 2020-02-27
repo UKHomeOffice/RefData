@@ -72,6 +72,8 @@ pipeline:
     environment:
       - SNOW_INT_ID_FILE=/drone/src/internal-id
       - SNOW_EXTERNAL_ID=COP
+      - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
+      - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     when:
       environment: dev
       event: deployment
@@ -163,6 +165,8 @@ pipeline:
         target: SNOW_TEST_USER
     environment:
       - SNOW_INT_ID_FILE=/drone/src/internal-id
+      - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
+      - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: success
     when:
       environment: dev
@@ -178,25 +182,13 @@ pipeline:
         target: SNOW_TEST_USER
     environment:
       - SNOW_INT_ID_FILE=/drone/src/internal-id
+      - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
+      - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: fail
     when:
       environment: dev
       event: deployment
       status: failure
-
-  open-snow-change-staging:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: STAGING_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: STAGING_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_INT_ID_FILE=/drone/src/internal-id
-      - SNOW_EXTERNAL_ID=COP
-    when:
-      environment: staging
-      event: deployment
 
   deploy_to_staging:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
@@ -276,50 +268,6 @@ pipeline:
       event: deployment
       environment: staging
 
-  complete-snow-change-staging:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: STAGING_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: STAGING_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_INT_ID_FILE=/drone/src/internal-id
-    deployment_outcome: success
-    when:
-      environment: staging
-      event: deployment
-      status: success
-
-  cancel-snow-change-staging:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: STAGING_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: STAGING_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_INT_ID_FILE=/drone/src/internal-id
-    deployment_outcome: fail
-    when:
-      environment: staging
-      event: deployment
-      status: failure
-
-  open-snow-change-production:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: PRODUCTION_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: PRODUCTION_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_INT_ID_FILE=/drone/src/internal-id
-      - SNOW_EXTERNAL_ID=COP
-    when:
-      environment: production
-      event: deployment
-
   deploy_to_prod:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
     secrets:
@@ -397,36 +345,6 @@ pipeline:
       branch: master
       event: deployment
       environment: production
-
-  complete-snow-change-production:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: PRODUCTION_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: PRODUCTION_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_INT_ID_FILE=/drone/src/internal-id
-    deployment_outcome: success
-    when:
-      environment: production
-      event: deployment
-      status: success
-
-  cancel-snow-change-production:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: PRODUCTION_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: PRODUCTION_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_INT_ID_FILE=/drone/src/internal-id
-    deployment_outcome: fail
-    when:
-      environment: production
-      event: deployment
-      status: failure
 
   notify:
     image: plugins/slack
