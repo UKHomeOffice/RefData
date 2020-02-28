@@ -70,11 +70,10 @@ pipeline:
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_DESC="${DRONE_COMMIT_MESSAGE}"
-      - SNOW_ENDPOINT="https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create"
-      - SNOW_EXTERNAL_ID="COP"
-      - SNOW_INT_ID_FILE="./internal-id"
-      - SNOW_TITLE="${DRONE_REPO}:${DRONE_COMMIT_SHA}"
+      - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
+      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create
+      - SNOW_INT_ID_FILE=./internal-id
+      - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     when:
       environment: dev
       event: deployment
@@ -165,10 +164,10 @@ pipeline:
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_DESC="${DRONE_COMMIT_SHA}"
-      - SNOW_ENDPOINT="https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update"
-      - SNOW_INT_ID_FILE="./internal-id"
-      - SNOW_TITLE="${DRONE_REPO}:${DRONE_COMMIT_SHA}"
+      - SNOW_DESC=${DRONE_COMMIT_SHA}
+      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update
+      - SNOW_INT_ID_FILE=./internal-id
+      - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: success
     when:
       environment: dev
@@ -183,10 +182,10 @@ pipeline:
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_DESC="${DRONE_COMMIT_SHA}"
-      - SNOW_ENDPOINT="https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update"
-      - SNOW_INT_ID_FILE="./internal-id"
-      - SNOW_TITLE="${DRONE_REPO}:${DRONE_COMMIT_SHA}"
+      - SNOW_DESC=${DRONE_COMMIT_SHA}
+      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update
+      - SNOW_INT_ID_FILE=./internal-id
+      - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: fail
     when:
       environment: dev
