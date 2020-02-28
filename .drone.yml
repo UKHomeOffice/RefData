@@ -166,7 +166,7 @@ pipeline:
         target: SNOW_TEST_USER
     environment:
       - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
-      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create
+      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update
       - SNOW_INT_ID_FILE=/drone/src/internal-id
       - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: success
@@ -184,7 +184,7 @@ pipeline:
         target: SNOW_TEST_USER
     environment:
       - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
-      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create
+      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update
       - SNOW_INT_ID_FILE=/drone/src/internal-id
       - SNOW_TITLE=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: fail
