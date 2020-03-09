@@ -1,6 +1,6 @@
 CREATE TABLE sublocation (
   id INTEGER NOT NULL PRIMARY KEY,
-  portid INTEGER NOT NULL,
+  portid INTEGER,
   sublocation VARCHAR(30) NOT NULL,
   description VARCHAR(70),
   validfrom TIMESTAMP WITH TIME ZONE,
