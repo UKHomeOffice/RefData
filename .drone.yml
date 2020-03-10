@@ -62,22 +62,6 @@ pipeline:
         exclude: master
       event: push
 
-  open-snow-change-dev:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: DEV_SERVICE_NOW_PASSWORD
-        target: SNOW_TEST_PASS
-      - source: DEV_SERVICE_NOW_USERNAME
-        target: SNOW_TEST_USER
-    environment:
-      - SNOW_DESC=${DRONE_COMMIT_MESSAGE}
-      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create
-      - SNOW_INT_ID_FILE=/mnt/internal-id
-      - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
-    when:
-      environment: dev
-      event: deployment
-
   deploy_to_dev:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
     secrets:
@@ -155,6 +139,22 @@ pipeline:
       branch: master
       event: deployment
       environment: dev
+
+  open-snow-change-dev:
+    image: quay.io/ukhomeofficedigital/snowtify:latest
+    secrets:
+      - source: DEV_SERVICE_NOW_PASSWORD
+        target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_USERNAME
+        target: SNOW_TEST_USER
+    environment:
+      - SNOW_DESC=${DRONE_COMMIT_SHA}
+      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create
+      - SNOW_INT_ID_FILE=/mnt/internal-id
+      - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    when:
+      environment: dev
+      event: deployment
 
   complete-snow-change-dev:
     image: quay.io/ukhomeofficedigital/snowtify:latest
