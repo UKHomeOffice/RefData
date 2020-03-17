@@ -1364,3 +1364,27 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpbrand;
+
+
+/*
+TERMINAL
+*/
+
+CREATE TEMP TABLE tmpterminal AS SELECT * FROM terminal WITH NO DATA;
+
+COPY  terminal FROM STDIN CSV HEADER;
+{% include terminal %}
+
+\.
+
+INSERT INTO terminal
+  SELECT *
+  FROM terminal
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpterminal;
