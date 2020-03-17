@@ -140,16 +140,25 @@ pipeline:
       event: deployment
       environment: dev
 
+  create-change-desc:
+    image: quay.io/ukhomeofficedigital/kd:v1.15.0
+    commands:
+      - echo ${DRONE_COMMIT_MESSAGE} >> $SNOW_DESC_FILE
+    when:
+      environment: dev
+      event: deployment
+
   open-snow-change-dev:
     image: quay.io/ukhomeofficedigital/snowtify:latest
     secrets:
       - source: DEV_SERVICE_NOW_PASSWORD
         target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_URL
+        target: SNOW_URL
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_DESC=${DRONE_COMMIT_SHA}
-      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/create
+      - SNOW_ENDPOINT=${SNOW_URL}/create
       - SNOW_INT_ID_FILE=/mnt/internal-id
       - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     when:
@@ -161,11 +170,12 @@ pipeline:
     secrets:
       - source: DEV_SERVICE_NOW_PASSWORD
         target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_URL
+        target: SNOW_URL
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_DESC=${DRONE_COMMIT_SHA}
-      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update
+      - SNOW_ENDPOINT=${SNOW_URL}/update
       - SNOW_INT_ID_FILE=/mnt/internal-id
     comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: success
@@ -179,11 +189,12 @@ pipeline:
     secrets:
       - source: DEV_SERVICE_NOW_PASSWORD
         target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_URL
+        target: SNOW_URL
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_DESC=${DRONE_COMMIT_SHA}
-      - SNOW_ENDPOINT=https://cto-change-dev.internal.cto-notprod.homeoffice.gov.uk/update
+      - SNOW_ENDPOINT=${SNOW_URL}/update
       - SNOW_INT_ID_FILE=/mnt/internal-id
     comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: fail
@@ -373,3 +384,7 @@ pipeline:
 #       - POSTGRES_USER=postgres
 #       - POSTGRES_DB=postgres
 #       - POSTGRES_PASSWORD=secret
+
+matrix:                 # setup some common env vars
+  SNOW_DESC_FILE:
+    - ./change-desc.txt
