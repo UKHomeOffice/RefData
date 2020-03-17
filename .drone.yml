@@ -143,7 +143,7 @@ pipeline:
   create-change-desc:
     image: quay.io/ukhomeofficedigital/kd:v1.15.0
     commands:
-      - echo ${DRONE_COMMIT_MESSAGE} >> $SNOW_DESC_FILE
+      - echo ${DRONE_COMMIT_SHA} >> $SNOW_DESC_FILE
     when:
       environment: dev
       event: deployment
