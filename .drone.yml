@@ -140,10 +140,10 @@ pipeline:
       event: deployment
       environment: dev
 
-  create-change-desc:
-    image: quay.io/ukhomeofficedigital/kd:v1.15.0
+  create-change-desc-dev:
+    image: docker:git
     commands:
-      - echo ${DRONE_COMMIT_SHA} >> $SNOW_DESC_FILE
+      - git show --name-only >> $SNOW_DESC_FILE
     when:
       environment: dev
       event: deployment
@@ -154,12 +154,10 @@ pipeline:
       - source: DEV_SERVICE_NOW_PASSWORD
         target: SNOW_TEST_PASS
       - source: DEV_SERVICE_NOW_URL
-        target: SNOW_URL
+        target: SNOW_ENDPOINT
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
     environment:
-      - SNOW_ENDPOINT=${SNOW_URL}/create
-      - SNOW_INT_ID_FILE=/mnt/internal-id
       - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
     when:
       environment: dev
@@ -171,12 +169,9 @@ pipeline:
       - source: DEV_SERVICE_NOW_PASSWORD
         target: SNOW_TEST_PASS
       - source: DEV_SERVICE_NOW_URL
-        target: SNOW_URL
+        target: SNOW_ENDPOINT
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
-    environment:
-      - SNOW_ENDPOINT=${SNOW_URL}/update
-      - SNOW_INT_ID_FILE=/mnt/internal-id
     comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: success
     when:
@@ -190,12 +185,9 @@ pipeline:
       - source: DEV_SERVICE_NOW_PASSWORD
         target: SNOW_TEST_PASS
       - source: DEV_SERVICE_NOW_URL
-        target: SNOW_URL
+        target: SNOW_ENDPOINT
       - source: DEV_SERVICE_NOW_USERNAME
         target: SNOW_TEST_USER
-    environment:
-      - SNOW_ENDPOINT=${SNOW_URL}/update
-      - SNOW_INT_ID_FILE=/mnt/internal-id
     comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: fail
     when:
@@ -387,4 +379,6 @@ pipeline:
 
 matrix:                 # setup some common env vars
   SNOW_DESC_FILE:
-    - ./change-desc.txt
+    - /mnt/change-desc.txt
+  SNOW_INT_ID_FILE:
+    - /mnt/internal-id
