@@ -23,6 +23,7 @@ CREATE TABLE item (
   financial bool,
   indecent bool,
   vehicle bool,
+  medical bool,
   unitid int4 NOT NULL,
   seizureqty numeric(5),
   ienqty numeric(5),
@@ -56,6 +57,7 @@ COMMENT ON COLUMN item.drugs IS '{"label": "Drugs", "description": "Is this a Dr
 COMMENT ON COLUMN item.financial IS '{"label": "Financial", "description": "Is this a financial Item?", "summaryview": "true"}';
 COMMENT ON COLUMN item.indecent IS '{"label": "Indecent", "description": "Is this Indecent or obscene material?", "summaryview": "true"}';
 COMMENT ON COLUMN item.vehicle IS '{"label": "Vehicle", "description": "Is this a vehicle?", "summaryview": "true"}';
+COMMENT ON COLUMN item.medical IS '{"label": "Medical", "description": "Is this a pharmaceutical medicine or a piece of medical equipment?", "summaryview": "true"}';
 COMMENT ON COLUMN item.avtc IS '{"label": "AVTC", "description": "Is this a Alternative Value Transfer Commodities?", "summaryview": "true"}';
 COMMENT ON COLUMN item.unitid IS '{"label": "Unit", "description": "Unit type of item", "summaryview": "true"}';
 COMMENT ON COLUMN item.seizureqty IS '{"label": "Seizure", "description": "Minimum quantity required for seizure?", "summaryview": "true"}';
