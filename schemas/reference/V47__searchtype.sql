@@ -3,6 +3,14 @@ CREATE TABLE searchtype (
   type VARCHAR(50) NOT NULL,
   relevantpowerid INT4 NOT NULL REFERENCES relevantpowers(id),
   description TEXT,
+  usedonobject BOOLEAN,
+  usedonhuman BOOLEAN,
+  searchofperson BOOLEAN,
+  searchofbags BOOLEAN,
+  searchofvehicle BOOLEAN,
+  searchofaccfreight BOOLEAN,
+  searchofunaccfreight BOOLEAN,
+  searchofcontainers BOOLEAN,
   airfreight BOOLEAN,
   airpassenger BOOLEAN, 
   commercialmaritime BOOLEAN,
@@ -28,6 +36,14 @@ COMMENT ON COLUMN searchtype.id IS '{"label": "Identifier", "description": "Uniq
 COMMENT ON COLUMN searchtype.type IS '{"label": "Search type", "description": "The type of search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.relevantpowerid IS '{"label": "Relevant Power ID", "description": "ID of the relevant power undertaking this search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.description IS '{"label": "Description", "description": "A description of the search.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.usedonobject IS '{"label": "Used on objects", "description": "Search type used on objects.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.usedonhuman IS '{"label": "Used on humans", "description": "Search type used on humans.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofperson IS '{"label": "Search of person", "description": "Search of a person.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofbags IS '{"label": "Search of bags", "description": "Search of a bag.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofvehicle IS '{"label": "Search of Vehicle", "description": "Search used on a vehicle.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofaccfreight IS '{"label": "Search of ACC freight", "description": "Search used on ACC freight.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofunaccfreight IS '{"label": "Search of Non-ACC freaight", "description": "Search used on Non-ACC freaight.", "summaryview": "false"}';
+COMMENT ON COLUMN searchtype.searchofcontainers IS '{"label": "Search of containers", "description": "Search used on containers.", "summaryview": "false"}';
 COMMENT ON COLUMN searchtype.airfreight IS '{"label": "Air Freight", "description": "Search technique used in Air Freight", "summaryview": "false"}';
 COMMENT ON COLUMN searchtype.airpassenger IS '{"label": "Air Passenger", "description": "Search technique used in Air Passenger", "summaryview": "false"}';
 COMMENT ON COLUMN searchtype.commercialmaritime IS '{"label": "Commercial Maritime", "description": "Search technique used in Commercial Maritime", "summaryview": "false"}';
