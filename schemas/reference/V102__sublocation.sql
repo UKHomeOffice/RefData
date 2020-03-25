@@ -1,7 +1,6 @@
 CREATE TABLE sublocation (
   id INTEGER NOT NULL PRIMARY KEY,
-  portid INTEGER,
-  sublocation VARCHAR(30) NOT NULL,
+  sublocation VARCHAR(35) NOT NULL,
   description VARCHAR(70),
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
@@ -11,7 +10,6 @@ CREATE TABLE sublocation (
 COMMENT ON TABLE sublocation IS '{"label": "Sub Location", "description": "A list of Sub Locations of Ports", "schemalastupdated": "05/12/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN sublocation.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN sublocation.portid IS '{"label": "Port ID", "description": "ID of the Port that this Sub Location is part of", "summaryview": "false"}';
 COMMENT ON COLUMN sublocation.sublocation IS '{"label": "Sub Location", "description": "The name of the Sub Location.", "summaryview": "true"}';
 COMMENT ON COLUMN sublocation.description IS '{"label": "Description", "description": "A description of the Sub Location.", "summaryview": "true"}';
 COMMENT ON COLUMN sublocation.validfrom IS '{"label": "Valid from date", "description": "Sub Location valid from date.", "summaryview" : "false"}';
