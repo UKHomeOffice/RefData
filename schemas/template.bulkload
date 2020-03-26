@@ -1,0 +1,22 @@
+/*
+TABLE NAME
+*/
+
+CREATE TEMP TABLE tmptable_name AS SELECT * FROM table_name WITH NO DATA;
+
+COPY table_name FROM STDIN CSV HEADER;
+{% include table_name %}
+
+\.
+
+INSERT INTO table_name
+  SELECT *
+  FROM table_name
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptable_name;
