@@ -16,6 +16,6 @@ COMMENT ON COLUMN terminal.validfrom IS '{"label": "Valid from date", "descripti
 COMMENT ON COLUMN terminal.validto IS '{"label": "Valid to date", "description": "Terminal valid to date.", "summaryview" : "false"}';
 
 -- Grants
-GRANT SELECT ON terminal TO ${anonuser};
-GRANT SELECT ON terminal TO ${serviceuser};
-GRANT SELECT ON terminal TO ${readonlyuser};
+GRANT SELECT ON samstype TO ${anonuser};
+GRANT SELECT ON samstype TO ${serviceuser};
+GRANT SELECT ON samstype TO ${readonlyuser};
