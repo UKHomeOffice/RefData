@@ -6,6 +6,15 @@ CREATE TABLE relation (
   validto TIMESTAMP WITH TIME ZONE
 );
 
+-- Table comment 
+COMMENT ON TABLE realtion IS '{"label": "Relation", "description": "A list of relations to a specific party.", "schemalastupdated": "09/04/2020", "dataversion": 1}';
+-- Column comments
+COMMENT ON COLUMN relation.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN relation.relation IS '{"label": "Relation", "description": "Name of relation type", "summaryview": "true"}';
+COMMENT ON COLUMN relation.description IS '{"label": "Description", "description": "Description of the relation", "summaryview": "true"}';
+COMMENT ON COLUMN relation.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
+COMMENT ON COLUMN relation.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+
 -- Grants
 GRANT SELECT ON relation TO ${anonuser};
 GRANT SELECT ON relation TO ${serviceuser};
