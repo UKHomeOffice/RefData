@@ -140,60 +140,60 @@ pipeline:
       event: deployment
       environment: dev
 
-#  create-change-desc-dev:
-#    image: docker:git
-#    commands:
-#      - git show --name-only >> $SNOW_DESC_FILE
-#    when:
-#      environment: dev
-#      event: deployment
-#
-#  open-snow-change-dev:
-#    image: quay.io/ukhomeofficedigital/snowtify:latest
-#    secrets:
-#      - source: DEV_SERVICE_NOW_PASSWORD
-#        target: SNOW_TEST_PASS
-#      - source: DEV_SERVICE_NOW_URL
-#        target: SNOW_ENDPOINT
-#      - source: DEV_SERVICE_NOW_USERNAME
-#        target: SNOW_TEST_USER
-#    environment:
-#      - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
-#    when:
-#      environment: dev
-#      event: deployment
-#
-#  complete-snow-change-dev:
-#    image: quay.io/ukhomeofficedigital/snowtify:latest
-#    secrets:
-#      - source: DEV_SERVICE_NOW_PASSWORD
-#        target: SNOW_TEST_PASS
-#      - source: DEV_SERVICE_NOW_URL
-#        target: SNOW_ENDPOINT
-#      - source: DEV_SERVICE_NOW_USERNAME
-#        target: SNOW_TEST_USER
-#    comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
-#    deployment_outcome: success
-#    when:
-#      environment: dev
-#      event: deployment
-#      status: success
-#
-#  cancel-snow-change-dev:
-#    image: quay.io/ukhomeofficedigital/snowtify:latest
-#    secrets:
-#      - source: DEV_SERVICE_NOW_PASSWORD
-#        target: SNOW_TEST_PASS
-#      - source: DEV_SERVICE_NOW_URL
-#        target: SNOW_ENDPOINT
-#      - source: DEV_SERVICE_NOW_USERNAME
-#        target: SNOW_TEST_USER
-#    comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
-#    deployment_outcome: fail
-#    when:
-#      environment: dev
-#      event: deployment
-#      status: failure
+  create-change-desc-dev:
+    image: docker:git
+    commands:
+      - git show --name-only >> $SNOW_DESC_FILE
+    when:
+      environment: dev
+      event: deployment
+
+  open-snow-change-dev:
+    image: quay.io/ukhomeofficedigital/snowtify:latest
+    secrets:
+      - source: DEV_SERVICE_NOW_PASSWORD
+        target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_URL
+        target: SNOW_ENDPOINT
+      - source: DEV_SERVICE_NOW_USERNAME
+        target: SNOW_TEST_USER
+    environment:
+      - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    when:
+      environment: dev
+      event: deployment
+
+  complete-snow-change-dev:
+    image: quay.io/ukhomeofficedigital/snowtify:latest
+    secrets:
+      - source: DEV_SERVICE_NOW_PASSWORD
+        target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_URL
+        target: SNOW_ENDPOINT
+      - source: DEV_SERVICE_NOW_USERNAME
+        target: SNOW_TEST_USER
+    comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    deployment_outcome: success
+    when:
+      environment: dev
+      event: deployment
+      status: success
+
+  cancel-snow-change-dev:
+    image: quay.io/ukhomeofficedigital/snowtify:latest
+    secrets:
+      - source: DEV_SERVICE_NOW_PASSWORD
+        target: SNOW_TEST_PASS
+      - source: DEV_SERVICE_NOW_URL
+        target: SNOW_ENDPOINT
+      - source: DEV_SERVICE_NOW_USERNAME
+        target: SNOW_TEST_USER
+    comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    deployment_outcome: fail
+    when:
+      environment: dev
+      event: deployment
+      status: failure
 
   deploy_to_staging:
     image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
