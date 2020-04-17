@@ -1,7 +1,0 @@
-CREATE TABLE injurytype (
-  id INTEGER NOT NULL PRIMARY KEY,
-  name VARCHAR(25) NOT NULL,
-  description VARCHAR(100), 
-  validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
-);
