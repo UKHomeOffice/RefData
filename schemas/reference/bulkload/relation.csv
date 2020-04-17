@@ -10,7 +10,7 @@ id,relation,description,family,validfrom,validto
 9,Step father,Subjects non-biological father,TRUE,2020-04-16 00:00:01+01,
 10,Step mother,Subjects non-biological mother,TRUE,2020-04-16 00:00:01+01,
 11,Son,Subjects biological son,TRUE,2020-04-16 00:00:01+01,
-12,daughter,Subjects biological daughter,TRUE,2020-04-16 00:00:01+01,
+12,Daughter,Subjects biological daughter,TRUE,2020-04-16 00:00:01+01,
 13,Step son,Subjects non-biological son,TRUE,2020-04-16 00:00:01+01,
 14,Step daughter,Subjects non-biological daughter,TRUE,2020-04-16 00:00:01+01,
 15,Sibling,Subjecats biological brother or sister,TRUE,2020-04-16 00:00:01+01,
