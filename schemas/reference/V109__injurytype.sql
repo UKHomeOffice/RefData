@@ -1,20 +1,21 @@
-CREATE TABLE injurytype (
+CREATE TABLE injurycause (
   id INTEGER NOT NULL PRIMARY KEY,
-  injurytype VARCHAR(25) NOT NULL,
+  injurycause VARCHAR(25) NOT NULL,
   description VARCHAR(100), 
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
 
 -- Table comment
-COMMENT ON TABLE injurytype is '{"label": "Injury Type", "description": "Different types of Injury.", "schemalastupdated": "17/04/2020", "dataversion": 1}';
+COMMENT ON TABLE injurycause is '{"label": "Injury Type", "description": "Different types of Injury.", "schemalastupdated": "17/04/2020", "dataversion": 1}';
 -- Column comment
-COMMENT ON COLUMN injurytype.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN injurytype.description IS '{"label": "Injury Type", "description": ""}';
-COMMENT ON COLUMN injurytype.validfrom IS '{}';
-COMMENT ON COLUMN injurytype.validto IS '{}';
-
+COMMENT ON COLUMN injurycause.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN injurycause.injurycause IS '{"label": "Cause of injury", "description": "Common causes of workplace injuries and accidents.", "summaryview": "true"}';
+COMMENT ON COLUMN injurycause.description IS '{"label": "Description", "description": "Description of the cause of injury.", "summaryview": "true"}';
+COMMENT ON COLUMN injurycause.validfrom IS '{"label": "Valid from date", "description": "Data valid from date.", "summaryview" : "false"}';
+COMMENT ON COLUMN injurycause.validto IS '{"label": "Valid to date", "description": "Data valid to date.", "summaryview" : "false"}';
+Haha 
 -- GRANTs
-GRANT SELECT ON injurytype TO ${anonuser};
-GRANT SELECT ON injurytype TO ${serviceuser};
-GRANT SELECT ON injurytype TO ${readonlyuser};
+GRANT SELECT ON injurycause TO ${anonuser};
+GRANT SELECT ON injurycause TO ${serviceuser};
+GRANT SELECT ON injurycause TO ${readonlyuser};
