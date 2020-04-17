@@ -19,4 +19,4 @@ id,relation,description,family,validfrom,validto
 18,Aunt,Subject's biological parent's sister,TRUE,2020-04-16 00:00:01+01,
 19,Nephew,Subject's biological sibling's son,TRUE,2020-04-16 00:00:01+01,
 20,Niece,Subject's biological sibling's daughter,TRUE,2020-04-16 00:00:01+01,
-21,Cousin,Subject's biological partent's sibling's child,TRUE,2020-04-16 00:00:01+01,
+21,Cousin,Subject's biological parent's sibling's child,TRUE,2020-04-16 00:00:01+01,
