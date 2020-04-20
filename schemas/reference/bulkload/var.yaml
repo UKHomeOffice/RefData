@@ -51,3 +51,4 @@ occupation: "occupation.csv"
 brand: "brand.csv"
 terminal: "terminal.csv"
 relation: "relation.csv"
+injurycause: 'injurycause.csv'
