@@ -1,7 +1,7 @@
 CREATE TABLE samscategories (
     id INT4 NOT NULL PRIMARY KEY, 
-    category VARCHAR(50) NOT NULL,
-    description VARCHAR(100),
+    category VARCHAR(75) NOT NULL,
+    description VARCHAR(150),
     validfrom TIMESTAMP WITH TIME ZONE,
     validto TIMESTAMP WITH TIME ZONE
 );
