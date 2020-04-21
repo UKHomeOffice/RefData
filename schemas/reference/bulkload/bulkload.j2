@@ -1388,3 +1388,54 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpterminal;
+
+
+/*
+RELATION
+*/
+
+CREATE TEMP TABLE tmprelation AS SELECT * FROM relation WITH NO DATA;
+
+COPY  relation FROM STDIN CSV HEADER;
+{% include relation %}
+
+\.
+
+INSERT INTO relation
+  SELECT *
+  FROM relation
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    relation = EXCLUDED.relation,
+    description = EXCLUDED.description,
+    family = EXCLUDED.family,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmprelation;
+
+
+/*
+INJURYCAUSE
+*/
+
+CREATE TEMP TABLE tmpinjurycause AS SELECT * FROM injurycause WITH NO DATA;
+
+COPY  injurycause FROM STDIN CSV HEADER;
+{% include injurycause %}
+
+\.
+
+INSERT INTO injurycause
+  SELECT *
+  FROM injurycause
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    injurycause = EXCLUDED.injurycause,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpinjurycause;
