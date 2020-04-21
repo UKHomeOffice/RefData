@@ -1,7 +1,7 @@
 CREATE TABLE samssubcategory (
     id INT4 NOT NULL PRIMARY KEY, 
-    subcategory VARCHAR(50) NOT NULL,
-    description VARCHAR(100),
+    subcategory VARCHAR(75) NOT NULL,
+    description VARCHAR(150),
     samscategoryid INT4 NOT NULL REFERENCES samscategories(id),
     validfrom TIMESTAMP WITH TIME ZONE,
     validto TIMESTAMP WITH TIME ZONE
