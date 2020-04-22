@@ -1,6 +1,6 @@
 CREATE TABLE intelligenceproducttype (
   id INTEGER NOT NULL PRIMARY KEY,
-  name VARCHAR(40) NOT NULL,
+  name VARCHAR(50) NOT NULL,
   description VARCHAR(200),
   incoming boolean,
   outgoing boolean,
