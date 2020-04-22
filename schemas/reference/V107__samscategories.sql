@@ -11,7 +11,7 @@ COMMENT ON TABLE samscategories IS '{"label": "SAMS Categories", "description": 
 -- Column comment
 COMMENT ON COLUMN samscategories.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN samscategories.category IS '{"label": "Category", "description": "Title of the SAMS category.", "summaryview": "false"}';
-COMMENT ON COLUMN samscategories.description IS '{"label": "Description", "description": "A short description of the SAMS catagory.", "summaryview": "false"}';
+COMMENT ON COLUMN samscategories.description IS '{"label": "Description", "description": "A short description of the SAMS category.", "summaryview": "false"}';
 COMMENT ON COLUMN samscategories.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN samscategories.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
