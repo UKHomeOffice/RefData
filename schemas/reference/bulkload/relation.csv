@@ -1,6 +1,6 @@
 id,relation,description,family,validfrom,validto
 1,Line / Duty Manager,,FALSE,2020-04-16 00:00:01+01,
-2,Colleague,Of equal rank,FALSE,2020-04-16 00:00:01+01,
+2,Colleague,,FALSE,2020-04-16 00:00:01+01,
 3,First aider,Individual administering first aid,FALSE,2020-04-16 00:00:01+01,
 4,Host,,FALSE,2020-04-16 00:00:01+01,
 5,Father,Subject's biological father,TRUE,2020-04-16 00:00:01+01,
