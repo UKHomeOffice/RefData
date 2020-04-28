@@ -1439,3 +1439,28 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpinjurycause;
+
+
+/*
+PROTECTEDCHARACTERISTICS
+*/
+
+CREATE TEMP TABLE tmpprotectedcharacteristics AS SELECT * FROM protectedcharacteristics WITH NO DATA;
+
+COPY  protectedcharacteristics FROM STDIN CSV HEADER;
+{% include protectedcharacteristics %}
+
+\.
+
+INSERT INTO protectedcharacteristics
+  SELECT *
+  FROM protectedcharacteristics
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    characteristic = EXCLUDED.characteristic,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpprotectedcharacteristics;
