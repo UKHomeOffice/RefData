@@ -2,7 +2,7 @@ CREATE TABLE department (
   id INTEGER NOT NULL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   ministryid INTEGER NOT NULL REFERENCES ministry(id),
-  code VARCHAR(8) NOT NULL,
+  code VARCHAR(8),
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
