@@ -2,13 +2,13 @@ CREATE TABLE department (
   id INTEGER NOT NULL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   ministryid INTEGER NOT NULL REFERENCES ministry(id),
-  code VARCHAR(8),
+  code VARCHAR(8) NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
 
 -- Table comment
-COMMENT ON TABLE department IS '{"label": "Department", "description": "A list of departments that make up the Home Office.", "schemalastupdated": "30/04/2020", "dataversion": 2}';
+COMMENT ON TABLE department IS '{"label": "Department", "description": "A list of departments that make up the Home Office.", "schemalastupdated": "06/03/2019", "dataversion": 2}';
 -- Column comments
 COMMENT ON COLUMN department.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN department.name IS '{"label": "Department name", "description": "The name of the department.", "summaryview": "true"}';
