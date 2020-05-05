@@ -24,3 +24,4 @@ id,name,directorateid,code,validfrom,validto
 23,Central,2,BFCENT,2019-01-01 00:01:00+00,
 24,Logistics,2,BFLOGIST,2019-01-01 00:01:00+00,
 25,Human Resources,2,HUMRE,2019-01-01 00:01:00+00,
+26,Border Data Acquisition & Technology Capability,2,BDATC,2020-05-05 00:01:00+00,
