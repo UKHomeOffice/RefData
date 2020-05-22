@@ -12,8 +12,8 @@ COMMENT ON TABLE handlingconditions IS '{"label": "Handling Conditions", "descri
 COMMENT ON COLUMN handlingconditions.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN handlingconditions.name IS '{"label": "Name", "description": "The name of the handling condition.", "summaryview": "true"}';
 COMMENT ON COLUMN handlingconditions.description IS '{"label": "Description", "description": "A short description of how the intelligence is handled for the condition.", "summaryview": "true"}';
-COMMENT ON COLUMN handlingconditions.validfrom IS '{"label": "Valid from date", "description": "Sub Location valid from date.", "summaryview": "false"}';
-COMMENT ON COLUMN handlingconditions.validto IS '{"label": "Valid to date", "description": "Sub Location valid to date.", "summaryview": "false"}';
+COMMENT ON COLUMN handlingconditions.validfrom IS '{"label": "Valid from date", "description": "Handling condition valid from date.", "summaryview": "false"}';
+COMMENT ON COLUMN handlingconditions.validto IS '{"label": "Valid to date", "description": "Handling condition valid to date.", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON handlingconditions TO ${anonuser};
