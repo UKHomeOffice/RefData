@@ -6,7 +6,7 @@ CREATE TABLE covidunablereasons (
 );
 
 -- Table comment
-COMMENT ON TABLE covidunablereasons IS '{"label": "Covid self declaration failure reasons", "description": "Reasons why the passenger Covid self declaration was not done online before travel", "schemalastupdate": "22/05/2020", "dataversion": 1}';
+COMMENT ON TABLE covidunablereasons IS '{"label": "Covid self declaration failure reasons", "description": "Reasons why the passenger Covid self declaration was not done online before travel", "schemalastupdated": "22/05/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN covidunablereasons.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN covidunablereasons.name IS '{"label": "Name", "description": "The name of the reason.", "summaryview": "true"}';

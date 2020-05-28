@@ -7,7 +7,7 @@ CREATE TABLE protectedcharacteristics (
 );
 
 -- Table comment
-COMMENT ON TABLE protectedcharacteristics IS '{"label": "Protected characteristics", "description": "Characteristics which are protected from discrimination by law", "schemalastupdate": "27/04/2020", "dataversion": 1}';
+COMMENT ON TABLE protectedcharacteristics IS '{"label": "Protected characteristics", "description": "Characteristics which are protected from discrimination by law", "schemalastupdated": "27/04/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN protectedcharacteristics.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN protectedcharacteristics.characteristic IS '{"label": "Characteristic", "description": "The name of the characteristic being protected.", "summaryview": "true"}';

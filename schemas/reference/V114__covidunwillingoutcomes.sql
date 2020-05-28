@@ -6,7 +6,7 @@ CREATE TABLE covidunwillingoutcomes (
 );
 
 -- Table comment
-COMMENT ON TABLE covidunwillingoutcomes IS '{"label": "Covid self declaration unwillingness outcomes", "description": "Set of outcomes when a passenger initially refuses to do the online self declaration ", "schemalastupdate": "22/05/2020", "dataversion": 1}';
+COMMENT ON TABLE covidunwillingoutcomes IS '{"label": "Covid self declaration unwillingness outcomes", "description": "Set of outcomes when a passenger initially refuses to do the online self declaration ", "schemalastupdated": "22/05/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN covidunwillingoutcomes.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN covidunwillingoutcomes.name IS '{"label": "Name", "description": "The name of the outcome.", "summaryview": "true"}';
