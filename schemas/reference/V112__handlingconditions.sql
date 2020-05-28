@@ -7,7 +7,7 @@ CREATE TABLE handlingconditions (
 );
 
 -- Table comment
-COMMENT ON TABLE handlingconditions IS '{"label": "Handling Conditions", "description": "How intelligence is handled", "schemalastupdate": "20/05/2020", "dataversion": 1}';
+COMMENT ON TABLE handlingconditions IS '{"label": "Handling Conditions", "description": "How intelligence is handled", "schemalastupdated": "20/05/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN handlingconditions.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN handlingconditions.name IS '{"label": "Name", "description": "The name of the handling condition.", "summaryview": "true"}';
