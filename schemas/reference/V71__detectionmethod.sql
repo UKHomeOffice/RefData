@@ -1,6 +1,6 @@
 CREATE TABLE detectionmethod (
   id INT4 NOT NULL PRIMARY KEY,
-  name VARCHAR(60) NOT NULL,
+  name VARCHAR(80) NOT NULL,
   detectionequipment BOOLEAN NOT NULL,
   basicequipment BOOLEAN NOT NULL,
   searchtype BOOLEAN NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE detectionmethod (
 );
 
 -- Table comment
-COMMENT ON TABLE detectionmethod IS '{"label": "Detection methods", "description": "A list of different types of detection method.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE detectionmethod IS '{"label": "Detection methods", "description": "A list of different types of detection method.", "schemalastupdated": "02/06/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN detectionmethod.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN detectionmethod.name IS '{"label": "Detection method", "description": "The type of detection method.", "summaryview": "true"}';
