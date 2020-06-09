@@ -16,7 +16,7 @@ CREATE TABLE location (
 );
 
 -- Table comment
-COMMENT ON TABLE location IS '{"label": "Location", "description": "A list of locations and their associated details.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE location IS '{"label": "Location", "description": "A list of locations and their associated details.", "schemalastupdated": "09/06/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN location.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN location.name IS '{"label": "Name", "description": "Location name", "summaryview": "true"}';
