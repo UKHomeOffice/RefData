@@ -9,6 +9,8 @@ CREATE TABLE location (
   icaoid UUID REFERENCES icao(id),
   bflocationtypeid UUID REFERENCES bflocationtype(id),
   code VARCHAR(8) NOT NULL,
+  countryoflegalsystem VARCHAR(20),
+  ukcountry VARCHAR(20),
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -26,6 +28,8 @@ COMMENT ON COLUMN location.unlocodeid IS '{"label": "UN Location Code ID", "desc
 COMMENT ON COLUMN location.addressid IS '{"label": "Address ID", "description": "Link to address entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN location.icaoid IS '{"label": "ICAO Code ID", "description": "Link to ICAO entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN location.bflocationtypeid IS '{"label": "BF location type ID", "description": "Link to bflocationtype entity.", "summaryview" : "false"}';
+COMMENT ON COLUMN location.countryoflegalsystem IS '{"label": "Country of Legal System", "description": "Which of the UKs devolved legal systems does this location come under." : "false"}';
+COMMENT ON COLUMN location.ukcountry IS '{"label": "UK Country", "description": "Which of the UKs countries is this location in", "summaryview" : "true"}';
 COMMENT ON COLUMN location.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN location.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
