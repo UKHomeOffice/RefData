@@ -18,8 +18,8 @@ COMMENT ON COLUMN eventclassification.description IS '{"label": "Description", "
 COMMENT ON COLUMN eventclassification.isvariance IS '{"label": "Variance", "description": "Is the event a Variance?", "summaryview": "false"}';
 COMMENT ON COLUMN eventclassification.iscontrolbreach IS '{"label": "Control Breach", "description": "Is the event a Control Breach?", "summaryview": "false"}';
 COMMENT ON COLUMN eventclassification.ismandatebreach IS '{"label": "Mandate Breach", "description": "Is the event a Mandate Breach?", "summaryview": "false"}';
-COMMENT ON COLUMN eventclassification.validfrom IS '{"label": "Valid from date", "description": "Outcome valid from date.", "summaryview": "false"}';
-COMMENT ON COLUMN eventclassification.validto IS '{"label": "Valid to date", "description": "Outcome valid to date.", "summaryview": "false"}';
+COMMENT ON COLUMN eventclassification.validfrom IS '{"label": "Valid from date", "description": "Classification valid from date.", "summaryview": "false"}';
+COMMENT ON COLUMN eventclassification.validto IS '{"label": "Valid to date", "description": "Classification valid to date.", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON eventclassification TO ${anonuser};
