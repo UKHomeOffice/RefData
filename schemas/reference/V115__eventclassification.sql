@@ -1,7 +1,7 @@
 CREATE TABLE eventclassification (
   id INT4 NOT NULL PRIMARY KEY,
   label VARCHAR(60) NOT NULL,
-  description VARCHAR(140) NOT NULL,
+  description VARCHAR(150) NOT NULL,
   isvariance BOOLEAN NOT NULL,
   iscontrolbreach BOOLEAN NOT NULL,
   ismandatebreach BOOLEAN NOT NULL,
