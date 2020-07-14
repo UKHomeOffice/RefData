@@ -509,3 +509,4 @@ id,name,twolettercode,threelettercode,designator,alliance,aviation,sea,land,rail
 508,Private Aircraft,,,,,t,f,f,f,2020-06-09 00:00:00+00,
 509,Loganair,LM,LOG,,,t,f,f,f,2020-06-23 00:00:00+00,
 510,Pegasus Airlines,PC,PGT,,,t,f,f,f,2020-07-10 00:00:00+00,
+511,African Express Line,,,,,f,t,f,f,2020-07-24 00:00:00+00,
