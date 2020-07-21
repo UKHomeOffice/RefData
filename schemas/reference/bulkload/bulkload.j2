@@ -1465,3 +1465,29 @@ UPDATE
     validto = EXCLUDED.validto;
 
 DROP TABLE tmpprotectedcharacteristics;
+
+
+/*
+LANGUAGE
+*/
+
+CREATE TEMP TABLE tmplanguage AS SELECT * FROM language WITH NO DATA;
+
+COPY  language FROM STDIN CSV HEADER;
+{% include language %}
+
+\.
+
+INSERT INTO language
+  SELECT *
+  FROM language
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    twolettercode = EXCLUDED.twolettercode,
+    threelettercode = EXCLUDED.threelettercode,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmplanguage;
