@@ -13,7 +13,7 @@ COMMENT ON TABLE language IS '{"label": "Language", "description": "Standardised
 COMMENT ON COLUMN language.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN language.name IS '{"label": "Name", "description": "The ISO language name.", "summaryview": "true"}';
 COMMENT ON COLUMN language.twolettercode IS '{"label": "Two letter code", "description": "Two letter codes for the representation of names of languages.", "summaryview": "true"}';
-COMMENT ON COLUMN language.threelettercode IS '{"label": "Description", "description": "Two letter codes for the representation of names of languages.", "summaryview": "true"}';
+COMMENT ON COLUMN language.threelettercode IS '{"label": "Three letter code", "description": "Three letter codes for the representation of names of languages.", "summaryview": "true"}';
 COMMENT ON COLUMN language.validfrom IS '{"label": "Valid from date", "description": "Language valid from date.", "summaryview": "false"}';
 COMMENT ON COLUMN language.validto IS '{"label": "Valid to date", "description": "Language valid to date.", "summaryview": "false"}';
 
