@@ -1,6 +1,7 @@
 CREATE TABLE relevantpowers (
   id INT4 NOT NULL PRIMARY KEY,
   code VARCHAR(40) NOT NULL,
+  fullname VARCHAR(100) NOT NULL,
   description TEXT NOT NULL,
   url VARCHAR(100),
   sop BOOLEAN NOT NULL,
@@ -14,7 +15,8 @@ CREATE TABLE relevantpowers (
 COMMENT ON TABLE relevantpowers IS '{"label": "Relevant Powers",  "description": "Legal powers that can be used.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN relevantpowers.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN relevantpowers.code IS '{"label": "Legal code", "description": "The legal code number.", "summaryview": "true"}';
+COMMENT ON COLUMN relevantpowers.code IS '{"label": "Legal code", "description": "The code of the relevant power.", "summaryview": "true"}';
+COMMENT ON COLUMN relevantpowers.fullname IS '{"label": "Name", "description": "The name of the relevant power.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.description IS '{"label": "Description", "description": "A short description of the power.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.url IS '{"label": "URL", "description": "Link to the full power in legislation.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.sop IS '{"label": "SoP", "description": "Valid power for search of person.", "summaryview": "false"}';
