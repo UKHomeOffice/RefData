@@ -12,7 +12,7 @@ CREATE TABLE relevantpowers (
 );
 
 -- Table comment
-COMMENT ON TABLE relevantpowers IS '{"label": "Relevant Powers",  "description": "Legal powers that can be used.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE relevantpowers IS '{"label": "Relevant Powers",  "description": "Legal powers that can be used.", "schemalastupdated": "24/07/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN relevantpowers.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN relevantpowers.code IS '{"label": "Legal code", "description": "The code of the relevant power.", "summaryview": "true"}';
