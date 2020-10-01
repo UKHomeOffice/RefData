@@ -351,60 +351,60 @@ pipeline:
       event: deployment
       environment: production
 
-  create-change-desc-production:
-    image: docker:git
-    commands:
-      - git show --name-only >> $SNOW_DESC_FILE
-    when:
-      environment: production
-      event: deployment
-
-  open-snow-change-production:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: PRODUCTION_SERVICE_NOW_PASSWORD
-        target: SNOW_PROD_PASS
-      - source: PRODUCTION_SERVICE_NOW_URL
-        target: SNOW_ENDPOINT
-      - source: PRODUCTION_SERVICE_NOW_USERNAME
-        target: SNOW_PROD_USER
-    environment:
-      - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
-    when:
-      environment: production
-      event: deployment
-
-  complete-snow-change-production:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: PRODUCTION_SERVICE_NOW_PASSWORD
-        target: SNOW_PROD_PASS
-      - source: PRODUCTION_SERVICE_NOW_URL
-        target: SNOW_ENDPOINT
-      - source: PRODUCTION_SERVICE_NOW_USERNAME
-        target: SNOW_PROD_USER
-    comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
-    deployment_outcome: success
-    when:
-      environment: production
-      event: deployment
-      status: success
-
-  cancel-snow-change-production:
-    image: quay.io/ukhomeofficedigital/snowtify:latest
-    secrets:
-      - source: PRODUCTION_SERVICE_NOW_PASSWORD
-        target: SNOW_PROD_PASS
-      - source: PRODUCTION_SERVICE_NOW_URL
-        target: SNOW_ENDPOINT
-      - source: PRODUCTION_SERVICE_NOW_USERNAME
-        target: SNOW_PROD_USER
-    comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
-    deployment_outcome: fail
-    when:
-      environment: production
-      event: deployment
-      status: failure
+#  create-change-desc-production:
+#    image: docker:git
+#    commands:
+#      - git show --name-only >> $SNOW_DESC_FILE
+#    when:
+#      environment: production
+#      event: deployment
+#
+#  open-snow-change-production:
+#    image: quay.io/ukhomeofficedigital/snowtify:latest
+#    secrets:
+#      - source: PRODUCTION_SERVICE_NOW_PASSWORD
+#        target: SNOW_PROD_PASS
+#      - source: PRODUCTION_SERVICE_NOW_URL
+#        target: SNOW_ENDPOINT
+#      - source: PRODUCTION_SERVICE_NOW_USERNAME
+#        target: SNOW_PROD_USER
+#    environment:
+#      - SNOW_EXTERNAL_ID=${DRONE_REPO}:${DRONE_COMMIT_SHA}
+#    when:
+#      environment: production
+#      event: deployment
+#
+#  complete-snow-change-production:
+#    image: quay.io/ukhomeofficedigital/snowtify:latest
+#    secrets:
+#      - source: PRODUCTION_SERVICE_NOW_PASSWORD
+#        target: SNOW_PROD_PASS
+#      - source: PRODUCTION_SERVICE_NOW_URL
+#        target: SNOW_ENDPOINT
+#      - source: PRODUCTION_SERVICE_NOW_USERNAME
+#        target: SNOW_PROD_USER
+#    comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+#    deployment_outcome: success
+#    when:
+#      environment: production
+#      event: deployment
+#      status: success
+#
+#  cancel-snow-change-production:
+#    image: quay.io/ukhomeofficedigital/snowtify:latest
+#    secrets:
+#      - source: PRODUCTION_SERVICE_NOW_PASSWORD
+#        target: SNOW_PROD_PASS
+#      - source: PRODUCTION_SERVICE_NOW_URL
+#        target: SNOW_ENDPOINT
+#      - source: PRODUCTION_SERVICE_NOW_USERNAME
+#        target: SNOW_PROD_USER
+#    comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+#    deployment_outcome: fail
+#    when:
+#      environment: production
+#      event: deployment
+#      status: failure
 
   notify:
     image: plugins/slack
