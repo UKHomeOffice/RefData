@@ -9,6 +9,7 @@ CREATE TABLE carrierlist (
   sea BOOLEAN NOT NULL,
   land BOOLEAN NOT NULL,
   rail BOOLEAN NOT NULL,
+  parcel BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
@@ -26,6 +27,7 @@ COMMENT ON COLUMN carrierlist.aviation IS '{"label": "Aviation", "description": 
 COMMENT ON COLUMN carrierlist.sea IS '{"label": "Sea", "description": "Maritime carrier?", "summaryview": "true"}';
 COMMENT ON COLUMN carrierlist.land IS '{"label": "Land", "description": "Land carrier?", "summaryview": "true"}';
 COMMENT ON COLUMN carrierlist.rail IS '{"label": "Rail", "description": "Rail carrier?", "summaryview": "true"}';
+COMMENT ON COLUMN carrierlist.parcel IS '{"label": "Parcel", "description": "Parcel carrier for the purposes of Fast Parcels?", "summaryview": "true"}';
 COMMENT ON COLUMN carrierlist.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN carrierlist.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
