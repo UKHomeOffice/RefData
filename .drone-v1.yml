@@ -1,0 +1,419 @@
+---
+kind: pipeline
+type: kubernetes
+name: matrix-1
+
+platform:
+  os: linux
+  arch: amd64
+
+workspace:
+  base: /mnt
+  path: /
+
+steps:
+- name: synch_dev_secrets
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/cop-secrets
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: DEV_DRONE_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: DEV_DRONE_AWS_SECRET_ACCESS_KEY
+    DEPLOY_ENV: dev
+    DRONE_SERVER: https://drone.acp.homeoffice.gov.uk
+    DRONE_TOKEN:
+      from_secret: DRONE_PUBLIC_TOKEN
+  when:
+    event:
+    - promote
+    target:
+    - secrets
+
+- name: synch_staging_secrets
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/cop-secrets
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: STAGING_DRONE_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: STAGING_DRONE_AWS_SECRET_ACCESS_KEY
+    DEPLOY_ENV: staging
+    DRONE_SERVER: https://drone.acp.homeoffice.gov.uk
+    DRONE_TOKEN:
+      from_secret: DRONE_PUBLIC_TOKEN
+  when:
+    event:
+    - promote
+    target:
+    - secrets
+
+- name: synch_production_secrets
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/cop-secrets
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: PRODUCTION_DRONE_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: PRODUCTION_DRONE_AWS_SECRET_ACCESS_KEY
+    DEPLOY_ENV: production
+    DRONE_SERVER: https://drone.acp.homeoffice.gov.uk
+    DRONE_TOKEN:
+      from_secret: DRONE_PUBLIC_TOKEN
+  when:
+    event:
+    - promote
+    target:
+    - secrets
+
+- name: validate_schema
+  pull: if-not-exists
+  image: python:3.6.1-alpine
+  commands:
+  - /mnt/docker/validateSchema.sh
+  environment:
+    WORKDIR: /mnt/schemas/reference
+  when:
+    branch:
+      exclude:
+      - master
+    event:
+    - push
+
+- name: deploy_to_dev
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
+  commands:
+  - export PRIVATE_KEY=$${DB_REF_PRIVATE_GITKEY}
+  - export PRIVATE_GIT_URL="$${GIT_REPO_PRIVATE_GITURL}$${DB_REF_PRIVATE_GITREPO}.git"
+  - /usr/bin/create_ssh_key.sh
+  - /usr/bin/ssh-keyscan -T 10 -p $${GIT_REPO_PRIVATE_PORT} $${GIT_REPO_PRIVATE_URL}  >> ~/.ssh/known_hosts
+  - git clone $${PRIVATE_GIT_URL} private-refdata
+  - /mnt/docker/reset.sh
+  - /mnt/docker/run.sh
+  - cd /mnt/private-refdata
+  - /mnt/private-refdata/docker/run.sh
+  environment:
+    DB_REF_DEFAULT_DBNAME:
+      from_secret: DEV_DB_REF_DEFAULT_DBNAME
+    DB_REF_DEFAULT_PASSWORD:
+      from_secret: DEV_DB_REF_DEFAULT_PASSWORD
+    DB_REF_DEFAULT_USERNAME:
+      from_secret: DB_REF_DEFAULT_USERNAME
+    DB_REF_GOVERNANCE_ANON_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_ANON_USERNAME
+    DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD:
+      from_secret: DEV_DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD
+    DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME
+    DB_REF_GOVERNANCE_OWNER_PASSWORD:
+      from_secret: DEV_DB_REF_GOVERNANCE_OWNER_PASSWORD
+    DB_REF_GOVERNANCE_OWNER_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_OWNER_USERNAME
+    DB_REF_GOVERNANCE_READONLY_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_READONLY_USERNAME
+    DB_REF_GOVERNANCE_SCHEMA:
+      from_secret: DB_REF_GOVERNANCE_SCHEMA
+    DB_REF_GOVERNANCE_SERVICE_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_SERVICE_USERNAME
+    DB_REF_HOSTNAME:
+      from_secret: DEV_DB_REF_HOSTNAME
+    DB_REF_JDBC_OPTIONS:
+      from_secret: DB_REF_JDBC_OPTIONS
+    DB_REF_OPTIONS:
+      from_secret: DB_REF_OPTIONS
+    DB_REF_PORT:
+      from_secret: DB_REF_PORT
+    DB_REF_PRIVATE_GITKEY:
+      from_secret: DB_REF_PRIVATE_GITKEY
+    DB_REF_PRIVATE_GITREPO:
+      from_secret: DB_REF_PRIVATE_GITREPO
+    DB_REF_PROTOCOL:
+      from_secret: PROTOCOL_POSTGRES
+    DB_REF_REFERENCE_ANON_USERNAME:
+      from_secret: DB_REF_REFERENCE_ANON_USERNAME
+    DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD:
+      from_secret: DEV_DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD
+    DB_REF_REFERENCE_AUTHENTICATOR_USERNAME:
+      from_secret: DB_REF_REFERENCE_AUTHENTICATOR_USERNAME
+    DB_REF_REFERENCE_DBNAME:
+      from_secret: DB_REF_REFERENCE_DBNAME
+    DB_REF_REFERENCE_OWNER_PASSWORD:
+      from_secret: DEV_DB_REF_REFERENCE_OWNER_PASSWORD
+    DB_REF_REFERENCE_OWNER_USERNAME:
+      from_secret: DB_REF_REFERENCE_OWNER_USERNAME
+    DB_REF_REFERENCE_READONLY_USERNAME:
+      from_secret: DB_REF_REFERENCE_READONLY_USERNAME
+    DB_REF_REFERENCE_SCHEMA:
+      from_secret: DB_REF_REFERENCE_SCHEMA
+    DB_REF_REFERENCE_SERVICE_USERNAME:
+      from_secret: DB_REF_REFERENCE_SERVICE_USERNAME
+    GIT_REPO_PRIVATE_GITURL:
+      from_secret: GIT_REPO_PRIVATE_GITURL
+    GIT_REPO_PRIVATE_PORT:
+      from_secret: GIT_REPO_PRIVATE_PORT
+    GIT_REPO_PRIVATE_URL:
+      from_secret: GIT_REPO_PRIVATE_URL
+  when:
+    branch:
+    - master
+    event:
+    - promote
+    target:
+    - dev
+
+- name: create-change-desc-dev
+  pull: if-not-exists
+  image: docker:git
+  commands:
+  - git show --name-only >> $SNOW_DESC_FILE
+  when:
+    event:
+    - promote
+    target:
+    - dev
+
+- name: open-snow-change-dev
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/snowtify:latest
+  environment:
+    SNOW_ENDPOINT:
+      from_secret: DEV_SERVICE_NOW_URL
+    SNOW_EXTERNAL_ID: ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    SNOW_TEST_PASS:
+      from_secret: DEV_SERVICE_NOW_PASSWORD
+    SNOW_TEST_USER:
+      from_secret: DEV_SERVICE_NOW_USERNAME
+  when:
+    event:
+    - promote
+    target:
+    - dev
+
+- name: complete-snow-change-dev
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/snowtify:latest
+  settings:
+    comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    deployment_outcome: success
+  environment:
+    SNOW_ENDPOINT:
+      from_secret: DEV_SERVICE_NOW_URL
+    SNOW_TEST_PASS:
+      from_secret: DEV_SERVICE_NOW_PASSWORD
+    SNOW_TEST_USER:
+      from_secret: DEV_SERVICE_NOW_USERNAME
+  when:
+    event:
+    - promote
+    status:
+    - success
+    target:
+    - dev
+
+- name: cancel-snow-change-dev
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/snowtify:latest
+  settings:
+    comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    deployment_outcome: fail
+  environment:
+    SNOW_ENDPOINT:
+      from_secret: DEV_SERVICE_NOW_URL
+    SNOW_TEST_PASS:
+      from_secret: DEV_SERVICE_NOW_PASSWORD
+    SNOW_TEST_USER:
+      from_secret: DEV_SERVICE_NOW_USERNAME
+  when:
+    event:
+    - promote
+    status:
+    - failure
+    target:
+    - dev
+
+- name: deploy_to_staging
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
+  commands:
+  - export PRIVATE_KEY=$${DB_REF_PRIVATE_GITKEY}
+  - export PRIVATE_GIT_URL="$${GIT_REPO_PRIVATE_GITURL}$${DB_REF_PRIVATE_GITREPO}.git"
+  - /usr/bin/create_ssh_key.sh
+  - /usr/bin/ssh-keyscan -T 10 -p $${GIT_REPO_PRIVATE_PORT} $${GIT_REPO_PRIVATE_URL}  >> ~/.ssh/known_hosts
+  - git clone $${PRIVATE_GIT_URL} private-refdata
+  - /mnt/docker/reset.sh
+  - /mnt/docker/run.sh
+  - cd /mnt/private-refdata
+  - /mnt/private-refdata/docker/run.sh
+  environment:
+    DB_REF_DEFAULT_DBNAME:
+      from_secret: STAGING_DB_REF_DEFAULT_DBNAME
+    DB_REF_DEFAULT_PASSWORD:
+      from_secret: STAGING_DB_REF_DEFAULT_PASSWORD
+    DB_REF_DEFAULT_USERNAME:
+      from_secret: DB_REF_DEFAULT_USERNAME
+    DB_REF_GOVERNANCE_ANON_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_ANON_USERNAME
+    DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD:
+      from_secret: STAGING_DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD
+    DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME
+    DB_REF_GOVERNANCE_OWNER_PASSWORD:
+      from_secret: STAGING_DB_REF_GOVERNANCE_OWNER_PASSWORD
+    DB_REF_GOVERNANCE_OWNER_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_OWNER_USERNAME
+    DB_REF_GOVERNANCE_READONLY_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_READONLY_USERNAME
+    DB_REF_GOVERNANCE_SCHEMA:
+      from_secret: DB_REF_GOVERNANCE_SCHEMA
+    DB_REF_GOVERNANCE_SERVICE_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_SERVICE_USERNAME
+    DB_REF_HOSTNAME:
+      from_secret: STAGING_DB_REF_HOSTNAME
+    DB_REF_JDBC_OPTIONS:
+      from_secret: DB_REF_JDBC_OPTIONS
+    DB_REF_OPTIONS:
+      from_secret: DB_REF_OPTIONS
+    DB_REF_PORT:
+      from_secret: DB_REF_PORT
+    DB_REF_PRIVATE_GITKEY:
+      from_secret: DB_REF_PRIVATE_GITKEY
+    DB_REF_PRIVATE_GITREPO:
+      from_secret: DB_REF_PRIVATE_GITREPO
+    DB_REF_PROTOCOL:
+      from_secret: PROTOCOL_POSTGRES
+    DB_REF_REFERENCE_ANON_USERNAME:
+      from_secret: DB_REF_REFERENCE_ANON_USERNAME
+    DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD:
+      from_secret: STAGING_DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD
+    DB_REF_REFERENCE_AUTHENTICATOR_USERNAME:
+      from_secret: DB_REF_REFERENCE_AUTHENTICATOR_USERNAME
+    DB_REF_REFERENCE_DBNAME:
+      from_secret: DB_REF_REFERENCE_DBNAME
+    DB_REF_REFERENCE_OWNER_PASSWORD:
+      from_secret: STAGING_DB_REF_REFERENCE_OWNER_PASSWORD
+    DB_REF_REFERENCE_OWNER_USERNAME:
+      from_secret: DB_REF_REFERENCE_OWNER_USERNAME
+    DB_REF_REFERENCE_READONLY_USERNAME:
+      from_secret: DB_REF_REFERENCE_READONLY_USERNAME
+    DB_REF_REFERENCE_SCHEMA:
+      from_secret: DB_REF_REFERENCE_SCHEMA
+    DB_REF_REFERENCE_SERVICE_USERNAME:
+      from_secret: DB_REF_REFERENCE_SERVICE_USERNAME
+    GIT_REPO_PRIVATE_GITURL:
+      from_secret: GIT_REPO_PRIVATE_GITURL
+    GIT_REPO_PRIVATE_PORT:
+      from_secret: GIT_REPO_PRIVATE_PORT
+    GIT_REPO_PRIVATE_URL:
+      from_secret: GIT_REPO_PRIVATE_URL
+  when:
+    branch:
+    - master
+    event:
+    - promote
+    target:
+    - staging
+
+- name: deploy_to_prod
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
+  commands:
+  - export PRIVATE_KEY=$${DB_REF_PRIVATE_GITKEY}
+  - export PRIVATE_GIT_URL="$${GIT_REPO_PRIVATE_GITURL}$${DB_REF_PRIVATE_GITREPO}.git"
+  - /usr/bin/create_ssh_key.sh
+  - /usr/bin/ssh-keyscan -T 10 -p $${GIT_REPO_PRIVATE_PORT} $${GIT_REPO_PRIVATE_URL}  >> ~/.ssh/known_hosts
+  - git clone $${PRIVATE_GIT_URL} private-refdata
+  - /mnt/docker/reset.sh
+  - /mnt/docker/run.sh
+  - cd /mnt/private-refdata
+  - /mnt/private-refdata/docker/run.sh
+  environment:
+    DB_REF_DEFAULT_DBNAME:
+      from_secret: PRODUCTION_DB_REF_DEFAULT_DBNAME
+    DB_REF_DEFAULT_PASSWORD:
+      from_secret: PRODUCTION_DB_REF_DEFAULT_PASSWORD
+    DB_REF_DEFAULT_USERNAME:
+      from_secret: DB_REF_DEFAULT_USERNAME
+    DB_REF_GOVERNANCE_ANON_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_ANON_USERNAME
+    DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD:
+      from_secret: PRODUCTION_DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD
+    DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME
+    DB_REF_GOVERNANCE_OWNER_PASSWORD:
+      from_secret: PRODUCTION_DB_REF_GOVERNANCE_OWNER_PASSWORD
+    DB_REF_GOVERNANCE_OWNER_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_OWNER_USERNAME
+    DB_REF_GOVERNANCE_READONLY_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_READONLY_USERNAME
+    DB_REF_GOVERNANCE_SCHEMA:
+      from_secret: DB_REF_GOVERNANCE_SCHEMA
+    DB_REF_GOVERNANCE_SERVICE_USERNAME:
+      from_secret: DB_REF_GOVERNANCE_SERVICE_USERNAME
+    DB_REF_HOSTNAME:
+      from_secret: PRODUCTION_DB_REF_HOSTNAME
+    DB_REF_JDBC_OPTIONS:
+      from_secret: DB_REF_JDBC_OPTIONS
+    DB_REF_OPTIONS:
+      from_secret: DB_REF_OPTIONS
+    DB_REF_PORT:
+      from_secret: DB_REF_PORT
+    DB_REF_PRIVATE_GITKEY:
+      from_secret: DB_REF_PRIVATE_GITKEY
+    DB_REF_PRIVATE_GITREPO:
+      from_secret: DB_REF_PRIVATE_GITREPO
+    DB_REF_PROTOCOL:
+      from_secret: PROTOCOL_POSTGRES
+    DB_REF_REFERENCE_ANON_USERNAME:
+      from_secret: DB_REF_REFERENCE_ANON_USERNAME
+    DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD:
+      from_secret: PRODUCTION_DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD
+    DB_REF_REFERENCE_AUTHENTICATOR_USERNAME:
+      from_secret: DB_REF_REFERENCE_AUTHENTICATOR_USERNAME
+    DB_REF_REFERENCE_DBNAME:
+      from_secret: DB_REF_REFERENCE_DBNAME
+    DB_REF_REFERENCE_OWNER_PASSWORD:
+      from_secret: PRODUCTION_DB_REF_REFERENCE_OWNER_PASSWORD
+    DB_REF_REFERENCE_OWNER_USERNAME:
+      from_secret: DB_REF_REFERENCE_OWNER_USERNAME
+    DB_REF_REFERENCE_READONLY_USERNAME:
+      from_secret: DB_REF_REFERENCE_READONLY_USERNAME
+    DB_REF_REFERENCE_SCHEMA:
+      from_secret: DB_REF_REFERENCE_SCHEMA
+    DB_REF_REFERENCE_SERVICE_USERNAME:
+      from_secret: DB_REF_REFERENCE_SERVICE_USERNAME
+    GIT_REPO_PRIVATE_GITURL:
+      from_secret: GIT_REPO_PRIVATE_GITURL
+    GIT_REPO_PRIVATE_PORT:
+      from_secret: GIT_REPO_PRIVATE_PORT
+    GIT_REPO_PRIVATE_URL:
+      from_secret: GIT_REPO_PRIVATE_URL
+  when:
+    branch:
+    - master
+    event:
+    - promote
+    target:
+    - production
+
+- name: notify
+  pull: if-not-exists
+  image: plugins/slack
+  settings:
+    channel: cop-deployments
+    template: "{{#build.deployTo}}\n  *{{repo.name}} - Build {{build.number}} - {{uppercasefirst build.deployTo}} - {{uppercase build.status}}*\n  {{build.link}}\n{{else}}\n  *{{repo.name}} - Build {{build.number}} - Development - {{uppercase build.status}}*\n  {{build.link}}\n{{/build.deployTo}}\n"
+    username: Drone Build Watcher
+  environment:
+    SLACK_WEBHOOK:
+      from_secret: SLACK_WEBHOOK
+  when:
+    branch:
+    - master
+    event:
+    - push
+    - promote
+    status:
+    - success
+    - failure
+
+...
