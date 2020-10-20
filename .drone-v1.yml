@@ -21,7 +21,7 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: DEV_DRONE_AWS_SECRET_ACCESS_KEY
     DEPLOY_ENV: dev
-    DRONE_SERVER: https://drone.acp.homeoffice.gov.uk
+    DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
     DRONE_TOKEN:
       from_secret: DRONE_PUBLIC_TOKEN
   when:
@@ -39,7 +39,7 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: STAGING_DRONE_AWS_SECRET_ACCESS_KEY
     DEPLOY_ENV: staging
-    DRONE_SERVER: https://drone.acp.homeoffice.gov.uk
+    DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
     DRONE_TOKEN:
       from_secret: DRONE_PUBLIC_TOKEN
   when:
@@ -57,7 +57,7 @@ steps:
     AWS_SECRET_ACCESS_KEY:
       from_secret: PRODUCTION_DRONE_AWS_SECRET_ACCESS_KEY
     DEPLOY_ENV: production
-    DRONE_SERVER: https://drone.acp.homeoffice.gov.uk
+    DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
     DRONE_TOKEN:
       from_secret: DRONE_PUBLIC_TOKEN
   when:
@@ -73,6 +73,9 @@ steps:
   - /mnt/docker/validateSchema.sh
   environment:
     WORKDIR: /mnt/schemas/reference
+  volumes:
+  - name: dockersock
+    path: /var/run
   when:
     branch:
       exclude:
@@ -154,6 +157,9 @@ steps:
       from_secret: GIT_REPO_PRIVATE_PORT
     GIT_REPO_PRIVATE_URL:
       from_secret: GIT_REPO_PRIVATE_URL
+  volumes:
+  - name: dockersock
+    path: /var/run
   when:
     branch:
     - master
@@ -306,6 +312,9 @@ steps:
       from_secret: GIT_REPO_PRIVATE_PORT
     GIT_REPO_PRIVATE_URL:
       from_secret: GIT_REPO_PRIVATE_URL
+  volumes:
+  - name: dockersock
+    path: /var/run
   when:
     branch:
     - master
@@ -388,6 +397,9 @@ steps:
       from_secret: GIT_REPO_PRIVATE_PORT
     GIT_REPO_PRIVATE_URL:
       from_secret: GIT_REPO_PRIVATE_URL
+  volumes:
+  - name: dockersock
+    path: /var/run
   when:
     branch:
     - master
@@ -415,5 +427,24 @@ steps:
     status:
     - success
     - failure
+
+services:
+- name: docker
+  image: quay.io/ukhomeofficedigital/drone-docker
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+- name: anchore-submission-server
+  image: quay.io/ukhomeofficedigital/anchore-submission:latest
+  commands:
+  - /anchore-submission server
+  volumes:
+  - name: dockersock
+    path: /var/run
+
+volumes:
+- name: dockersock
+  temp: {}
 
 ...
