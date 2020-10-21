@@ -430,15 +430,18 @@ steps:
 
 services:
 - name: docker
-  image: quay.io/ukhomeofficedigital/drone-docker
+  image: docker:19.03.12-dind
   volumes:
   - name: dockersock
     path: /var/run
 
 - name: anchore-submission-server
-  image: quay.io/ukhomeofficedigital/anchore-submission:latest
+  image: docker.digital.homeoffice.gov.uk/acp-anchore-submission:latest
   commands:
   - /anchore-submission server
+  environment:
+    ANCHORE_URL: acp-anchore.acp.homeoffice.gov.uk
+    REGISTRY_URL: acp-ephemeral-registry.acp.homeoffice.gov.uk
   volumes:
   - name: dockersock
     path: /var/run
