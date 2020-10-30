@@ -23,7 +23,7 @@ steps:
     DEPLOY_ENV: dev
     DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
     DRONE_TOKEN:
-      from_secret: DRONE_PUBLIC_TOKEN
+      from_secret: DRONE_V1_PUBLIC_TOKEN
     DRONE_VERSION: ${DRONE_SYSTEM_VERSION}
   when:
     event:
@@ -42,7 +42,7 @@ steps:
     DEPLOY_ENV: staging
     DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
     DRONE_TOKEN:
-      from_secret: DRONE_PUBLIC_TOKEN
+      from_secret: DRONE_V1_PUBLIC_TOKEN
     DRONE_VERSION: ${DRONE_SYSTEM_VERSION}
   when:
     event:
@@ -61,7 +61,7 @@ steps:
     DEPLOY_ENV: production
     DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
     DRONE_TOKEN:
-      from_secret: DRONE_PUBLIC_TOKEN
+      from_secret: DRONE_V1_PUBLIC_TOKEN
     DRONE_VERSION: ${DRONE_SYSTEM_VERSION}
   when:
     event:
