@@ -7,10 +7,6 @@ platform:
   os: linux
   arch: amd64
 
-workspace:
-  base: /mnt
-  path: /
-
 steps:
 - name: synch_dev_secrets
   pull: if-not-exists
