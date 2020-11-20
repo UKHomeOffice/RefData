@@ -7,6 +7,9 @@ platform:
   os: linux
   arch: amd64
 
+workspace:
+  path: /mnt
+
 steps:
 - name: synch_dev_secrets
   pull: if-not-exists
@@ -171,7 +174,14 @@ steps:
   pull: if-not-exists
   image: docker:git
   commands:
+  - n=0; while [ "$n" -lt 60 ] && [ ! -e /var/run/docker.sock ]; do n=$(( n + 1 )); sleep 1; done
   - git show --name-only >> $SNOW_DESC_FILE
+  environment:
+    SNOW_DESC_FILE: /mnt/change-desc.txt
+    SNOW_INT_ID_FILE: /mnt/internal-id
+  volumes:
+  - name: dockersock
+    path: /var/run
   when:
     event:
     - promote
@@ -182,6 +192,8 @@ steps:
   pull: if-not-exists
   image: quay.io/ukhomeofficedigital/snowtify:latest
   environment:
+    SNOW_DESC_FILE: /mnt/change-desc.txt
+    SNOW_INT_ID_FILE: /mnt/internal-id
     SNOW_ENDPOINT:
       from_secret: DEV_SERVICE_NOW_URL
     SNOW_EXTERNAL_ID: ${DRONE_REPO}:${DRONE_COMMIT_SHA}
@@ -202,6 +214,8 @@ steps:
     comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: success
   environment:
+    SNOW_DESC_FILE: /mnt/change-desc.txt
+    SNOW_INT_ID_FILE: /mnt/internal-id
     SNOW_ENDPOINT:
       from_secret: DEV_SERVICE_NOW_URL
     SNOW_TEST_PASS:
@@ -223,6 +237,8 @@ steps:
     comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
     deployment_outcome: fail
   environment:
+    SNOW_DESC_FILE: /mnt/change-desc.txt
+    SNOW_INT_ID_FILE: /mnt/internal-id
     SNOW_ENDPOINT:
       from_secret: DEV_SERVICE_NOW_URL
     SNOW_TEST_PASS:
