@@ -14,7 +14,7 @@ CREATE TABLE partneragency (
 -- Table comment
 COMMENT ON TABLE partneragency IS '{"label": "Partner agencies", "description": "A list of partner agencies and associated permissions.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN partneragency.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "falßse"}';
+COMMENT ON COLUMN partneragency.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column", "summaryview": "falßse"}';
 COMMENT ON COLUMN partneragency.name IS '{"label": "Name", "description": "Partner agency name", "summaryview": "true"}';
 COMMENT ON COLUMN partneragency.abbreviatedname IS '{"label": "Abbreviated name", "description": "Short name of the partner agency.", "summaryview": "true"}';
 COMMENT ON COLUMN partneragency.seizure IS '{"label": "Seizure", "description": "Valid seizure partner.", "summaryview": "true"}';

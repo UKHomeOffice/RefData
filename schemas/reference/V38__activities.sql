@@ -11,7 +11,7 @@ COMMENT ON TABLE activities IS '{"label": "Work related activities", "descriptio
 -- Column comments
 COMMENT ON COLUMN activities.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN activities.activity IS '{"label": "Activity", "description": "A description of the activity.", "summaryview": "true"}';
-COMMENT ON COLUMN activities.activitytypeid IS '{"label": "Activity type ID", "description": "Link to activity type entity.", "summaryview" : "false"}';
+COMMENT ON COLUMN activities.activitytypeid IS '{"label": "Activity type ID", "businesskey": true, "description": "Link to activity type entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN activities.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN activities.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 

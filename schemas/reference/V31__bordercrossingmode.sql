@@ -10,7 +10,7 @@ CREATE TABLE bordercrossingmode (
 -- Table comment
 COMMENT ON TABLE bordercrossingmode IS '{"label": "Type of Border Crossing", "description": "Methods of crossing the border", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN bordercrossingmode.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
+COMMENT ON COLUMN bordercrossingmode.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column", "summaryview": "false"}';
 COMMENT ON COLUMN bordercrossingmode.border IS '{"label": "Border", "description": "Type of border", "summaryview": "true"}';
 COMMENT ON COLUMN bordercrossingmode.type IS '{"label": "Service type", "description": "Is the service commercial or general", "summaryview": "true"}';
 COMMENT ON COLUMN bordercrossingmode.personorfreight IS '{"label": "Person or Freight", "description": "Is it a person or freight crossing the border", "summaryview": "true"}';

@@ -15,7 +15,7 @@ CREATE TABLE address (
 -- Table comment
 COMMENT ON TABLE address IS '{"label": "Address list", "description": "A list of addresses for locations.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN address.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN address.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN address.line1 IS '{"label": "Address line 1", "description": "First line of address.", "summaryview": "true"}';
 COMMENT ON COLUMN address.line2 IS '{"label": "Address line 2", "description": "Second line of address.", "summaryview": "false"}';
 COMMENT ON COLUMN address.line3 IS '{"label": "Address line 3", "description": "Third line of address.", "summaryview": "false"}';

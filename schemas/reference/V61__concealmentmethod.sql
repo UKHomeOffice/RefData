@@ -1,6 +1,6 @@
 CREATE TABLE concealmentmethod (
   id INTEGER NOT NULL PRIMARY KEY,
-  method VARCHAR(80) NOT NULL, 
+  method VARCHAR(80) NOT NULL,
   person BOOLEAN NOT NULL,
   sea BOOLEAN NOT NULL,
   land BOOLEAN NOT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE concealmentmethod (
 -- Table comment
 COMMENT ON TABLE concealmentmethod IS '{"label": "Concealment methods", "description": "A list containing descriptions of the methods by which items and people are concealed.", "schemalastupdated": "10/07/2019", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN concealmentmethod.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN concealmentmethod.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN concealmentmethod.method IS '{"label": "Concealment", "description": "The method of concealment.", "summaryview": "true"}';
 COMMENT ON COLUMN concealmentmethod.person IS '{"label": "Person", "description": "Person selection tag.", "summaryview": "true"}';
 COMMENT ON COLUMN concealmentmethod.sea IS '{"label": "Sea", "description": "Maritime selection tag.", "summaryview": "true"}';

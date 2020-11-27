@@ -15,7 +15,7 @@ COMMENT ON TABLE targetmode IS '{"label": "Target Modes", "description": "A list
 -- Column comments
 COMMENT ON COLUMN targetmode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN targetmode.mode IS '{"label": "Target mode", "description": "The targeting mode type.", "summaryview": "true"}';
-COMMENT ON COLUMN targetmode.modecode IS '{"label": "Mode Code", "description": "Short reference code.", "summaryview": "false"}';
+COMMENT ON COLUMN targetmode.modecode IS '{"label": "Mode Code", "businesskey": true, "description": "Short reference code.", "summaryview": "false"}';
 COMMENT ON COLUMN targetmode.crossingtype IS '{"label": "Crossing type", "description": "The type of boarder being crossed.", "summaryview": "false"}';
 COMMENT ON COLUMN targetmode.ien IS '{"label": "IEN enabled", "description": "Valid for IEN", "summaryview": "true"}';
 COMMENT ON COLUMN targetmode.ca IS '{"label": "Cash enabled", "description": "Valid for Cash targeting", "summaryview": "true"}';

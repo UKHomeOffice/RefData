@@ -30,7 +30,7 @@ COMMENT ON COLUMN unlocode.geolat IS '{"label": "Latitude", "description": "Geog
 COMMENT ON COLUMN unlocode.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.namewodiacritics IS '{"label": "Name with diacritics", "description": "Location name including diacritics.", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.iata IS '{"label": "IATA", "description": "IATA code", "summaryview": "false"}';
-COMMENT ON COLUMN unlocode.locode IS '{"label": "Locode", "description": "Location code", "summaryview": "false"}';
+COMMENT ON COLUMN unlocode.locode IS '{"label": "Locode", "businesskey": true, "description": "Location code", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.seaport IS '{"label": "Sea port", "description": "Is this a sea port?", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.railterminal IS '{"label": "Rail terminal", "description": "Is this a rail terminal?", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.airport IS '{"label": "Airport", "description": "Is this an airport?", "summaryview": "false"}';

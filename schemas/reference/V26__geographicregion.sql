@@ -12,7 +12,7 @@ CREATE TABLE geographicregion (
 COMMENT ON TABLE geographicregion IS '{"label": "Geographic regions", "description": "A list of codes and descriptions associated with geographic regions.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN geographicregion.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN geographicregion.code IS '{"label": "County code", "description": "The international region code.", "summaryview": "true"}';
+COMMENT ON COLUMN geographicregion.code IS '{"label": "County code", "businesskey": true, "description": "The international region code.", "summaryview": "true"}';
 COMMENT ON COLUMN geographicregion.name IS '{"label": "County name", "description": "The county/region name.", "summaryview": "true", "aliases": "region"}';
 COMMENT ON COLUMN geographicregion.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The countries 2 Character alpha code.", "summaryview": "true"}';
 COMMENT ON COLUMN geographicregion.countryid IS '{"label": "Linked country id", "description": "Country link to Country dataset.", "summaryview": "false"}';

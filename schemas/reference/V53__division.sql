@@ -12,7 +12,7 @@ COMMENT ON TABLE division IS '{"label": "Divisions", "description": "A list of b
 -- Column comments
 COMMENT ON COLUMN division.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN division.name IS '{"label": "Name", "description": "The division name.", "summaryview": "true"}';
-COMMENT ON COLUMN division.code IS '{"label": "Code", "description": "The division code.", "summaryview": "true"}';
+COMMENT ON COLUMN division.code IS '{"label": "Code", "businesskey": true, "description": "The division code.", "summaryview": "true"}';
 COMMENT ON COLUMN division.branchid IS '{"label": "Branch / Region ID", "description": "link to branch entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN division.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN division.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

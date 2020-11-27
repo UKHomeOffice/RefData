@@ -14,7 +14,7 @@ CREATE TABLE goodtype (
 -- Table comment
 COMMENT ON TABLE goodtype IS '{"label": "Good type", "description": "Customs and seizure good type.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN goodtype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN goodtype.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN goodtype.level1name IS '{"label": "Name level 1", "description": "Name of high level category good.", "summaryview": "true"}';
 COMMENT ON COLUMN goodtype.level2name IS '{"label": "Name level 2", "description": "Name of high level category good.", "summaryview": "true"}';
 COMMENT ON COLUMN goodtype.level3name IS '{"label": "Name level 3", "description": "Name of high level category good.", "summaryview": "true"}';

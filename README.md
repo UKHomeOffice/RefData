@@ -1,6 +1,5 @@
-# Reference data governance service (BETA)
+# Reference data governance service
 
-This repo is part of the RefData project workstream, for more details please see the [https://github.com/UKHomeOffice/RefDataBAU/wiki](wiki)
 
 ## Database schema design
 
@@ -23,7 +22,3 @@ Optional entities for column comments:
 * maximumlength
 * minimumvalue
 * maximumvalue
-
-## Local Deployment Testing
-
-Please see https://gitlab.digital.homeoffice.gov.uk/cop/manifest

@@ -9,7 +9,7 @@ CREATE TABLE tdaapprovalstatus (
 COMMENT ON TABLE tdaapprovalstatus IS '{"label": "Governance approval", "description": "A list detailing the Technical Design Authority approval status.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN tdaapprovalstatus.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN tdaapprovalstatus.status IS '{"label": "Status", "description": "Outcomes set by the Technical Design Authority.", "summaryview": "true"}';
+COMMENT ON COLUMN tdaapprovalstatus.status IS '{"label": "Status", "businesskey": true, "description": "Outcomes set by the Technical Design Authority.", "summaryview": "true"}';
 COMMENT ON COLUMN tdaapprovalstatus.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN tdaapprovalstatus.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 

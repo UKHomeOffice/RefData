@@ -11,7 +11,7 @@ CREATE TABLE lockup (
 -- Table comment
 COMMENT ON TABLE lockup IS '{"label": "Seizure lockup types", "description": "A list of seizure lockup types and their descriptions.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN lockup.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN lockup.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN lockup.name IS '{"label": "Name", "description": "The name of the lockup.", "summaryview": "true"}';
 COMMENT ON COLUMN lockup.description IS '{"label": "Description", "description": "A description of the lockup.", "summaryview": "true"}';
 COMMENT ON COLUMN lockup.lockuptypeid IS '{"label": "Lockup type ID", "description": "Link to lockup type entity.", "summaryview" : "false"}';
