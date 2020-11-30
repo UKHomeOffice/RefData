@@ -18,5 +18,6 @@ COMMENT ON COLUMN ministry.validto IS '{"label": "Valid to date", "description":
 COMMENT ON COLUMN ministry.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT ON ministry TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE,DELETE ON ministry TO ${serviceuser};
 GRANT SELECT ON ministry TO ${readonlyuser};
+GRANT SELECT ON ministry TO ${anonuser};
