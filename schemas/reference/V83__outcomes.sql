@@ -1,10 +1,13 @@
 CREATE TABLE outcomes (
   id INTEGER NOT NULL PRIMARY KEY,
-  name VARCHAR(40) NOT NULL,
+  name VARCHAR(50) NOT NULL,
   nationalsecurity BOOLEAN,
+  is81outcome BOOLEAN,
+  is91feaoutcome BOOLEAN,
+  is91custodianoutcome BOOLEAN,
   remark BOOLEAN,
   nofurtheraction BOOLEAN,
-  description VARCHAR(100),
+  description VARCHAR(200),
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
