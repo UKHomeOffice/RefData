@@ -14,5 +14,6 @@ COMMENT ON COLUMN medicalassistance.validfrom IS '{"label": "Valid from date", "
 COMMENT ON COLUMN medicalassistance.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON medicalassistance TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON medicalassistance TO ${serviceuser};
 GRANT SELECT ON medicalassistance TO ${readonlyuser};
+GRANT SELECT ON medicalassistance TO ${anonuser};

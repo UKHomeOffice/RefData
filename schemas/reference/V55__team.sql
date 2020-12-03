@@ -38,5 +38,5 @@ COMMENT ON COLUMN team.validfrom IS '{"label": "Valid from date", "description":
 COMMENT ON COLUMN team.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON team TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON team TO ${serviceuser};
 GRANT SELECT ON team TO ${readonlyuser};

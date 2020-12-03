@@ -62,5 +62,5 @@ COMMENT ON COLUMN searchtype.validfrom IS '{"label": "Valid from date", "descrip
 COMMENT ON COLUMN searchtype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON searchtype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON searchtype TO ${serviceuser};
 GRANT SELECT ON searchtype TO ${readonlyuser};

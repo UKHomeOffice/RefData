@@ -18,5 +18,5 @@ COMMENT ON COLUMN ppe.validfrom IS '{"label": "Valid from date", "description": 
 COMMENT ON COLUMN ppe.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON ppe TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON ppe TO ${serviceuser};
 GRANT SELECT ON ppe TO ${readonlyuser};

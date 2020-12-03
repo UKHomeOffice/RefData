@@ -15,5 +15,5 @@ COMMENT ON COLUMN terminal.validto IS '{"label": "Valid to date", "description":
 
 -- Grants
 GRANT SELECT ON terminal TO ${anonuser};
-GRANT SELECT ON terminal TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON terminal TO ${serviceuser};
 GRANT SELECT ON terminal TO ${readonlyuser};

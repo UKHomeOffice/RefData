@@ -23,5 +23,5 @@ COMMENT ON COLUMN eventclassification.validto IS '{"label": "Valid to date", "de
 
 -- GRANTs
 GRANT SELECT ON eventclassification TO ${anonuser};
-GRANT SELECT ON eventclassification TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON eventclassification TO ${serviceuser};
 GRANT SELECT ON eventclassification TO ${readonlyuser};

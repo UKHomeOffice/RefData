@@ -14,5 +14,5 @@ COMMENT ON COLUMN reasonforforce.validfrom IS '{"label": "Valid from date", "des
 COMMENT ON COLUMN reasonforforce.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON reasonforforce TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON reasonforforce TO ${serviceuser};
 GRANT SELECT ON reasonforforce TO ${readonlyuser};

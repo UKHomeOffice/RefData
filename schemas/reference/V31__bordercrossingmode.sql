@@ -19,5 +19,5 @@ COMMENT ON COLUMN bordercrossingmode.validto IS '{"label": "Valid to date", "des
 
 -- GRANTs
 GRANT SELECT ON bordercrossingmode TO ${anonuser};
-GRANT SELECT ON bordercrossingmode TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON bordercrossingmode TO ${serviceuser};
 GRANT SELECT ON bordercrossingmode TO ${readonlyuser};

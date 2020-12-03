@@ -15,5 +15,5 @@ COMMENT ON COLUMN tdaapprovalstatus.validto IS '{"label": "Valid to date", "desc
 
 -- GRANTs
 GRANT SELECT ON tdaapprovalstatus TO ${anonuser};
-GRANT SELECT ON tdaapprovalstatus TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON tdaapprovalstatus TO ${serviceuser};
 GRANT SELECT ON tdaapprovalstatus TO ${readonlyuser};

@@ -16,5 +16,5 @@ COMMENT ON COLUMN portsize.validfrom IS '{"label": "Valid from date", "descripti
 COMMENT ON COLUMN portsize.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON portsize TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON portsize TO ${serviceuser};
 GRANT SELECT ON portsize TO ${readonlyuser};

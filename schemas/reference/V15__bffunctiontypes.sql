@@ -15,5 +15,5 @@ COMMENT ON COLUMN bffunctiontypes.validto IS '{"label": "Valid to date", "descri
 
 -- GRANTs
 GRANT SELECT ON bffunctiontypes TO ${anonuser};
-GRANT SELECT ON bffunctiontypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON bffunctiontypes TO ${serviceuser};
 GRANT SELECT ON bffunctiontypes TO ${readonlyuser};

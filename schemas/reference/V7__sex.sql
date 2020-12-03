@@ -15,5 +15,5 @@ COMMENT ON COLUMN sex.validto IS '{"label": "Valid to date", "description": "Ite
 
 -- GRANTs
 GRANT SELECT ON sex TO ${anonuser};
-GRANT SELECT ON sex TO ${serviceuser};
+GRANT SELECT, INSERT, UPDATE ON sex TO ${serviceuser};
 GRANT SELECT ON sex TO ${readonlyuser};

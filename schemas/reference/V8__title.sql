@@ -15,5 +15,5 @@ COMMENT ON COLUMN title.validto IS '{"label": "Valid to date", "description": "I
 
 -- GRANTs
 GRANT SELECT ON title TO ${anonuser};
-GRANT SELECT ON title TO ${serviceuser};
+GRANT SELECT, INSERT, UPDATE ON title TO ${serviceuser};
 GRANT SELECT ON title TO ${readonlyuser};

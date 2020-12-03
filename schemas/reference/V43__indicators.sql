@@ -20,5 +20,5 @@ COMMENT ON COLUMN indicators.validfrom IS '{"label": "Valid from date", "descrip
 COMMENT ON COLUMN indicators.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON indicators TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON indicators TO ${serviceuser};
 GRANT SELECT ON indicators TO ${readonlyuser};

@@ -19,5 +19,5 @@ COMMENT ON COLUMN documenttype.validto IS '{"label": "Valid to date", "descripti
 
 -- GRANTs
 GRANT SELECT ON documenttype TO ${anonuser};
-GRANT SELECT ON documenttype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON documenttype TO ${serviceuser};
 GRANT SELECT ON documenttype TO ${readonlyuser};

@@ -30,5 +30,5 @@ COMMENT ON COLUMN profileindicator.validfrom IS '{"label": "Valid from date", "d
 COMMENT ON COLUMN profileindicator.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON profileindicator TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON profileindicator TO ${serviceuser};
 GRANT SELECT ON profileindicator TO ${readonlyuser};

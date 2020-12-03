@@ -22,5 +22,5 @@ COMMENT ON COLUMN outcomes.validfrom IS '{"label": "Valid from date", "descripti
 COMMENT ON COLUMN outcomes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON outcomes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON outcomes TO ${serviceuser};
 GRANT SELECT ON outcomes TO ${readonlyuser};

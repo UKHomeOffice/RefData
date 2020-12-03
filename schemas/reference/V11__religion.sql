@@ -16,5 +16,5 @@ COMMENT ON COLUMN religion.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON religion TO ${anonuser};
-GRANT SELECT ON religion TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON religion TO ${serviceuser};
 GRANT SELECT ON religion TO ${readonlyuser};

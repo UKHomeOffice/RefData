@@ -17,6 +17,6 @@ COMMENT ON COLUMN ethnicity.validfrom IS '{"label": "Valid from date", "descript
 COMMENT ON COLUMN ethnicity.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON ethnicity TO ${anonuser};
+GRANT SELECT, INSERT, UPDATE ON ethnicity TO ${anonuser};
 GRANT SELECT ON ethnicity TO ${serviceuser};
 GRANT SELECT ON ethnicity TO ${readonlyuser};

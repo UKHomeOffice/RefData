@@ -18,5 +18,6 @@ COMMENT ON COLUMN branch.validfrom IS '{"label": "Valid from date", "description
 COMMENT ON COLUMN branch.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON branch TO ${serviceuser};
+GRANT SELECT ON branch TO ${anonuser};
+GRANT SELECT,INSERT,UPDATE ON branch TO ${serviceuser};
 GRANT SELECT ON branch TO ${readonlyuser};

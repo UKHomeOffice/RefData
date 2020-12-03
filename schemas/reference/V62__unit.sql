@@ -14,5 +14,6 @@ COMMENT ON COLUMN unit.validfrom IS '{"label": "Valid from date", "description":
 COMMENT ON COLUMN unit.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON unit TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON unit TO ${serviceuser};
 GRANT SELECT ON unit TO ${readonlyuser};
+GRANT SELECT ON unit TO ${anonuser};

@@ -14,6 +14,5 @@ COMMENT ON COLUMN covidunwillingoutcomes.validfrom IS '{"label": "Valid from dat
 COMMENT ON COLUMN covidunwillingoutcomes.validto IS '{"label": "Valid to date", "description": "Outcome valid to date.", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT ON covidunwillingoutcomes TO ${anonuser};
-GRANT SELECT ON covidunwillingoutcomes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON covidunwillingoutcomes TO ${serviceuser};
 GRANT SELECT ON covidunwillingoutcomes TO ${readonlyuser};

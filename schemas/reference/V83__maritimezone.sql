@@ -18,5 +18,5 @@ COMMENT ON COLUMN maritimezone.validfrom IS '{"label": "Valid from date", "descr
 COMMENT ON COLUMN maritimezone.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON maritimezone TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON maritimezone TO ${serviceuser};
 GRANT SELECT ON maritimezone TO ${readonlyuser};

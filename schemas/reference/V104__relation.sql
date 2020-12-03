@@ -19,5 +19,5 @@ COMMENT ON COLUMN relation.validto IS '{"label": "Valid to date", "description":
 
 -- Grants
 GRANT SELECT ON relation TO ${anonuser};
-GRANT SELECT ON relation TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON relation TO ${serviceuser};
 GRANT SELECT ON relation TO ${readonlyuser};

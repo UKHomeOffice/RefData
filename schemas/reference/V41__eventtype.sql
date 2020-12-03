@@ -16,5 +16,5 @@ COMMENT ON COLUMN eventtype.validfrom IS '{"label": "Valid from date", "descript
 COMMENT ON COLUMN eventtype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON eventtype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON eventtype TO ${serviceuser};
 GRANT SELECT ON eventtype TO ${readonlyuser};

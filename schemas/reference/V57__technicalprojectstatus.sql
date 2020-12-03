@@ -15,5 +15,5 @@ COMMENT ON COLUMN technicalprojectstatus.validto IS '{"label": "Valid to date", 
 
 -- GRANTs
 GRANT SELECT ON technicalprojectstatus TO ${anonuser};
-GRANT SELECT ON technicalprojectstatus TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON technicalprojectstatus TO ${serviceuser};
 GRANT SELECT ON technicalprojectstatus TO ${readonlyuser};

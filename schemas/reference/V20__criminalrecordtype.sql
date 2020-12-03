@@ -15,5 +15,5 @@ COMMENT ON COLUMN criminalrecordtype.validto IS '{"label": "Valid to date", "des
 
 -- GRANTs
 GRANT SELECT ON criminalrecordtype TO ${anonuser};
-GRANT SELECT ON criminalrecordtype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON criminalrecordtype TO ${serviceuser};
 GRANT SELECT ON criminalrecordtype TO ${readonlyuser};

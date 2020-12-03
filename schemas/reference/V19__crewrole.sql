@@ -17,5 +17,5 @@ COMMENT ON COLUMN crewrole.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON crewrole TO ${anonuser};
-GRANT SELECT ON crewrole TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON crewrole TO ${serviceuser};
 GRANT SELECT ON crewrole TO ${readonlyuser};

@@ -14,5 +14,5 @@ COMMENT ON COLUMN assaulttypes.validfrom IS '{"label": "Valid from date", "descr
 COMMENT ON COLUMN assaulttypes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON assaulttypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON assaulttypes TO ${serviceuser};
 GRANT SELECT ON assaulttypes TO ${readonlyuser};

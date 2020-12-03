@@ -47,5 +47,5 @@ COMMENT ON COLUMN unlocode.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON unlocode TO ${anonuser};
-GRANT SELECT ON unlocode TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON unlocode TO ${serviceuser};
 GRANT SELECT ON unlocode TO ${readonlyuser};

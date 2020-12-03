@@ -26,5 +26,5 @@ COMMENT ON COLUMN partneragency.validfrom IS '{"label": "Valid from date", "desc
 COMMENT ON COLUMN partneragency.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON partneragency TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON partneragency TO ${serviceuser};
 GRANT SELECT ON partneragency TO ${readonlyuser};

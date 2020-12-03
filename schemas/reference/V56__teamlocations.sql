@@ -16,5 +16,5 @@ COMMENT ON COLUMN teamlocations.validfrom IS '{"label": "Valid from date", "desc
 COMMENT ON COLUMN teamlocations.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON teamlocations TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON teamlocations TO ${serviceuser};
 GRANT SELECT ON teamlocations TO ${readonlyuser};

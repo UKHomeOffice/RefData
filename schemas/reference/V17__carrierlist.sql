@@ -33,5 +33,5 @@ COMMENT ON COLUMN carrierlist.validto IS '{"label": "Valid to date", "descriptio
 
 -- GRANTs
 GRANT SELECT ON carrierlist TO ${anonuser};
-GRANT SELECT ON carrierlist TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON carrierlist TO ${serviceuser};
 GRANT SELECT ON carrierlist TO ${readonlyuser};

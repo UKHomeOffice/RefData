@@ -17,5 +17,5 @@ COMMENT ON COLUMN subjectbehaviour.validto IS '{"label": "Valid to date", "descr
 
  -- GRANTs
 GRANT SELECT ON subjectbehaviour TO ${anonuser};
-GRANT SELECT ON subjectbehaviour TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON subjectbehaviour TO ${serviceuser};
 GRANT SELECT ON subjectbehaviour TO ${readonlyuser};

@@ -15,5 +15,5 @@ COMMENT ON COLUMN occupation.validto IS '{"label": "Valid to date", "description
 
 -- GRANTs
 GRANT SELECT ON occupation TO ${anonuser};
-GRANT SELECT ON occupation TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON occupation TO ${serviceuser};
 GRANT SELECT ON occupation TO ${readonlyuser};

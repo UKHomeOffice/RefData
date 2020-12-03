@@ -16,6 +16,5 @@ COMMENT ON COLUMN handlingconditions.validfrom IS '{"label": "Valid from date", 
 COMMENT ON COLUMN handlingconditions.validto IS '{"label": "Valid to date", "description": "Handling condition valid to date.", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT ON handlingconditions TO ${anonuser};
-GRANT SELECT ON handlingconditions TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON handlingconditions TO ${serviceuser};
 GRANT SELECT ON handlingconditions TO ${readonlyuser};

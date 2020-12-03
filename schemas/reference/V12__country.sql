@@ -56,5 +56,5 @@ COMMENT ON COLUMN country.validto IS '{"label": "Valid to date", "description": 
 
 -- GRANTs
 GRANT SELECT ON country TO ${anonuser};
-GRANT SELECT ON country TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON country TO ${serviceuser};
 GRANT SELECT ON country TO ${readonlyuser};

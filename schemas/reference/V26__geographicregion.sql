@@ -21,5 +21,5 @@ COMMENT ON COLUMN geographicregion.validto IS '{"label": "Valid to date", "descr
 
 -- GRANTs
 GRANT SELECT ON geographicregion TO ${anonuser};
-GRANT SELECT ON geographicregion TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON geographicregion TO ${serviceuser};
 GRANT SELECT ON geographicregion TO ${readonlyuser};

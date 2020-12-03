@@ -18,5 +18,5 @@ COMMENT ON COLUMN division.validfrom IS '{"label": "Valid from date", "descripti
 COMMENT ON COLUMN division.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON division TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON division TO ${serviceuser};
 GRANT SELECT ON division TO ${readonlyuser};

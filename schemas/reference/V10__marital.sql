@@ -18,5 +18,5 @@ COMMENT ON COLUMN marital.validto IS '{"label": "Valid to date", "description": 
 
 -- GRANTs
 GRANT SELECT ON marital TO ${anonuser};
-GRANT SELECT ON marital TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON marital TO ${serviceuser};
 GRANT SELECT ON marital TO ${readonlyuser};

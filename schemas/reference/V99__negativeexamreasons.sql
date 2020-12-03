@@ -14,5 +14,5 @@ COMMENT ON COLUMN negativeexamreasons.validfrom IS '{"label": "Valid from date",
 COMMENT ON COLUMN negativeexamreasons.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON negativeexamreasons TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON negativeexamreasons TO ${serviceuser};
 GRANT SELECT ON negativeexamreasons TO ${readonlyuser};

@@ -17,5 +17,5 @@ COMMENT ON COLUMN ferries.validto IS '{"label": "Valid to date", "description": 
 
 -- GRANTs
 GRANT SELECT ON ferries TO ${anonuser};
-GRANT SELECT ON ferries TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON ferries TO ${serviceuser};
 GRANT SELECT ON ferries TO ${readonlyuser};

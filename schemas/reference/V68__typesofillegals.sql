@@ -15,5 +15,5 @@ COMMENT ON COLUMN typesofillegals.validto IS '{"label": "Valid to date", "descri
 
 -- GRANTs
 GRANT SELECT ON typesofillegals TO ${anonuser};
-GRANT SELECT ON typesofillegals TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON typesofillegals TO ${serviceuser};
 GRANT SELECT ON typesofillegals TO ${readonlyuser};

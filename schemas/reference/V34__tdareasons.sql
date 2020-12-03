@@ -15,5 +15,5 @@ COMMENT ON COLUMN tdareasons.validto IS '{"label": "Valid to date", "description
 
 -- GRANTs
 GRANT SELECT ON tdareasons TO ${anonuser};
-GRANT SELECT ON tdareasons TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON tdareasons TO ${serviceuser};
 GRANT SELECT ON tdareasons TO ${readonlyuser};

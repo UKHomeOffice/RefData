@@ -16,5 +16,5 @@ COMMENT ON COLUMN intelligenceservicelevelagreement.validfrom IS '{"label": "Val
 COMMENT ON COLUMN intelligenceservicelevelagreement.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON intelligenceservicelevelagreement TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON intelligenceservicelevelagreement TO ${serviceuser};
 GRANT SELECT ON intelligenceservicelevelagreement TO ${readonlyuser};

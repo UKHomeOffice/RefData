@@ -20,5 +20,5 @@ COMMENT ON COLUMN partneremaildistribution.validfrom IS '{"label": "Valid from d
 COMMENT ON COLUMN partneremaildistribution.validto IS '{"label": "Valid to date", "description": "Email valid to date.", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT ON partneremaildistribution TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON partneremaildistribution TO ${serviceuser};
 GRANT SELECT ON partneremaildistribution TO ${readonlyuser};

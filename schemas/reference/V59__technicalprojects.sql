@@ -17,5 +17,5 @@ COMMENT ON COLUMN technicalprojects.code IS '{"label": "Project code", "business
 COMMENT ON COLUMN technicalprojects.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN technicalprojects.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
-GRANT SELECT ON technicalprojects TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON technicalprojects TO ${serviceuser};
 GRANT SELECT ON technicalprojects TO ${readonlyuser};

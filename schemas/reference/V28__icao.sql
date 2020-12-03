@@ -31,5 +31,5 @@ COMMENT ON COLUMN icao.validto IS '{"label": "Valid to date", "description": "It
 
 -- GRANTs
 GRANT SELECT ON icao TO ${anonuser};
-GRANT SELECT ON icao TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON icao TO ${serviceuser};
 GRANT SELECT ON icao TO ${readonlyuser};

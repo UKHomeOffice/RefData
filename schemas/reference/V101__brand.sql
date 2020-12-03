@@ -27,5 +27,5 @@ COMMENT ON COLUMN brand.validto IS '{"label": "Valid to date", "description": "I
 
 -- Grants
 GRANT SELECT ON brand TO ${anonuser};
-GRANT SELECT ON brand TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON brand TO ${serviceuser};
 GRANT SELECT ON brand TO ${readonlyuser};

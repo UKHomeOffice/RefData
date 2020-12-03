@@ -15,5 +15,5 @@ COMMENT ON COLUMN trailertypes.validto IS '{"label": "Valid to date", "descripti
 
 -- GRANTs
 GRANT SELECT ON trailertypes TO ${anonuser};
-GRANT SELECT ON trailertypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON trailertypes TO ${serviceuser};
 GRANT SELECT ON trailertypes TO ${readonlyuser};

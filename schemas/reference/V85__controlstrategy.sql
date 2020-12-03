@@ -18,5 +18,5 @@ COMMENT ON COLUMN controlstrategy.validfrom IS '{"label": "Valid from date", "de
 COMMENT ON COLUMN controlstrategy.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON controlstrategy TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON controlstrategy TO ${serviceuser};
 GRANT SELECT ON controlstrategy TO ${readonlyuser};

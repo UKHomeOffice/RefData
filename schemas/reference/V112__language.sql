@@ -19,5 +19,5 @@ COMMENT ON COLUMN language.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON language TO ${anonuser};
-GRANT SELECT ON language TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON language TO ${serviceuser};
 GRANT SELECT ON language TO ${readonlyuser};

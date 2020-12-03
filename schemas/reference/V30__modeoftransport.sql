@@ -17,5 +17,5 @@ COMMENT ON COLUMN modeoftransport.validto IS '{"label": "Valid to date", "descri
 
 -- GRANTs
 GRANT SELECT ON modeoftransport TO ${anonuser};
-GRANT SELECT ON modeoftransport TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON modeoftransport TO ${serviceuser};
 GRANT SELECT ON modeoftransport TO ${readonlyuser};

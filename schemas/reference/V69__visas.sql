@@ -14,5 +14,5 @@ COMMENT ON COLUMN visas.validfrom IS '{"label": "Valid from date", "description"
 COMMENT ON COLUMN visas.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON visas TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON visas TO ${serviceuser};
 GRANT SELECT ON visas TO ${readonlyuser};

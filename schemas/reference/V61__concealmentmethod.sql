@@ -24,5 +24,5 @@ COMMENT ON COLUMN concealmentmethod.validfrom IS '{"label": "Valid from date", "
 COMMENT ON COLUMN concealmentmethod.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON concealmentmethod TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON concealmentmethod TO ${serviceuser};
 GRANT SELECT ON concealmentmethod TO ${readonlyuser};

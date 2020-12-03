@@ -17,5 +17,5 @@ COMMENT ON COLUMN injurycause.validto IS '{"label": "Valid to date", "descriptio
 
 -- GRANTs
 GRANT SELECT ON injurycause TO ${anonuser};
-GRANT SELECT ON injurycause TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON injurycause TO ${serviceuser};
 GRANT SELECT ON injurycause TO ${readonlyuser};

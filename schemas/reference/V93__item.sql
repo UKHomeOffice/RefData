@@ -66,6 +66,5 @@ COMMENT ON COLUMN item.validfrom IS '{"label": "Valid from date", "description":
 COMMENT ON COLUMN item.validto IS '{"label": "Valid to date", "description": "items valid to date.", "summaryview" : "false"}';
 
  -- GRANTs
-GRANT SELECT ON item TO ${anonuser};
-GRANT SELECT ON item TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON item TO ${serviceuser};
 GRANT SELECT ON item TO ${readonlyuser};

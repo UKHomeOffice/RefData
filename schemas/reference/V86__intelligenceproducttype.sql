@@ -22,5 +22,5 @@ COMMENT ON COLUMN intelligenceproducttype.validfrom IS '{"label": "Valid from da
 COMMENT ON COLUMN intelligenceproducttype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON intelligenceproducttype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON intelligenceproducttype TO ${serviceuser};
 GRANT SELECT ON intelligenceproducttype TO ${readonlyuser};

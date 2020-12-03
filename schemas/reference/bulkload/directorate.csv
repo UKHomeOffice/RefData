@@ -1,4 +1,4 @@
-id,name,departmentid,validfrom,validto
+id,name,departmentid,code,validfrom,validto
 1,Operational Assurance,1,OPAS,2019-01-01 00:01:00+00,
 2,Border Force Operations,1,BFOPS,2019-01-01 00:01:00+00,
 3,Border Systems,1,BSYS,2019-01-01 00:01:00+00,

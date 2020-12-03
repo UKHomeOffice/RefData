@@ -15,5 +15,5 @@ COMMENT ON COLUMN eventstatus.validto IS '{"label": "Valid to date", "descriptio
 
 -- GRANTs
 GRANT SELECT ON eventstatus TO ${anonuser};
-GRANT SELECT ON eventstatus TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON eventstatus TO ${serviceuser};
 GRANT SELECT ON eventstatus TO ${readonlyuser};

@@ -14,5 +14,5 @@ COMMENT ON COLUMN damagemethod.validfrom IS '{"label": "Valid from date", "descr
 COMMENT ON COLUMN damagemethod.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON damagemethod TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON damagemethod TO ${serviceuser};
 GRANT SELECT ON damagemethod TO ${readonlyuser};

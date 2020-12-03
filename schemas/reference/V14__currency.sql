@@ -19,5 +19,5 @@ COMMENT ON COLUMN currency.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON currency TO ${anonuser};
-GRANT SELECT ON currency TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON currency TO ${serviceuser};
 GRANT SELECT ON currency TO ${readonlyuser};

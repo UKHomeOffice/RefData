@@ -17,5 +17,5 @@ COMMENT ON COLUMN protectedcharacteristics.validto IS '{"label": "Valid to date"
 
 -- GRANTs
 GRANT SELECT ON protectedcharacteristics TO ${anonuser};
-GRANT SELECT ON protectedcharacteristics TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON protectedcharacteristics TO ${serviceuser};
 GRANT SELECT ON protectedcharacteristics TO ${readonlyuser};

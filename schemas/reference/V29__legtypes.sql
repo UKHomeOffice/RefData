@@ -15,5 +15,5 @@ COMMENT ON COLUMN legtypes.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON legtypes TO ${anonuser};
-GRANT SELECT ON legtypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON legtypes TO ${serviceuser};
 GRANT SELECT ON legtypes TO ${readonlyuser};

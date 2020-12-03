@@ -34,5 +34,5 @@ COMMENT ON COLUMN location.validfrom IS '{"label": "Valid from date", "descripti
 COMMENT ON COLUMN location.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON location TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON location TO ${serviceuser};
 GRANT SELECT ON location TO ${readonlyuser};

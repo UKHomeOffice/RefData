@@ -17,5 +17,5 @@ COMMENT ON COLUMN grade.validto IS '{"label": "Valid to date", "description": "I
 
 -- GRANTs
 GRANT SELECT ON grade TO ${anonuser};
-GRANT SELECT ON grade TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON grade TO ${serviceuser};
 GRANT SELECT ON grade TO ${readonlyuser};

@@ -20,5 +20,5 @@ COMMENT ON COLUMN lockup.validfrom IS '{"label": "Valid from date", "description
 COMMENT ON COLUMN lockup.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON lockup TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON lockup TO ${serviceuser};
 GRANT SELECT ON lockup TO ${readonlyuser};

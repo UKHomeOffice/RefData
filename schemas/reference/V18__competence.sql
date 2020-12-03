@@ -17,5 +17,5 @@ COMMENT ON COLUMN competence.validto IS '{"label": "Valid to date", "description
 
 -- GRANTs
 GRANT SELECT ON competence TO ${anonuser};
-GRANT SELECT ON competence TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON competence TO ${serviceuser};
 GRANT SELECT ON competence TO ${readonlyuser};

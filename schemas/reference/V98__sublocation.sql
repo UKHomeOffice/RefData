@@ -16,6 +16,5 @@ COMMENT ON COLUMN sublocation.validfrom IS '{"label": "Valid from date", "descri
 COMMENT ON COLUMN sublocation.validto IS '{"label": "Valid to date", "description": "Sub Location valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON sublocation TO ${anonuser};
-GRANT SELECT ON sublocation TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON sublocation TO ${serviceuser};
 GRANT SELECT ON sublocation TO ${readonlyuser};

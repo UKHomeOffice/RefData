@@ -16,6 +16,5 @@ COMMENT ON COLUMN targetcat.validfrom IS '{"label": "Valid from date", "descript
 COMMENT ON COLUMN targetcat.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON targetcat TO ${anonuser};
-GRANT SELECT ON targetcat TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON targetcat TO ${serviceuser};
 GRANT SELECT ON targetcat TO ${readonlyuser};

@@ -19,5 +19,5 @@ COMMENT ON COLUMN pstmethods.validto IS '{"label": "Valid to date", "description
 
  -- GRANTs
 GRANT SELECT ON pstmethods TO ${anonuser};
-GRANT SELECT ON pstmethods TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON pstmethods TO ${serviceuser};
 GRANT SELECT ON pstmethods TO ${readonlyuser};

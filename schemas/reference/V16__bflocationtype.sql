@@ -33,5 +33,5 @@ COMMENT ON COLUMN bflocationtype.validto IS '{"label": "Valid to date", "descrip
 
 -- GRANTs
 GRANT SELECT ON bflocationtype TO ${anonuser};
-GRANT SELECT ON bflocationtype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON bflocationtype TO ${serviceuser};
 GRANT SELECT ON bflocationtype TO ${readonlyuser};

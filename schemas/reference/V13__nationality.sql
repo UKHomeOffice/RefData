@@ -33,5 +33,5 @@ COMMENT ON COLUMN nationality.validto IS '{"label": "Valid to date", "descriptio
 
 -- GRANTs
 GRANT SELECT ON nationality TO ${anonuser};
-GRANT SELECT ON nationality TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON nationality TO ${serviceuser};
 GRANT SELECT ON nationality TO ${readonlyuser};

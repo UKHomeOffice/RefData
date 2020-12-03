@@ -28,5 +28,5 @@ COMMENT ON COLUMN address.validfrom IS '{"label": "Valid from date", "descriptio
 COMMENT ON COLUMN address.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON address TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON address TO ${serviceuser};
 GRANT SELECT ON address TO ${readonlyuser};

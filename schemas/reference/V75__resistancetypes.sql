@@ -14,5 +14,5 @@ COMMENT ON COLUMN resistancetypes.validfrom IS '{"label": "Valid from date", "de
 COMMENT ON COLUMN resistancetypes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON resistancetypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON resistancetypes TO ${serviceuser};
 GRANT SELECT ON resistancetypes TO ${readonlyuser};

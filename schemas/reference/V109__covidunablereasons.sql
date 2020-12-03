@@ -14,6 +14,5 @@ COMMENT ON COLUMN covidunablereasons.validfrom IS '{"label": "Valid from date", 
 COMMENT ON COLUMN covidunablereasons.validto IS '{"label": "Valid to date", "description": "Reason valid to date.", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT ON covidunablereasons TO ${anonuser};
-GRANT SELECT ON covidunablereasons TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON covidunablereasons TO ${serviceuser};
 GRANT SELECT ON covidunablereasons TO ${readonlyuser};

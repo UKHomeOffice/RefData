@@ -17,5 +17,5 @@ COMMENT ON COLUMN financialinstrument.validto IS '{"label": "Valid to date", "de
 
 -- GRANTs
 GRANT SELECT ON financialinstrument TO ${anonuser};
-GRANT SELECT ON financialinstrument TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON financialinstrument TO ${serviceuser};
 GRANT SELECT ON financialinstrument TO ${readonlyuser};

@@ -1,6 +1,6 @@
 id,name,validfrom,validto
-"1","Paid employment",,
-"2","Unpaid employment",,
-"3","Self employment",,
-"4","Voluntary work",,
-"5","Directorships",,
+1,Paid employment,2019-01-01 00:01:00+00,
+2,Unpaid employment,2019-01-01 00:01:00+00,
+3,Self employment,2019-01-01 00:01:00+00,
+4,Voluntary work,2019-01-01 00:01:00+00,
+5,Directorships,2019-01-01 00:01:00+00,

@@ -15,5 +15,5 @@ COMMENT ON COLUMN employmenttypes.validto IS '{"label": "Valid to date", "descri
 
 -- GRANTs
 GRANT SELECT ON employmenttypes TO ${anonuser};
-GRANT SELECT ON employmenttypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON employmenttypes TO ${serviceuser};
 GRANT SELECT ON employmenttypes TO ${readonlyuser};

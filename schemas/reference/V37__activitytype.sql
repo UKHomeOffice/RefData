@@ -14,5 +14,5 @@ COMMENT ON COLUMN activitytype.validfrom IS '{"label": "Valid from date", "descr
 COMMENT ON COLUMN activitytype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON activitytype TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON activitytype TO ${serviceuser};
 GRANT SELECT ON activitytype TO ${readonlyuser};

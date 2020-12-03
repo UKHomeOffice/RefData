@@ -17,5 +17,5 @@ COMMENT ON COLUMN lasttrained.validto IS '{"label": "Valid to date", "descriptio
 
  -- GRANTs
 GRANT SELECT ON lasttrained TO ${anonuser};
-GRANT SELECT ON lasttrained TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON lasttrained TO ${serviceuser};
 GRANT SELECT ON lasttrained TO ${readonlyuser};

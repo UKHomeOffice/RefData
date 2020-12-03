@@ -17,6 +17,5 @@ COMMENT ON COLUMN samscategories.validto IS '{"label": "Valid to date", "descrip
 
 
 -- GRANTs
-GRANT SELECT ON samscategories TO ${anonuser};
-GRANT SELECT ON samscategories TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON samscategories TO ${serviceuser};
 GRANT SELECT ON samscategories TO ${readonlyuser};

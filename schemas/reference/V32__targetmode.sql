@@ -24,6 +24,5 @@ COMMENT ON COLUMN targetmode.validfrom IS '{"label": "Valid from date", "descrip
 COMMENT ON COLUMN targetmode.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON targetmode TO ${anonuser};
-GRANT SELECT ON targetmode TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON targetmode TO ${serviceuser};
 GRANT SELECT ON targetmode TO ${readonlyuser};

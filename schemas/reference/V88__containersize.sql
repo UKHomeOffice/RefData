@@ -15,5 +15,5 @@ COMMENT ON COLUMN containersize.validto IS '{"label": "Valid to date", "descript
 
  -- GRANTs
 GRANT SELECT ON containersize TO ${anonuser};
-GRANT SELECT ON containersize TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON containersize TO ${serviceuser};
 GRANT SELECT ON containersize TO ${readonlyuser};

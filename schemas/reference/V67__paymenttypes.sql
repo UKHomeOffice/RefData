@@ -15,5 +15,5 @@ COMMENT ON COLUMN paymenttypes.validto IS '{"label": "Valid to date", "descripti
 
 -- GRANTs
 GRANT SELECT ON paymenttypes TO ${anonuser};
-GRANT SELECT ON paymenttypes TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON paymenttypes TO ${serviceuser};
 GRANT SELECT ON paymenttypes TO ${readonlyuser};

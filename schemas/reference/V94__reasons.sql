@@ -22,5 +22,5 @@ COMMENT ON COLUMN reasons.validfrom IS '{"label": "Valid from date", "descriptio
 COMMENT ON COLUMN reasons.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON reasons TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON reasons TO ${serviceuser};
 GRANT SELECT ON reasons TO ${readonlyuser};

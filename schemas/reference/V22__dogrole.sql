@@ -17,5 +17,5 @@ COMMENT ON COLUMN dogrole.validto IS '{"label": "Valid to date", "description": 
 
 -- GRANTs
 GRANT SELECT ON dogrole TO ${anonuser};
-GRANT SELECT ON dogrole TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON dogrole TO ${serviceuser};
 GRANT SELECT ON dogrole TO ${readonlyuser};

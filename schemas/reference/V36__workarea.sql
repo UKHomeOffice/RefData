@@ -15,5 +15,5 @@ COMMENT ON COLUMN workarea.validto IS '{"label": "Valid to date", "description":
 
 -- GRANTs
 GRANT SELECT ON workarea TO ${anonuser};
-GRANT SELECT ON workarea TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON workarea TO ${serviceuser};
 GRANT SELECT ON workarea TO ${readonlyuser};

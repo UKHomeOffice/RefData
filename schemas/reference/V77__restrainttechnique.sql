@@ -14,5 +14,5 @@ COMMENT ON COLUMN restrainttechnique.validfrom IS '{"label": "Valid from date", 
 COMMENT ON COLUMN restrainttechnique.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
 -- GRANTs
-GRANT SELECT ON restrainttechnique TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON restrainttechnique TO ${serviceuser};
 GRANT SELECT ON restrainttechnique TO ${readonlyuser};
