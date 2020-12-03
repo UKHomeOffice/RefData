@@ -16,5 +16,5 @@ COMMENT ON COLUMN honotificationreasons.validfrom IS '{"label": "Valid from date
 COMMENT ON COLUMN honotificationreasons.validto IS '{"label": "Valid to date", "description": "Hit reason valid to date.", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT ON honotificationreasons TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON honotificationreasons TO ${serviceuser};
 GRANT SELECT ON honotificationreasons TO ${readonlyuser};
