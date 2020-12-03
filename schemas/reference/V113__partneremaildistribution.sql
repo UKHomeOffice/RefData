@@ -1,10 +1,10 @@
 CREATE TABLE partneremaildistribution (
   id INT4 NOT NULL PRIMARY KEY,
-	email VARCHAR(80) NOT NULL,
-	agency INT4,
-	fpcommodity VARCHAR(80),
-	policeregion VARCHAR(40),
-	validfrom TIMESTAMP WITH TIME ZONE,
+  email VARCHAR(80) NOT NULL,
+  agency INT4,
+  fpcommodity VARCHAR(80),
+  policeregion VARCHAR(40),
+  validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE
 );
 
