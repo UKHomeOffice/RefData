@@ -18,13 +18,14 @@ CREATE TABLE unlocode (
   roadterminal BOOLEAN NOT NULL,
   countryid INTEGER NULL REFERENCES country(id),
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE unlocode IS '{"label": "United Nations location code", "description": "The United Nations location code list as defined in the ISO 3166-1 Standard.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE unlocode IS '{"label": "United Nations location code", "description": "The United Nations location code list as defined in the ISO 3166-1 Standard.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN unlocode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN unlocode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.name IS '{"label": "Name", "description": "Location name", "summaryview": "true"}';
 COMMENT ON COLUMN unlocode.geolat IS '{"label": "Latitude", "description": "Geographic latitude", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';
@@ -44,6 +45,7 @@ COMMENT ON COLUMN unlocode.countryid IS '{"label": "Linked country id", "descrip
 COMMENT ON COLUMN unlocode.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The countries 2 Character alpha code.", "summaryview": "true"}';
 COMMENT ON COLUMN unlocode.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN unlocode.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN unlocode.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON unlocode TO ${anonuser};

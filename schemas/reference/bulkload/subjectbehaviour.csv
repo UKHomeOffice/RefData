@@ -1,7 +1,7 @@
-id,name,validpst,validfrom,validto
-1,Interception,t,2019-01-01 00:01:00+00,
-2,Arrest,t,2019-01-01 00:01:00+00,
-3,Drug use,t,2019-01-01 00:01:00+00,
-4,Alcohol,t,2019-01-01 00:01:00+00,
-5,Mental Health,t,2019-01-01 00:01:00+00,
-6,Other,t,2019-01-01 00:01:00+00,
+id,name,validpst,validfrom,validto,updatedby
+1,Interception,t,2019-01-01 00:01:00+00,,
+2,Arrest,t,2019-01-01 00:01:00+00,,
+3,Drug use,t,2019-01-01 00:01:00+00,,
+4,Alcohol,t,2019-01-01 00:01:00+00,,
+5,Mental Health,t,2019-01-01 00:01:00+00,,
+6,Other,t,2019-01-01 00:01:00+00,,

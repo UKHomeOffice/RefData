@@ -12,13 +12,14 @@ CREATE TABLE location (
   countryoflegalsystem VARCHAR(20),
   ukcountry VARCHAR(20),
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE location IS '{"label": "Location", "description": "A list of locations and their associated details.", "schemalastupdated": "09/06/2020", "dataversion": 1}';
+COMMENT ON TABLE location IS '{"label": "Location", "description": "A list of locations and their associated details.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN location.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN location.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN location.name IS '{"label": "Name", "description": "Location name", "summaryview": "true"}';
 COMMENT ON COLUMN location.geolat IS '{"label": "Latitude", "description": "Geographic latitude", "summaryview": "false"}';
 COMMENT ON COLUMN location.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';
@@ -32,6 +33,7 @@ COMMENT ON COLUMN location.countryoflegalsystem IS '{"label": "Country of Legal 
 COMMENT ON COLUMN location.ukcountry IS '{"label": "UK Country", "description": "Which of the UKs countries is this location in", "summaryview" : "true"}';
 COMMENT ON COLUMN location.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN location.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN location.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON location TO ${serviceuser};

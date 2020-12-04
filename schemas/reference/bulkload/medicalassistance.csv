@@ -1,6 +1,6 @@
-id,name,validform,validto
-1,First aid,2019-01-01 00:01:00+00,
-2,Paramedic / Ambulance technician,2019-01-01 00:01:00+00,
-3,Nurse,2019-01-01 00:01:00+00,
-4,GP / Dr,2019-01-01 00:01:00+00,
-5,Hospital,2019-01-01 00:01:00+00,
+id,name,validform,validto,updatedby
+1,First aid,2019-01-01 00:01:00+00,,
+2,Paramedic / Ambulance technician,2019-01-01 00:01:00+00,,
+3,Nurse,2019-01-01 00:01:00+00,,
+4,GP / Dr,2019-01-01 00:01:00+00,,
+5,Hospital,2019-01-01 00:01:00+00,,

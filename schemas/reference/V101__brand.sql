@@ -8,11 +8,12 @@ CREATE TABLE brand (
   goodsbrand BOOL,
   commoditybrand BOOL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE brand IS '{"label":"Brand Names", "description":"Common product brands", "schemalastupdated": "20/02/2020", "dataversion": 1}';
+COMMENT ON TABLE brand IS '{"label":"Brand Names", "description":"Common product brands", "schemalastupdated": "03/12/2020", "owner": "xyx@test.com", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN brand.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN brand.name IS '{"label": "Brand Name", "description": "The name given to the brand.", "summaryview": "true"}';
@@ -24,6 +25,7 @@ COMMENT ON COLUMN brand.goodsbrand IS '{"label": "Goods Brands", "description": 
 COMMENT ON COLUMN brand.commoditybrand IS '{"label": "Commodity Brands", "description": "Is the brand used exclusivly for Commodity related products?", "summaryview": "true"}';
 COMMENT ON COLUMN brand.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN brand.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN brand.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- Grants
 GRANT SELECT ON brand TO ${anonuser};

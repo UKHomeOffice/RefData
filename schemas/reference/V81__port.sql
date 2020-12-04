@@ -26,13 +26,14 @@ CREATE TABLE port (
   juxtaposed BOOLEAN NOT NULL,
   freightparcelposthub BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE NULL,
-  validto TIMESTAMP WITH TIME ZONE NULL
+  validto TIMESTAMP WITH TIME ZONE NULL,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE port IS '{"label": "Worldwide Port list", "businesskey": true, "description": "The list of worldwide port/location list.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE port IS '{"label": "Worldwide Port list", "businesskey": true, "description": "The list of worldwide port/location list.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN port.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN port.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN port.countryid IS '{"label": "Linked country id", "description": "Country link to Country dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN port.commandid IS '{"label": "Linked command id", "description": "Border force command link to command dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN port.locationid IS '{"label": "Linked location id", "description": "Border force location link to location dataset.", "summaryview": "false"}';
@@ -60,6 +61,7 @@ COMMENT ON COLUMN port.juxtaposed IS '{"label": "Juxtaposed", "description": "Is
 COMMENT ON COLUMN port.freightparcelposthub IS '{"label": "Freight Parcel Post Hub", "description": "Is this Port a hub for Freight, Parcels and Post?", "summaryview" : "false"}';
 COMMENT ON COLUMN port.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN port.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN port.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON port TO ${serviceuser};

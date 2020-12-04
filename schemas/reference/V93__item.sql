@@ -28,11 +28,12 @@ CREATE TABLE item (
   seizureqty numeric(5),
   ienqty numeric(5),
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
  -- Table comment
-COMMENT ON TABLE item IS '{"label": "Items", "description": "Items that cross the border", "schemalastupdated": "06/11/2019", "dataversion": 1}';
+COMMENT ON TABLE item IS '{"label": "Items", "description": "Items that cross the border", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN item.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN item.name IS '{"label": "Name", "description": "Name of Item", "summaryview": "true"}';
@@ -64,6 +65,7 @@ COMMENT ON COLUMN item.seizureqty IS '{"label": "Seizure", "description": "Minim
 COMMENT ON COLUMN item.ienqty IS '{"label": "IEN", "description": "Minimum quantity required for seizure?", "summaryview": "true"}';
 COMMENT ON COLUMN item.validfrom IS '{"label": "Valid from date", "description": "items valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN item.validto IS '{"label": "Valid to date", "description": "items valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN item.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
  -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON item TO ${serviceuser};

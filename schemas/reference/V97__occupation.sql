@@ -2,16 +2,18 @@ CREATE TABLE occupation (
   id INTEGER NOT NULL PRIMARY KEY,
   occupation VARCHAR(70) NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE occupation IS '{"label": "Occupation", "description": "A list of occupations as categorized by the Office for National Statistics", "schemalastupdated": "29/11/2019", "dataversion": 1}';
+COMMENT ON TABLE occupation IS '{"label": "Occupation", "description": "A list of occupations as categorized by the Office for National Statistics", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN occupation.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN occupation.occupation IS '{"label": "Occupation", "description": "The name of the occupation.", "summaryview": "true"}';
 COMMENT ON COLUMN occupation.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN occupation.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN occupation.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON occupation TO ${anonuser};

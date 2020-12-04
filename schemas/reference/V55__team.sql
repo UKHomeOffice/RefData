@@ -14,13 +14,14 @@ CREATE TABLE team (
   divisionid INT4 REFERENCES division(id),
   commandid INT4 REFERENCES command(id),
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE team IS '{"label": "Teams", "description": "A list of border force teams.", "schemalastupdated": "18/06/2020", "dataversion": 1}';
+COMMENT ON TABLE team IS '{"label": "Teams", "description": "A list of border force teams.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN team.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN team.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN team.name IS '{"label": "Name", "description": "The name of the team.", "summaryview": "true"}';
 COMMENT ON COLUMN team.code IS '{"label": "Code", "businesskey": true, "description": "The team code.", "summaryview": "true"}';
 COMMENT ON COLUMN team.description IS '{"label": "Description", "description": "A description of the team.", "summaryview": "true"}';
@@ -36,6 +37,7 @@ COMMENT ON COLUMN team.divisionid IS '{"label": "Division ID", "description": "L
 COMMENT ON COLUMN team.commandid IS '{"label": "Command ID", "description": "Link to command entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN team.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN team.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN team.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON team TO ${serviceuser};

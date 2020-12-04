@@ -6,13 +6,14 @@ CREATE TABLE intelligenceproducttype (
   outgoing boolean,
   outgoinganalyst boolean,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE intelligenceproducttype IS '{"label": "Intelligence product type", "description": "Types of intelligence product.", "schemalastupdated": "28/08/2019", "dataversion": 1}';
+COMMENT ON TABLE intelligenceproducttype IS '{"label": "Intelligence product type", "description": "Types of intelligence product.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN intelligenceproducttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN intelligenceproducttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN intelligenceproducttype.name IS '{"label": "Name", "businesskey": true, "description": "Name of the product.", "summaryview": "true"}';
 COMMENT ON COLUMN intelligenceproducttype.description IS '{"label": "Description", "description": "A description of the product.", "summaryview": "true"}';
 COMMENT ON COLUMN intelligenceproducttype.incoming IS '{"label": "Incoming?", "description": "Incoming?", "summaryview": "false"}';
@@ -20,6 +21,7 @@ COMMENT ON COLUMN intelligenceproducttype.outgoing IS '{"label": "Outgoing?", "d
 COMMENT ON COLUMN intelligenceproducttype.outgoinganalyst IS '{"label": "Outgoing Analysist?", "description": "Outgoing Analysist?", "summaryview": "false"}';
 COMMENT ON COLUMN intelligenceproducttype.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN intelligenceproducttype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN intelligenceproducttype.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON intelligenceproducttype TO ${serviceuser};

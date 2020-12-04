@@ -1,14 +1,15 @@
 CREATE TABLE samssubcategory (
-    id INT4 NOT NULL PRIMARY KEY,
-    subcategory VARCHAR(75) NOT NULL,
-    description VARCHAR(150),
-    samscategoryid INT4 NOT NULL REFERENCES samscategories(id),
-    validfrom TIMESTAMP WITH TIME ZONE,
-    validto TIMESTAMP WITH TIME ZONE
+  id INT4 NOT NULL PRIMARY KEY,
+  subcategory VARCHAR(75) NOT NULL,
+  description VARCHAR(150),
+  samscategoryid INT4 NOT NULL REFERENCES samscategories(id),
+  validfrom TIMESTAMP WITH TIME ZONE,
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE samssubcategory IS '{"label": "SAMS Subcategories", "description": "Subcategories used to specify Safeguarding and Modern Slavery cases.", "schemalastupdated": "24/10/2019", "dataversion": 1}';
+COMMENT ON TABLE samssubcategory IS '{"label": "SAMS Subcategories", "description": "Subcategories used to specify Safeguarding and Modern Slavery cases.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comment
 COMMENT ON COLUMN samssubcategory.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN samssubcategory.subcategory IS '{"label": "Subcategory", "description": "The SAMS specific subcategory.", "summaryview": "false"}';
@@ -16,6 +17,7 @@ COMMENT ON COLUMN samssubcategory.description IS '{"label": "Description", "desc
 COMMENT ON COLUMN samssubcategory.samscategoryid IS '{"label": "SAMS Category ID", "description": "Link to SAMS category reference data.", "summaryview": "false"}';
 COMMENT ON COLUMN samssubcategory.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN samssubcategory.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN samssubcategory.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 
 -- GRANTs

@@ -10,11 +10,12 @@ CREATE TABLE profileindicator (
   air BOOLEAN NOT NULL,
   cash BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE profileindicator IS '{"label": "Profile Indicator", "description": "A list of reasons for conducting a search on a particular vehicle.", "schemalastupdated": "25/09/2019", "dataversion": 1}';
+COMMENT ON TABLE profileindicator IS '{"label": "Profile Indicator", "description": "A list of reasons for conducting a search on a particular vehicle.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN profileindicator.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN profileindicator.description IS '{"label": "Indicator", "description": "Reason for selecting the vehicle to search.", "summaryview": "true"}';
@@ -28,7 +29,10 @@ COMMENT ON COLUMN profileindicator.air IS '{"label": "Air", "description": "Air 
 COMMENT ON COLUMN profileindicator.cash IS '{"label": "Cash", "description": "For use on cash form.", "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN profileindicator.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN profileindicator.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON profileindicator TO ${serviceuser};
 GRANT SELECT ON profileindicator TO ${readonlyuser};
+
+

@@ -10,13 +10,14 @@ CREATE TABLE icao (
   type VARCHAR(40),
   countryid INTEGER NULL REFERENCES country(id),
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE icao IS '{"label": "ICAO list", "description": "The ICAO worldwide port/location list.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE icao IS '{"label": "ICAO list", "description": "The ICAO worldwide port/location list.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN icao.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN icao.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN icao.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The countries 2 Character alpha code.", "summaryview": "true"}';
 COMMENT ON COLUMN icao.name IS '{"label": "Name", "description": "ICAO site name", "summaryview": "true"}';
 COMMENT ON COLUMN icao.iata IS '{"label": "IATA", "description": "IATA code", "summaryview": "true"}';
@@ -28,6 +29,7 @@ COMMENT ON COLUMN icao.type IS '{"label": "Port type", "description": "The type 
 COMMENT ON COLUMN icao.countryid IS '{"label": "Linked country id", "description": "Country link to Country dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN icao.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN icao.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN icao.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON icao TO ${anonuser};

@@ -5,11 +5,12 @@ CREATE TABLE indicators (
   ien BOOLEAN NOT NULL,
   referral BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE indicators IS '{"label": "Intelligence indicators", "description": "A list of intelligence indicator types.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE indicators IS '{"label": "Intelligence indicators", "description": "A list of intelligence indicator types.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN indicators.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN indicators.indicator IS '{"label": "Indicator description", "description": "The type of indicator.", "summaryview": "true"}';
@@ -18,6 +19,7 @@ COMMENT ON COLUMN indicators.ien IS '{"label": "IEN", "description": "Valid type
 COMMENT ON COLUMN indicators.referral IS '{"label": "Referral", "description": "Valid types for referrals.", "summaryview": "true"}';
 COMMENT ON COLUMN indicators.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN indicators.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN indicators.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON indicators TO ${serviceuser};

@@ -1,5 +1,5 @@
-id,name,validfrom,validto
-M,Male,2019-01-01 00:01:00+00,
-F,Female,2019-01-01 00:01:00+00,
-X,Indeterminate,2019-01-01 00:01:00+00,
-U,Unknown,2019-01-01 00:01:00+00,
+id,name,validfrom,validto,updatedby
+M,Male,2019-01-01 00:01:00+00,,
+F,Female,2019-01-01 00:01:00+00,,
+X,Indeterminate,2019-01-01 00:01:00+00,,
+U,Unknown,2019-01-01 00:01:00+00,,

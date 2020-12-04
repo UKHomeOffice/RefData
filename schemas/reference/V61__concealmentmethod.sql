@@ -7,11 +7,12 @@ CREATE TABLE concealmentmethod (
   rail BOOLEAN NOT NULL,
   air BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE concealmentmethod IS '{"label": "Concealment methods", "description": "A list containing descriptions of the methods by which items and people are concealed.", "schemalastupdated": "10/07/2019", "dataversion": 1}';
+COMMENT ON TABLE concealmentmethod IS '{"label": "Concealment methods", "description": "A list containing descriptions of the methods by which items and people are concealed.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN concealmentmethod.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN concealmentmethod.method IS '{"label": "Concealment", "description": "The method of concealment.", "summaryview": "true"}';
@@ -22,6 +23,7 @@ COMMENT ON COLUMN concealmentmethod.rail IS '{"label": "Rail", "description": "R
 COMMENT ON COLUMN concealmentmethod.air IS '{"label": "Air", "description": "Air selection tag.", "summaryview": "true"}';
 COMMENT ON COLUMN concealmentmethod.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN concealmentmethod.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN concealmentmethod.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON concealmentmethod TO ${serviceuser};

@@ -5,11 +5,12 @@ CREATE TABLE detectionmethod (
   basicequipment BOOLEAN NOT NULL,
   searchtype BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE detectionmethod IS '{"label": "Detection methods", "description": "A list of different types of detection method.", "schemalastupdated": "02/06/2020", "dataversion": 1}';
+COMMENT ON TABLE detectionmethod IS '{"label": "Detection methods", "description": "A list of different types of detection method.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN detectionmethod.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN detectionmethod.name IS '{"label": "Detection method", "description": "The type of detection method.", "summaryview": "true"}';
@@ -18,6 +19,7 @@ COMMENT ON COLUMN detectionmethod.basicequipment IS '{"label": "Basic equipment"
 COMMENT ON COLUMN detectionmethod.searchtype IS '{"label": "Search Type", "description": "Is this a method of searching rather than a physical object/tool/machine.", "summaryview": "true"}';
 COMMENT ON COLUMN detectionmethod.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN detectionmethod.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN detectionmethod.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON detectionmethod TO ${serviceuser};

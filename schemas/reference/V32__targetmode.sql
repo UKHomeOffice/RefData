@@ -7,13 +7,14 @@ CREATE TABLE targetmode (
   ca BOOL NOT NULL,
   ct BOOL NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE targetmode IS '{"label": "Target Modes", "description": "A list of target modes.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE targetmode IS '{"label": "Target Modes", "description": "A list of target modes.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN targetmode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN targetmode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN targetmode.mode IS '{"label": "Target mode", "description": "The targeting mode type.", "summaryview": "true"}';
 COMMENT ON COLUMN targetmode.modecode IS '{"label": "Mode Code", "businesskey": true, "description": "Short reference code.", "summaryview": "false"}';
 COMMENT ON COLUMN targetmode.crossingtype IS '{"label": "Crossing type", "description": "The type of boarder being crossed.", "summaryview": "false"}';
@@ -22,6 +23,7 @@ COMMENT ON COLUMN targetmode.ca IS '{"label": "Cash enabled", "description": "Va
 COMMENT ON COLUMN targetmode.ct IS '{"label": "Counter Terrorism enabled", "description": "Valid for CT targeting", "summaryview": "true"}';
 COMMENT ON COLUMN targetmode.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN targetmode.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN targetmode.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON targetmode TO ${serviceuser};

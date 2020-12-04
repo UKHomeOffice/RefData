@@ -1,9 +1,9 @@
-id,name,validfrom,validto
-1,Ticket payment,2019-01-01 00:01:00+00,
-2,Account,2019-01-01 00:01:00+00,
-3,Cash,2019-01-01 00:01:00+00,
-4,Credit card,2019-01-01 00:01:00+00,
-5,Debit card,2019-01-01 00:01:00+00,
-6,Third party payment,2019-01-01 00:01:00+00,
-7,Telesales,2019-01-01 00:01:00+00,
-8,Online,2019-01-01 00:01:00+00,
+id,name,validfrom,validto,updatedby
+1,Ticket payment,2019-01-01 00:01:00+00,,
+2,Account,2019-01-01 00:01:00+00,,
+3,Cash,2019-01-01 00:01:00+00,,
+4,Credit card,2019-01-01 00:01:00+00,,
+5,Debit card,2019-01-01 00:01:00+00,,
+6,Third party payment,2019-01-01 00:01:00+00,,
+7,Telesales,2019-01-01 00:01:00+00,,
+8,Online,2019-01-01 00:01:00+00,,

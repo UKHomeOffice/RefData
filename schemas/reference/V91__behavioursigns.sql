@@ -4,11 +4,12 @@ CREATE TABLE behavioursigns (
   warning bool NOT NULL,
   danger bool NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
  -- Table comment
-COMMENT ON TABLE behavioursigns IS '{"label": "Behaviour Signs", "description": "Behaviours Warning and Danger Signs", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+COMMENT ON TABLE behavioursigns IS '{"label": "Behaviour Signs", "description": "Behaviours Warning and Danger Signs", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN behavioursigns.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN behavioursigns.name IS '{"label": "Name", "description": "Name of behaviour", "summaryview": "true"}';
@@ -16,6 +17,7 @@ COMMENT ON COLUMN behavioursigns.warning IS '{"label": "Warning", "description":
 COMMENT ON COLUMN behavioursigns.danger IS '{"label": "Danger", "description": "Danger Sign?", "summaryview": "true"}';
 COMMENT ON COLUMN behavioursigns.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN behavioursigns.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN behavioursigns.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
  -- GRANTs
 GRANT SELECT ON behavioursigns TO ${anonuser};

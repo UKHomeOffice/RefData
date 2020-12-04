@@ -11,13 +11,14 @@ CREATE TABLE carrierlist (
   rail BOOLEAN NOT NULL,
   parcel BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE carrierlist IS '{"label": "Carriers", "description": "A list of Carriers.", "schemalastupdated": "02/06/2020", "dataversion": 1}';
+COMMENT ON TABLE carrierlist IS '{"label": "Carriers", "description": "A list of Carriers.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN carrierlist.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN carrierlist.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
 COMMENT ON COLUMN carrierlist.name IS '{"label": "Carrier name", "description": "The name of the carrier.", "summaryview": "true"}';
 COMMENT ON COLUMN carrierlist.twolettercode IS '{"label": "Two letter code", "description": "The 2 letter carrier code.", "summaryview": "true"}';
 COMMENT ON COLUMN carrierlist.threelettercode IS '{"label": "Three letter code", "description": "The 3 letter carrier code.", "summaryview": "true"}';
@@ -30,6 +31,7 @@ COMMENT ON COLUMN carrierlist.rail IS '{"label": "Rail", "description": "Rail ca
 COMMENT ON COLUMN carrierlist.parcel IS '{"label": "Parcel", "description": "Parcel carrier for the purposes of Fast Parcels?", "summaryview": "true"}';
 COMMENT ON COLUMN carrierlist.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN carrierlist.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN carrierlist.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON carrierlist TO ${anonuser};
