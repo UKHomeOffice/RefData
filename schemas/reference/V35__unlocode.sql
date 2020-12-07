@@ -23,10 +23,10 @@ CREATE TABLE unlocode (
 );
 
 -- Table comment
-COMMENT ON TABLE unlocode IS '{"label": "United Nations location code", "description": "The United Nations location code list as defined in the ISO 3166-1 Standard.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE unlocode IS '{"label": "United Nations location code", "description": "The United Nations location code list as defined in the ISO 3166-1 Standard.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN unlocode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN unlocode.name IS '{"label": "Name", "description": "Location name", "summaryview": "true"}';
+COMMENT ON COLUMN unlocode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN unlocode.name IS '{"label": "Name", "description": "Location name", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN unlocode.geolat IS '{"label": "Latitude", "description": "Geographic latitude", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.namewodiacritics IS '{"label": "Name with diacritics", "description": "Location name including diacritics.", "summaryview": "false"}';

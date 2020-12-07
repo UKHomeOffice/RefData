@@ -15,11 +15,11 @@ CREATE TABLE icao (
 );
 
 -- Table comment
-COMMENT ON TABLE icao IS '{"label": "ICAO list", "description": "The ICAO worldwide port/location list.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE icao IS '{"label": "ICAO list", "description": "The ICAO worldwide port/location list.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN icao.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN icao.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN icao.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The countries 2 Character alpha code.", "summaryview": "true"}';
-COMMENT ON COLUMN icao.name IS '{"label": "Name", "description": "ICAO site name", "summaryview": "true"}';
+COMMENT ON COLUMN icao.name IS '{"label": "Name", "description": "ICAO site name", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN icao.iata IS '{"label": "IATA", "description": "IATA code", "summaryview": "true"}';
 COMMENT ON COLUMN icao.municipality IS '{"label": "City", "description": "Municipality/region", "summaryview": "true", "aliases": ["city", "region"]}';
 COMMENT ON COLUMN icao.icao IS '{"label": "ICAO code", "businesskey": true, "description": "ICAO code", "summaryview": "true"}';

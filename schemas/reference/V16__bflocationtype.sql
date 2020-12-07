@@ -16,9 +16,9 @@ CREATE TABLE bflocationtype (
 );
 
 -- Table comment
-COMMENT ON TABLE bflocationtype IS '{"label": "Border port types", "description": "A detailed list of border port types", "owner": "xyx@test.com", "schemalastupdated": "3/12/2020", "dataversion": 1}';
+COMMENT ON TABLE bflocationtype IS '{"label": "Border port types", "description": "A detailed list of border port types", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "3/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN bflocationtype.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN bflocationtype.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN bflocationtype.seaport IS '{"label": "Sea port", "description": "Is the location a seaport?", "summaryview": "false"}';
 COMMENT ON COLUMN bflocationtype.railterminal IS '{"label": "Rail terminal", "description": "Is the location a rail terminal?", "summaryview": "false"}';
 COMMENT ON COLUMN bflocationtype.airport IS '{"label": "Air port", "description": "Is the location a airport?", "summaryview": "false"}';
@@ -28,7 +28,7 @@ COMMENT ON COLUMN bflocationtype.fixedtransport IS '{"label": "Fixed transport",
 COMMENT ON COLUMN bflocationtype.bordercrossing IS '{"label": "Border crossing", "description": "Is the location a border crossing?", "summaryview": "false"}';
 COMMENT ON COLUMN bflocationtype.roadterminal IS '{"label": "Road terminal", "description": "Is the location a road terminal?", "summaryview": "false"}';
 COMMENT ON COLUMN bflocationtype.portclassification IS '{"label": "Port classification", "description": "The classification of port type.", "summaryview": "true"}';
-COMMENT ON COLUMN bflocationtype.description IS '{"label": "Description", "description": "Description of port crossing.", "summaryview": "true"}';
+COMMENT ON COLUMN bflocationtype.description IS '{"label": "Description", "description": "Description of port crossing.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN bflocationtype.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN bflocationtype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN bflocationtype.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

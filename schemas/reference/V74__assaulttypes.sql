@@ -7,10 +7,10 @@ CREATE TABLE assaulttypes (
 );
 
 -- Table comment
-COMMENT ON TABLE assaulttypes IS '{"label": "Assault types", "description": "Types of assault.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE assaulttypes IS '{"label": "Assault types", "description": "Types of assault.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN assaulttypes.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN assaulttypes.label IS '{"label": "Assault", "description": "Description of assault type.", "summaryview": "true"}';
+COMMENT ON COLUMN assaulttypes.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN assaulttypes.label IS '{"label": "Assault", "description": "Description of assault type.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN assaulttypes.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN assaulttypes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN assaulttypes.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

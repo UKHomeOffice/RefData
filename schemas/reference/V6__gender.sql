@@ -7,7 +7,7 @@ CREATE TABLE gender (
 );
 
 -- Table comment
-COMMENT ON TABLE gender IS '{"label": "Gender", "description": "A list of current groups on the gender spectrum.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE gender IS '{"label": "Gender", "description": "A list of current groups on the gender spectrum.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN gender.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN gender.gender IS '{"label": "Gender", "businesskey": true, "description": "The name of the gender.", "summaryview": "true"}';

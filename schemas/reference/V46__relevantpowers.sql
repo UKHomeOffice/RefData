@@ -14,10 +14,10 @@ CREATE TABLE relevantpowers (
 );
 
 -- Table comment
-COMMENT ON TABLE relevantpowers IS '{"label": "Relevant Powers",  "description": "Legal powers that can be used.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE relevantpowers IS '{"label": "Relevant Powers",  "description": "Legal powers that can be used.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN relevantpowers.id IS '{"label": "Identifier", "description": "Unique identifying column.",  "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN relevantpowers.code IS '{"label": "Legal code", "businesskey": true, "description": "The code of the relevant power.", "summaryview": "true"}';
+COMMENT ON COLUMN relevantpowers.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN relevantpowers.code IS '{"label": "Legal code", "businesskey": true, "description": "The code of the relevant power.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.fullname IS '{"label": "Name", "description": "The name of the relevant power.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.description IS '{"label": "Description", "description": "A short description of the power.", "summaryview": "true"}';
 COMMENT ON COLUMN relevantpowers.url IS '{"label": "URL", "description": "Link to the full power in legislation.", "summaryview": "true"}';

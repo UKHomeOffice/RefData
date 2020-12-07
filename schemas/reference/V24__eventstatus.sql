@@ -7,10 +7,10 @@ CREATE TABLE eventstatus (
 );
 
 -- Table comment
-COMMENT ON TABLE eventstatus IS '{"label": "Event status", "description": "A list of event descriptions and statuses.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE eventstatus IS '{"label": "Event status", "description": "A list of event descriptions and statuses.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN eventstatus.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN eventstatus.status IS '{"label": "Status", "description": "Status description for the event.", "summaryview": "true"}';
+COMMENT ON COLUMN eventstatus.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN eventstatus.status IS '{"label": "Status", "description": "Status description for the event.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN eventstatus.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN eventstatus.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN eventstatus.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

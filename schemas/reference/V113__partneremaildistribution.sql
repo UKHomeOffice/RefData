@@ -10,10 +10,10 @@ CREATE TABLE partneremaildistribution (
 );
 
 -- Table comment
-COMMENT ON TABLE partneremaildistribution IS '{"label": "Partner Emails", "description": "Email distribution list for external partners of the Fast Parcels capability.", owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE partneremaildistribution IS '{"label": "Partner Emails", "description": "Email distribution list for external partners of the Fast Parcels capability.", owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN partneremaildistribution.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column", "summaryview": "false"}';
-COMMENT ON COLUMN partneremaildistribution.email IS '{"label": "Email", "description": "Email address of the POC.", "summaryview": "true"}';
+COMMENT ON COLUMN partneremaildistribution.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
+COMMENT ON COLUMN partneremaildistribution.email IS '{"label": "Email", "description": "Email address of the POC.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN partneremaildistribution.agency IS '{"label": "Partner Agency", "description": "Identifier of Partner Agency.", "summaryview": "true"}';
 COMMENT ON COLUMN partneremaildistribution.fpcommodity IS '{"label": "Fast Parcel Commodity", "description": "Current commodity theme.", "summaryview": "true"}';
 COMMENT ON COLUMN partneremaildistribution.policeregion IS '{"label": "Police Region", "description": "UK police region.", "summaryview": "true"}';

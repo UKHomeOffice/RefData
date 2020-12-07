@@ -11,10 +11,10 @@ CREATE TABLE outcomes (
 );
 
 -- Table comment
-COMMENT ON TABLE outcomes IS '{"label": "outcomes", "description": "The outcome of an event.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE outcomes IS '{"label": "outcomes", "description": "The outcome of an event.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN outcomes.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN outcomes.name IS '{"label": "Name", "description": "A description of the outcome.", "summaryview": "true"}';
+COMMENT ON COLUMN outcomes.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN outcomes.name IS '{"label": "Name", "description": "A description of the outcome.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN outcomes.nationalsecurity IS '{"label": "National Security", "description": "Is this outcome related to NS / CT?", "summaryview": "false"}';
 COMMENT ON COLUMN outcomes.remark IS '{"label": "Remark", "description": "Is this a remark?", "summaryview": "false"}';
 COMMENT ON COLUMN outcomes.nofurtheraction IS '{"label": "No Further Action", "description": "Is this an option for no further action", "summaryview": "false"}';

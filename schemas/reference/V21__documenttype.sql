@@ -9,10 +9,10 @@ CREATE TABLE documenttype (
 );
 
 -- Table comment
-COMMENT ON TABLE documenttype IS '{"label": "Identity document type", "description": "A list of identification document types.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE documenttype IS '{"label": "Identity document type", "description": "A list of identification document types.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN documenttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN documenttype.code IS '{"label": "Code", "businesskey": true, "description": "System codes associated with the document.", "summaryview": "true"}';
+COMMENT ON COLUMN documenttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN documenttype.code IS '{"label": "Code", "businesskey": true, "description": "System codes associated with the document.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN documenttype.shortdescription IS '{"label": "Short description", "description": "Short description of the documane code.", "summaryview": "true"}';
 COMMENT ON COLUMN documenttype.longdescription IS '{"label": "Long description", "description": "Long description of the document code.", "summaryview": "true"}';
 COMMENT ON COLUMN documenttype.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';

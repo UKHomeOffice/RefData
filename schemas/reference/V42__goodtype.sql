@@ -13,10 +13,10 @@ CREATE TABLE goodtype (
 );
 
 -- Table comment
-COMMENT ON TABLE goodtype IS '{"label": "Good type", "description": "Customs and seizure good type.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE goodtype IS '{"label": "Good type", "description": "Customs and seizure good type.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN goodtype.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN goodtype.level1name IS '{"label": "Name level 1", "description": "Name of high level category good.", "summaryview": "true"}';
+COMMENT ON COLUMN goodtype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN goodtype.level1name IS '{"label": "Name level 1", "description": "Name of high level category good.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN goodtype.level2name IS '{"label": "Name level 2", "description": "Name of high level category good.", "summaryview": "true"}';
 COMMENT ON COLUMN goodtype.level3name IS '{"label": "Name level 3", "description": "Name of high level category good.", "summaryview": "true"}';
 COMMENT ON COLUMN goodtype.description IS '{"label": "Description", "description": "Description of good.", "summaryview": "true"}';

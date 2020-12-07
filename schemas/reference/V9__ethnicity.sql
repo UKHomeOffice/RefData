@@ -9,9 +9,9 @@ CREATE TABLE ethnicity (
 );
 
 -- Table comment
-COMMENT ON TABLE ethnicity IS '{"label": "Ethnicity", "description": "A list of ethnicities and subethnicities.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE ethnicity IS '{"label": "Ethnicity", "description": "A list of ethnicities and subethnicities.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN ethnicity.id IS '{"label": "Identifier", "description": "Database unique identity record.", "businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN ethnicity.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN ethnicity.ethnicity IS '{"label": "Ethnicity", "businesskey": true, "description": "The ethnicities high level descriptor.", "summaryview": "true"}';
 COMMENT ON COLUMN ethnicity.subethnicity IS '{"label": "Sub Ethnicity", "description": "The ethnicities low level descriptor.", "summaryview": "true"}';
 COMMENT ON COLUMN ethnicity.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';

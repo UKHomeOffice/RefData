@@ -10,10 +10,10 @@ CREATE TABLE lockup (
 );
 
 -- Table comment
-COMMENT ON TABLE lockup IS '{"label": "Seizure lockup types", "description": "A list of seizure lockup types and their descriptions.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE lockup IS '{"label": "Seizure lockup types", "description": "A list of seizure lockup types and their descriptions.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN lockup.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN lockup.name IS '{"label": "Name", "description": "The name of the lockup.", "summaryview": "true"}';
+COMMENT ON COLUMN lockup.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN lockup.name IS '{"label": "Name", "description": "The name of the lockup.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN lockup.description IS '{"label": "Description", "description": "A description of the lockup.", "summaryview": "true"}';
 COMMENT ON COLUMN lockup.lockuptypeid IS '{"label": "Lockup type ID", "description": "Link to lockup type entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN lockup.locationid IS '{"label": "Location ID", "description": "Link to location entity.", "summaryview" : "false"}';

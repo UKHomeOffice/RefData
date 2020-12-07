@@ -11,10 +11,10 @@ CREATE TABLE intelligenceproducttype (
 );
 
 -- Table comment
-COMMENT ON TABLE intelligenceproducttype IS '{"label": "Intelligence product type", "description": "Types of intelligence product.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE intelligenceproducttype IS '{"label": "Intelligence product type", "description": "Types of intelligence product.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN intelligenceproducttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN intelligenceproducttype.name IS '{"label": "Name", "businesskey": true, "description": "Name of the product.", "summaryview": "true"}';
+COMMENT ON COLUMN intelligenceproducttype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN intelligenceproducttype.name IS '{"label": "Name", "businesskey": true, "description": "Name of the product.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN intelligenceproducttype.description IS '{"label": "Description", "description": "A description of the product.", "summaryview": "true"}';
 COMMENT ON COLUMN intelligenceproducttype.incoming IS '{"label": "Incoming?", "description": "Incoming?", "summaryview": "false"}';
 COMMENT ON COLUMN intelligenceproducttype.outgoing IS '{"label": "Outgoing?", "description": "Outgoing?", "summaryview": "false"}';

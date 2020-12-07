@@ -7,10 +7,10 @@ CREATE TABLE sex (
 );
 
 -- Table comment
-COMMENT ON TABLE sex IS '{"label": "Sex", "description": "Sex reference list.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE sex IS '{"label": "Sex", "description": "Sex reference list.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN sex.id IS '{"label": "Identifier", "businesskey": true, "description": "Character unique identity reference.","summaryview": "true", "aliases": "sexcharacter"}';
-COMMENT ON COLUMN sex.name IS '{"label": "Name", "description": "The name of the sex.", "summaryview": "true"}';
+COMMENT ON COLUMN sex.id IS '{"label": "Identifier", "description": "Character unique identity reference.","summaryview": "true", "aliases": "sexcharacter"}';
+COMMENT ON COLUMN sex.name IS '{"label": "Name", "description": "The name of the sex.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN sex.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN sex.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN sex.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

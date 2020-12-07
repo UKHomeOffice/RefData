@@ -7,9 +7,9 @@ CREATE TABLE title (
 );
 
 -- Table comment
-COMMENT ON TABLE title IS '{"label": "Title", "description": "A list of titles to be used when addressing a person.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE title IS '{"label": "Title", "description": "A list of titles to be used when addressing a person.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN title.id IS '{"label": "Identifier", "description": "Database unique identity record.", "businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN title.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN title.title IS '{"label": "Title", "businesskey": true, "description": "The name of the title.", "summaryview": "true"}';
 COMMENT ON COLUMN title.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN title.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

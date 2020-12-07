@@ -8,10 +8,10 @@ CREATE TABLE dogrole (
 );
 
 -- Table comment
-COMMENT ON TABLE dogrole IS '{"label": "Dog role", "description": "A description of the role played by dog team.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE dogrole IS '{"label": "Dog role", "description": "A description of the role played by dog team.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN dogrole.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN dogrole.code IS '{"label": "Code", "businesskey": true, "description": "A list of codes associated with the dog role.", "summaryview": "true"}';
+COMMENT ON COLUMN dogrole.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN dogrole.code IS '{"label": "Code", "businesskey": true, "description": "A list of codes associated with the dog role.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN dogrole.description IS '{"label": "Short description", "description": "A description of the dog role.", "summaryview": "true"}';
 COMMENT ON COLUMN dogrole.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN dogrole.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

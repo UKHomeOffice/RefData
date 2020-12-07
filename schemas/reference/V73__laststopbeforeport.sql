@@ -10,10 +10,10 @@ CREATE TABLE laststopbeforeport (
 );
 
 -- Table comment
-COMMENT ON TABLE laststopbeforeport IS '{"label": "Last stop before port", "description": "List of last stopping points in Europe before arriving at port.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE laststopbeforeport IS '{"label": "Last stop before port", "description": "List of last stopping points in Europe before arriving at port.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN laststopbeforeport.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN laststopbeforeport.description IS '{"label": "Description", "description": "Description of stopping point.", "summaryview": "true"}';
+COMMENT ON COLUMN laststopbeforeport.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN laststopbeforeport.description IS '{"label": "Description", "description": "Description of stopping point.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN laststopbeforeport.countryid IS '{"label": "Linked country id", "description": "Country link to Country dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN laststopbeforeport.geolat IS '{"label": "Latitude", "description": "Geographic latitude", "summaryview": "false"}';
 COMMENT ON COLUMN laststopbeforeport.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';

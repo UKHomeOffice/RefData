@@ -17,10 +17,10 @@ CREATE TABLE location (
 );
 
 -- Table comment
-COMMENT ON TABLE location IS '{"label": "Location", "description": "A list of locations and their associated details.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE location IS '{"label": "Location", "description": "A list of locations and their associated details.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN location.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN location.name IS '{"label": "Name", "description": "Location name", "summaryview": "true"}';
+COMMENT ON COLUMN location.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN location.name IS '{"label": "Name", "description": "Location name", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN location.geolat IS '{"label": "Latitude", "description": "Geographic latitude", "summaryview": "false"}';
 COMMENT ON COLUMN location.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';
 COMMENT ON COLUMN location.description IS '{"label": "Description", "description": "A description of the location.", "summaryview": "true"}';

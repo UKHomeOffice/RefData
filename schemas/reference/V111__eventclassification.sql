@@ -11,10 +11,10 @@ CREATE TABLE eventclassification (
 );
 
 -- Table comment
-COMMENT ON TABLE eventclassification IS '{"label": "Event Classification", "description": "Classification of breach events", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE eventclassification IS '{"label": "Event Classification", "description": "Classification of breach events", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN eventclassification.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN eventclassification.label IS '{"label": "Label", "description": "The label for the breach type", "summaryview": "true"}';
+COMMENT ON COLUMN eventclassification.id IS '{"label": "Identifier", "description": "Database unique identity record.", businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN eventclassification.label IS '{"label": "Label", "description": "The label for the breach type", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN eventclassification.description IS '{"label": "Description", "description": "The description of the breach type", "summaryview": "true"}';
 COMMENT ON COLUMN eventclassification.isvariance IS '{"label": "Variance", "description": "Is the event a Variance?", "summaryview": "false"}';
 COMMENT ON COLUMN eventclassification.iscontrolbreach IS '{"label": "Control Breach", "description": "Is the event a Control Breach?", "summaryview": "false"}';

@@ -7,10 +7,10 @@ CREATE TABLE restrainttechnique (
 );
 
 -- Table comment
-COMMENT ON TABLE restrainttechnique IS '{"label": "Restraint Technique", "description": "What restraint method was used?", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE restrainttechnique IS '{"label": "Restraint Technique", "description": "What restraint method was used?", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN restrainttechnique.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN restrainttechnique.label IS '{"label": "Technique", "description": "Description of restraint method.", "summaryview": "true"}';
+COMMENT ON COLUMN restrainttechnique.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN restrainttechnique.label IS '{"label": "Technique", "description": "Description of restraint method.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN restrainttechnique.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN restrainttechnique.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN restrainttechnique.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

@@ -9,10 +9,10 @@ CREATE TABLE department (
 );
 
 -- Table comment
-COMMENT ON TABLE department IS '{"label": "Department", "description": "A list of departments that make up the Home Office.",  "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 2}';
+COMMENT ON TABLE department IS '{"label": "Department", "description": "A list of departments that make up the Home Office.",  "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 2}';
 -- Column comments
-COMMENT ON COLUMN department.id IS '{"label": "Identifier", "description": "Database unique identity record.", "businesskey": "true", "summaryview": "false"}';
-COMMENT ON COLUMN department.name IS '{"label": "Department name", "description": "The name of the department.", "summaryview": "true"}';
+COMMENT ON COLUMN department.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN department.name IS '{"label": "Department name", "description": "The name of the department.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN department.code IS '{"label": "Department code", "businesskey": true, "description": "The code associated with the department.", "summaryview": "true"}';
 COMMENT ON COLUMN department.ministryid IS '{"label": "Ministry ID", "description": "Link to ministry entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN department.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';

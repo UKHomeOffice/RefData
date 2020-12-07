@@ -15,10 +15,10 @@ CREATE TABLE profileindicator (
 );
 
 -- Table comment
-COMMENT ON TABLE profileindicator IS '{"label": "Profile Indicator", "description": "A list of reasons for conducting a search on a particular vehicle.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE profileindicator IS '{"label": "Profile Indicator", "description": "A list of reasons for conducting a search on a particular vehicle.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN profileindicator.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN profileindicator.description IS '{"label": "Indicator", "description": "Reason for selecting the vehicle to search.", "summaryview": "true"}';
+COMMENT ON COLUMN profileindicator.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN profileindicator.description IS '{"label": "Indicator", "description": "Reason for selecting the vehicle to search.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.ien IS '{"label": "IEN", "description": "For use on IEN forms.", "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.ct IS '{"label": "CT", "description": "For use on CT forms.", "summaryview": "true"}';
 COMMENT ON COLUMN profileindicator.person IS '{"label": "Person", "description": "Person selection tag.", "summaryview": "true"}';

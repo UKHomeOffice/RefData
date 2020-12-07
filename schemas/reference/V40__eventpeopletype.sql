@@ -10,10 +10,10 @@ CREATE TABLE eventpeopletype (
 );
 
 -- Table comment
-COMMENT ON TABLE eventpeopletype IS '{"label": "Types of people", "description": "Types of people in an event.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE eventpeopletype IS '{"label": "Types of people", "description": "Types of people in an event.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN eventpeopletype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN eventpeopletype.type IS '{"label": "People type", "businesskey": true, "description": "The category of people in the event.", "summaryview": "true"}';
+COMMENT ON COLUMN eventpeopletype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
+COMMENT ON COLUMN eventpeopletype.type IS '{"label": "People type", "businesskey": true, "description": "The category of people in the event.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN eventpeopletype.description IS '{"label": "Description", "description": "A description of the people in the event.", "summaryview": "true"}';
 COMMENT ON COLUMN eventpeopletype.person IS '{"label": "Person type", "description": "Can be used to describe a person at an event.", "summaryview": "true"}';
 COMMENT ON COLUMN eventpeopletype.organization IS '{"label": "Organization type", "description": "Can be used to describe a organization at an event.", "summaryview": "true"}';

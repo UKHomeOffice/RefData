@@ -12,10 +12,10 @@ CREATE TABLE concealmentmethod (
 );
 
 -- Table comment
-COMMENT ON TABLE concealmentmethod IS '{"label": "Concealment methods", "description": "A list containing descriptions of the methods by which items and people are concealed.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE concealmentmethod IS '{"label": "Concealment methods", "description": "A list containing descriptions of the methods by which items and people are concealed.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN concealmentmethod.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN concealmentmethod.method IS '{"label": "Concealment", "description": "The method of concealment.", "summaryview": "true"}';
+COMMENT ON COLUMN concealmentmethod.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN concealmentmethod.method IS '{"label": "Concealment", "businesskey": true, "description": "The method of concealment.", "summaryview": "true"}';
 COMMENT ON COLUMN concealmentmethod.person IS '{"label": "Person", "description": "Person selection tag.", "summaryview": "true"}';
 COMMENT ON COLUMN concealmentmethod.sea IS '{"label": "Sea", "description": "Maritime selection tag.", "summaryview": "true"}';
 COMMENT ON COLUMN concealmentmethod.land IS '{"label": "Land", "description": "Land selection tag.", "summaryview": "ture"}';

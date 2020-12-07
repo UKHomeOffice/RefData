@@ -8,10 +8,10 @@ CREATE TABLE errorcodes (
 );
 
 -- Table comment
-COMMENT ON TABLE errorcodes IS '{"label": "Error codes", "description": "A list of error messages and descriptions.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE errorcodes IS '{"label": "Error codes", "description": "A list of error messages and descriptions.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN errorcodes.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique error code.", "summaryview": "false"}';
-COMMENT ON COLUMN errorcodes.message IS '{"label": "Message", "description": "System error message.", "summaryview": "true"}';
+COMMENT ON COLUMN errorcodes.id IS '{"label": "Identifier", "description": "Unique error code.", "summaryview": "false"}';
+COMMENT ON COLUMN errorcodes.message IS '{"label": "Message", "description": "System error message.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN errorcodes.description IS '{"label": "Description", "description": "A detailed description of the cause of the error.", "summaryview": "true"}';
 COMMENT ON COLUMN errorcodes.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN errorcodes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

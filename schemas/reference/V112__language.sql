@@ -9,10 +9,10 @@ CREATE TABLE language (
 );
 
 -- Table comment
-COMMENT ON TABLE language IS '{"label": "Language", "description": "Standardised list of world languages.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE language IS '{"label": "Language", "description": "Standardised list of world languages.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN language.id IS '{"label": "Identifier", "businesskey": true, "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN language.name IS '{"label": "Name", "description": "The ISO language name.", "summaryview": "true"}';
+COMMENT ON COLUMN language.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN language.name IS '{"label": "Name", "description": "The ISO language name.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN language.twolettercode IS '{"label": "Two letter code", "description": "Two letter codes for the representation of names of languages.", "summaryview": "true"}';
 COMMENT ON COLUMN language.threelettercode IS '{"label": "Three letter code", "description": "Three letter codes for the representation of names of languages.", "summaryview": "true"}';
 COMMENT ON COLUMN language.validfrom IS '{"label": "Valid from date", "description": "Language valid from date.", "summaryview": "false"}';

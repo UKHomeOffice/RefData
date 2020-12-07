@@ -10,10 +10,10 @@ CREATE TABLE currency (
 
 
 -- Table comment
-COMMENT ON TABLE currency IS '{"label": "Currencies", "description": "A list of global currencies.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE currency IS '{"label": "Currencies", "description": "A list of global currencies.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN currency.id IS '{"label": "Identifier", "description": "Database unique identity record.", "businesskey": true, "summaryview": "false"}';
-COMMENT ON COLUMN currency.currency IS '{"label": "Currency", "description": "The name of the currency.", "summaryview": "true"}';
+COMMENT ON COLUMN currency.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
+COMMENT ON COLUMN currency.currency IS '{"label": "Currency", "description": "The name of the currency.", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN currency.currencycode IS '{"label": "Code", "businesskey": true, "description": "The code associated with the currency.", "summaryview": "true"}';
 COMMENT ON COLUMN currency.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN currency.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

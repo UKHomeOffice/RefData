@@ -31,13 +31,13 @@ CREATE TABLE port (
 );
 
 -- Table comment
-COMMENT ON TABLE port IS '{"label": "Worldwide Port list", "businesskey": true, "description": "The list of worldwide port/location list.", "owner": "xyx@test.com", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE port IS '{"label": "Worldwide Port list", "businesskey": true, "description": "The list of worldwide port/location list.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
-COMMENT ON COLUMN port.id IS '{"label": "Identifier", "description": "Unique identifying column.", "businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN port.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN port.countryid IS '{"label": "Linked country id", "description": "Country link to Country dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN port.commandid IS '{"label": "Linked command id", "description": "Border force command link to command dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN port.locationid IS '{"label": "Linked location id", "description": "Border force location link to location dataset.", "summaryview": "false"}';
-COMMENT ON COLUMN port.name IS '{"label": "Name", "description": "Site name", "summaryview": "true"}';
+COMMENT ON COLUMN port.name IS '{"label": "Name", "description": "Site name", "businesskey": true, "summaryview": "true"}';
 COMMENT ON COLUMN port.addressid IS '{"label": "Linked address id", "description": "Links to non Home Office addresses.", "summaryview": "true"}';
 COMMENT ON COLUMN port.subdivision IS '{"label": "County Unlocode", "description": "County from unlocode list", "summaryview": "false", "aliases": "region"}';
 COMMENT ON COLUMN port.municipality IS '{"label": "City IATA", "description": "Municipality/region from IATA", "summaryview": "true", "aliases": ["city", "region"]}';
