@@ -72,9 +72,9 @@ steps:
   pull: if-not-exists
   image: python:3.6.1-alpine
   commands:
-  - /mnt/docker/validateSchema.sh
+  - /docker/validateSchema.sh
   environment:
-    WORKDIR: /mnt/schemas/reference
+    WORKDIR: /schemas/reference
   volumes:
   - name: dockersock
     path: /var/run
@@ -94,8 +94,8 @@ steps:
   - /usr/bin/create_ssh_key.sh
   - /usr/bin/ssh-keyscan -T 10 -p $${GIT_REPO_PRIVATE_PORT} $${GIT_REPO_PRIVATE_URL}  >> ~/.ssh/known_hosts
   - git clone $${PRIVATE_GIT_URL} private-refdata
-  - /mnt/docker/reset.sh
-  - /mnt/docker/run.sh
+  - /docker/reset.sh
+  - /docker/run.sh
   - cd /mnt/private-refdata
   - /mnt/private-refdata/docker/run.sh
   environment:
@@ -169,7 +169,7 @@ steps:
     - promote
     target:
     - dev
-    
+
 
 - name: deploy_to_staging
   pull: if-not-exists

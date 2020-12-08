@@ -1,7 +1,7 @@
-id,name,departmentid,validfrom,validto
-1,Operational Assurance,1,OPAS,2019-01-01 00:01:00+00,
-2,Border Force Operations,1,BFOPS,2019-01-01 00:01:00+00,
-3,Border Systems,1,BSYS,2019-01-01 00:01:00+00,
-4,Border Readiness,1,EUX,2019-01-01 00:01:00+00,
-5,Strategic Capabilities and Planning,1,SYTRAN,2019-01-01 00:01:00+00,
-6,Digital Data and Technology,2,DDAT,2019-01-01 00:01:00+00,
+id,name,departmentid,code,validfrom,validto,updatedby
+1,Operational Assurance,1,OPAS,2019-01-01 00:01:00+00,,
+2,Border Force Operations,1,BFOPS,2019-01-01 00:01:00+00,,
+3,Border Systems,1,BSYS,2019-01-01 00:01:00+00,,
+4,Border Readiness,1,EUX,2019-01-01 00:01:00+00,,
+5,Strategic Capabilities and Planning,1,SYTRAN,2019-01-01 00:01:00+00,,
+6,Digital Data and Technology,2,DDAT,2019-01-01 00:01:00+00,,

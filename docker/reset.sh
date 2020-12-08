@@ -25,15 +25,17 @@ export REFERENCE_ANONUSERNAME=${DB_REF_REFERENCE_ANON_USERNAME}
 export REFERENCE_SERVICEUSERNAME=${DB_REF_REFERENCE_SERVICE_USERNAME}
 export REFERENCE_READONLYUSERNAME=${DB_REF_REFERENCE_READONLY_USERNAME}
 
-export GOVERNANCE_AUTHENTICATOR_USERNAME=${DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME}
-export GOVERNANCE_ANON_USERNAME=${DB_REF_GOVERNANCE_ANON_USERNAME}
-export GOVERNANCE_SERVICE_USERNAME=${DB_REF_GOVERNANCE_SERVICE_USERNAME}
-export GOVERNANCE_READONLY_USERNAME=${DB_REF_GOVERNANCE_READONLY_USERNAME}
-
+# remove line after next deployment
 export REFDB_URL="postgresql://${GOVERNANCE_OWNERNAME}:${GOVERNANCE_OWNERPASSWORD}@${DB_REF_HOSTNAME}:${DB_REF_PORT}/${DB_REF_DEFAULT_DBNAME}${DB_REF_OPTIONS}"
+
+# comment line in after next deployment
+#export REFDB_URL="postgresql://${GOVERNANCE_OWNERNAME}:${GOVERNANCE_OWNERPASSWORD}@${DB_REF_HOSTNAME}:${DB_REF_PORT}/${DB_REF_DEFAULT_DBNAME}${DB_REF_OPTIONS}"
 
 echo "Clear reference DB"
 psql ${REFDB_URL} -c "drop database if exists ${DB_REF_REFERENCE_DBNAME};"
 
 echo "Clear roles and schemas"
-psql ${ROOT_URL} -c "drop table if exists flyway_schema_history; drop role if exists ${GOVERNANCE_AUTHENTICATOR_USERNAME}; drop role if exists ${REFERENCE_AUTHENTICATOR_USERNAME}; drop role if exists ${GOVERNANCE_ANON_USERNAME}; drop role if exists ${GOVERNANCE_SERVICE_USERNAME}; drop role if exists ${GOVERNANCE_READONLY_USERNAME}; drop role if exists ${GOVERNANCE_OWNERNAME}; drop role if exists ${REFERENCE_OWNERNAME}; drop role if exists ${REFERENCE_ANONUSERNAME}; drop role if exists ${REFERENCE_SERVICEUSERNAME}; drop role if exists ${REFERENCE_READONLYUSERNAME};"
+psql ${ROOT_URL} -c "drop table if exists flyway_schema_history; drop role if exists ${REFERENCE_AUTHENTICATOR_USERNAME}; drop role if exists ${REFERENCE_OWNERNAME}; drop role if exists ${REFERENCE_ANONUSERNAME}; drop role if exists ${REFERENCE_SERVICEUSERNAME}; drop role if exists ${REFERENCE_READONLYUSERNAME};"
+
+# remove line after next deployment
+psql ${ROOT_URL} -c "drop role if exists ${GOVERNANCE_AUTHENTICATOR_USERNAME}; drop role if exists ${GOVERNANCE_ANON_USERNAME}; drop role if exists ${GOVERNANCE_SERVICE_USERNAME}; drop role if exists ${GOVERNANCE_READONLY_USERNAME}; drop role if exists ${GOVERNANCE_OWNERNAME};"

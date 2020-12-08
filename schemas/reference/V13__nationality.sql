@@ -11,15 +11,16 @@ CREATE TABLE nationality (
   specialexception BOOLEAN NOT NULL,
   countryid INTEGER NULL REFERENCES country(id),
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 
 -- Table comment
-COMMENT ON TABLE nationality IS '{"label": "Nationalities", "description": "A list of global nationalities.", "schemalastupdated": "10/03/2019", "dataversion": 1}';
+COMMENT ON TABLE nationality IS '{"label": "Nationalities", "description": "A list of global nationalities.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN nationality.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN nationality.nationality IS '{"label": "Nationality", "description": "The name of the nationality.", "summaryview": "true"}';
+COMMENT ON COLUMN nationality.nationality IS '{"label": "Nationality", "businesskey": true, "description": "The name of the nationality.", "summaryview": "true"}';
 COMMENT ON COLUMN nationality.description IS '{"label": "Description", "description": "Descriptions nationality.", "summaryview": "true"}';
 COMMENT ON COLUMN nationality.iso31661alpha3 IS '{"label": "3 digit alpha code", "description": "The countries 3 Character alpha code.", "summaryview": "true"}';
 COMMENT ON COLUMN nationality.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The countries 2 Character alpha code.", "summaryview": "true"}';
@@ -30,8 +31,9 @@ COMMENT ON COLUMN nationality.specialexception IS '{"label": "Exception - Specia
 COMMENT ON COLUMN nationality.countryid IS '{"label": "Linked country id", "description": "The countries link to the Country dataset.", "summaryview": "false"}';
 COMMENT ON COLUMN nationality.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN nationality.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN nationality.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON nationality TO ${anonuser};
-GRANT SELECT ON nationality TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON nationality TO ${serviceuser};
 GRANT SELECT ON nationality TO ${readonlyuser};

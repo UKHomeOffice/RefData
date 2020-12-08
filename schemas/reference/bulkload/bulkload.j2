@@ -18,7 +18,8 @@ INSERT INTO ministry
         name = EXCLUDED.name,
         code = EXCLUDED.code,
         validfrom = EXCLUDED.validfrom,
-        validto = EXCLUDED.validto;
+        validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpministry;
 
@@ -45,7 +46,8 @@ UPDATE
     ministryid = EXCLUDED.ministryid,
     code = EXCLUDED.code,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpdepartment;
 
@@ -72,7 +74,8 @@ UPDATE
     departmentid = EXCLUDED.departmentid,
     code = EXCLUDED.code,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpdirectorate;
 
@@ -99,7 +102,8 @@ UPDATE
     directorateid = EXCLUDED.directorateid,
     code = EXCLUDED.code,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpbranch;
 
@@ -124,7 +128,8 @@ UPDATE
   SET
     gender = EXCLUDED.gender,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpgender;
 
@@ -149,7 +154,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpsex;
 
@@ -174,7 +180,8 @@ UPDATE
   SET
     title = EXCLUDED.title,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptitle;
 
@@ -200,7 +207,8 @@ UPDATE
     ethnicity = EXCLUDED.ethnicity,
     subethnicity = EXCLUDED.subethnicity,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpethnicity;
 
@@ -226,7 +234,8 @@ UPDATE
     code = EXCLUDED.code,
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpmarital;
 
@@ -251,7 +260,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpreligion;
 
@@ -296,7 +306,8 @@ UPDATE
     euoutermost = EXCLUDED.euoutermost,
     euoverseasassociation = EXCLUDED.euoverseasassociation,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpcountry;
 
@@ -329,7 +340,8 @@ UPDATE
     specialexception = EXCLUDED.specialexception,
     countryid = EXCLUDED.countryid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpnationality;
 
@@ -355,7 +367,8 @@ UPDATE
     currency = EXCLUDED.currency,
     currencycode = EXCLUDED.currencycode,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpcurrency;
 
@@ -380,7 +393,8 @@ UPDATE
   SET
     bffunction = EXCLUDED.bffunction,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpbffunctiontypes;
 
@@ -414,7 +428,8 @@ UPDATE
     portclassification = EXCLUDED.portclassification,
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpbflocationtype;
 
@@ -448,7 +463,8 @@ UPDATE
     rail = EXCLUDED.rail,
     parcel = EXCLUDED.parcel,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpcarrierlist;
 
@@ -474,7 +490,8 @@ UPDATE
     description = EXCLUDED.description,
     competence = EXCLUDED.competence,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpcompetence;
 
@@ -499,7 +516,8 @@ UPDATE
     description = EXCLUDED.description,
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 
 DROP TABLE tmpcrewrole;
@@ -525,7 +543,8 @@ UPDATE
   SET
     recordname = EXCLUDED.recordname,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpcriminalrecordtype;
 
@@ -552,7 +571,8 @@ UPDATE
     shortdescription = EXCLUDED.shortdescription,
     longdescription = EXCLUDED.longdescription,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpdocumenttype;
 
@@ -578,7 +598,8 @@ UPDATE
     code = EXCLUDED.code,
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpdogrole;
 
@@ -603,7 +624,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpemploymenttypes;
 
@@ -628,7 +650,8 @@ UPDATE
   SET
     status = EXCLUDED.status,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpeventstatus;
 
@@ -654,7 +677,8 @@ UPDATE
     type = EXCLUDED.type,
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpfinancialinstrument;
 
@@ -682,7 +706,8 @@ UPDATE
     iso31661alpha2 = EXCLUDED.iso31661alpha2,
     countryid = EXCLUDED.countryid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpgeographicregion;
 
@@ -708,7 +733,8 @@ UPDATE
     name = EXCLUDED.name,
     parentgradetypeid = EXCLUDED.parentgradetypeid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpgrade;
 
@@ -741,7 +767,8 @@ UPDATE
     iso31661alpha2 = EXCLUDED.iso31661alpha2,
     countryid = EXCLUDED.countryid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpicao;
 
@@ -766,7 +793,8 @@ UPDATE
   SET
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmplegtypes;
 
@@ -792,7 +820,8 @@ UPDATE
     type = EXCLUDED.type,
     ien = EXCLUDED.ien,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpmodeoftransport;
 
@@ -819,7 +848,8 @@ UPDATE
     type = EXCLUDED.type,
     personorfreight = EXCLUDED.personorfreight,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpbordercrossingmode;
 
@@ -844,7 +874,8 @@ UPDATE
   SET
     status = EXCLUDED.status,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptdaapprovalstatus;
 
@@ -869,7 +900,8 @@ UPDATE
   SET
     reason = EXCLUDED.reason,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptdareasons;
 
@@ -894,7 +926,8 @@ UPDATE
   SET
     status = EXCLUDED.status,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptechnicalprojectstatus;
 
@@ -935,7 +968,8 @@ UPDATE
     iso31661alpha2 = EXCLUDED.iso31661alpha2,
     countryid = EXCLUDED.countryid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 ;
 
 DROP TABLE tmpunlocode;
@@ -962,7 +996,8 @@ UPDATE
   SET
     area = EXCLUDED.area,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpworkarea;
 
@@ -987,7 +1022,8 @@ UPDATE
     name = EXCLUDED.name,
     description = EXCLUDED.description,
     validfrom = Excluded.validfrom,
-    validto = Excluded.validto;
+    validto = Excluded.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpclearancetype;
 
@@ -1012,7 +1048,8 @@ UPDATE
   SET
     unit = EXCLUDED.unit,
     validfrom = Excluded.validfrom,
-    validto = Excluded.validto;
+    validto = Excluded.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpunit;
 
@@ -1037,7 +1074,8 @@ UPDATE
     name = EXCLUDED.name,
     carrierid = EXCLUDED.carrierid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpferries;
 
@@ -1062,7 +1100,8 @@ UPDATE
     route = EXCLUDED.route,
     carrierid = EXCLUDED.carrierid,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpferryroutes;
 
@@ -1086,7 +1125,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptrailertypes;
 
@@ -1110,7 +1150,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmppaymenttypes;
 
@@ -1134,7 +1175,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptypesofillegals;
 
@@ -1158,7 +1200,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpmedicalassistance;
 
@@ -1182,7 +1225,8 @@ UPDATE
   SET
     size = EXCLUDED.size,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpcontainersize;
 
@@ -1207,7 +1251,8 @@ UPDATE
     name = EXCLUDED.name,
     validpst = EXCLUDED.validpst,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmptraininglevels;
 
@@ -1232,7 +1277,8 @@ UPDATE
     name = EXCLUDED.name,
     validpst = EXCLUDED.validpst,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmplasttrained;
 
@@ -1257,7 +1303,8 @@ UPDATE
     name = EXCLUDED.name,
     validpst = EXCLUDED.validpst,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpsubjectbehaviour;
 
@@ -1283,7 +1330,8 @@ UPDATE
     warning = EXCLUDED.warning,
     danger = EXCLUDED.danger,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpbehavioursigns;
 
@@ -1309,7 +1357,8 @@ UPDATE
     pressure = EXCLUDED.pressure,
     nerve = EXCLUDED.nerve,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmppstmethods;
 
@@ -1333,7 +1382,8 @@ UPDATE
   SET
     occupation = EXCLUDED.occupation,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpoccupation;
 
@@ -1363,7 +1413,8 @@ UPDATE
     goodsbrand = EXCLUDED.goodsbrand,
     commoditybrand = EXCLUDED.commoditybrand,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpbrand;
 
@@ -1387,7 +1438,8 @@ UPDATE
   SET
     name = EXCLUDED.name,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpterminal;
 
@@ -1413,7 +1465,8 @@ UPDATE
     description = EXCLUDED.description,
     family = EXCLUDED.family,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmprelation;
 
@@ -1438,7 +1491,8 @@ UPDATE
     injurycause = EXCLUDED.injurycause,
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpinjurycause;
 
@@ -1463,7 +1517,8 @@ UPDATE
     characteristic = EXCLUDED.characteristic,
     description = EXCLUDED.description,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmpprotectedcharacteristics;
 
@@ -1489,6 +1544,7 @@ UPDATE
     twolettercode = EXCLUDED.twolettercode,
     threelettercode = EXCLUDED.threelettercode,
     validfrom = EXCLUDED.validfrom,
-    validto = EXCLUDED.validto;
+    validto = EXCLUDED.validto,
+    updatedby = EXCLUDED.updatedby;
 
 DROP TABLE tmplanguage;
