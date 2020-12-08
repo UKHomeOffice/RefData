@@ -54,7 +54,6 @@ cat <<EOF >>/tmp/bootstrap.sql
 \c $DB_DBNAME
 CREATE SCHEMA $DB_SCHEMA AUTHORIZATION $DB_OWNERNAME;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA $DB_SCHEMA;
-DROP SCHEMA public;
 \c $DB_DEFAULT_DBNAME
 REVOKE $DB_OWNERNAME FROM $FLYWAY_PLACEHOLDERS_MASTERUSER;
 \q
@@ -84,6 +83,8 @@ export FLYWAY_PASSWORD=${DB_OWNERPASSWORD}
 export FLYWAY_SCHEMAS=${DB_SCHEMA}
 export FLYWAY_PLACEHOLDERS_SCHEMA=${DB_SCHEMA}
 export FLYWAY_LOCATIONS="filesystem:/schemas/reference"
+
+env
 
 flyway -configFiles=/docker/flyway_reference_docker.conf migrate
 if [[ "$?" != 0 ]]
