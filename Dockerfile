@@ -28,7 +28,7 @@ RUN apt update \
     && chmod 600 /home/java/.ssh /root/.ssh \
     && chmod +x /usr/bin/create_ssh_key.sh
 
-ENV PATH="/app:${PATH}"
+ENV PATH="/flyway:/app:${PATH}"
 ENV PYTHONPATH="/python:${PYTHONPATH}"
 
 USER java
