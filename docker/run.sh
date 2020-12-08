@@ -5,7 +5,7 @@ set +x
 
 echo "Exporting environment variables"
 
-export URL="postgresql://${FLYWAY_USER}:${FLYWAY_PASSWORD}${DB_HOSTNAME}:${DB_PORT}/${DB_DEFAULT_NAME}${DB_OPTIONS}"
+export URL="postgresql://${FLYWAY_USER}:${FLYWAY_PASSWORD}@${DB_HOSTNAME}:${DB_PORT}/${DB_DEFAULT_NAME}${DB_OPTIONS}"
 export FLYWAY_URL="jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_DEFAULT_NAME}${DB_JDBC_OPTIONS}"
 
 export FLYWAY_PLACEHOLDERS_MASTERUSER=${FLYWAY_USER}
@@ -16,6 +16,8 @@ export FLYWAY_PLACEHOLDERS_REFERENCESCHEMA=${DB_SCHEMA}
 
 export BASEPATH="${PWD}"
 echo "Running from base path: ${BASEPATH}"
+
+env
 
 echo "Checking if postgres is up and ready for connections"
 i=0
