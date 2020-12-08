@@ -29,7 +29,7 @@ RUN apt update \
     && chmod +x /usr/bin/create_ssh_key.sh
 
 ENV PATH="/app:${PATH}"
-ENV PYTHONPATH="/python:${PYTHONPATH}
+ENV PYTHONPATH="/python:${PYTHONPATH}"
 
 USER java
 ENTRYPOINT ["flyway"]
