@@ -12,21 +12,14 @@ RUN mkdir -p /flyway \
 
 COPY docker /docker
 COPY schemas /schemas
-COPY python /python
-ADD create_ssh_key.sh /usr/bin/create_ssh_key.sh
 
 RUN apt update \
     && apt upgrade -y \
-    && apt install -y openssl ca-certificates bash curl postgresql-client git gettext gnupg python3-pip \
+    && apt install -y openssl ca-certificates bash postgresql-client\
     && rm -rf /var/lib/apt/lists/* \
-    && pip3 install yasha colorclass terminaltables setuptools wheel \
-    && apt remove -v python-pip3 \
     && apt autoremove -y \
     && apt clean \
-    && mkdir -p /home/java/.ssh /root/.ssh \
-    && chown -R java:java /home/java /docker /flyway /schemas \
-    && chmod 600 /home/java/.ssh /root/.ssh \
-    && chmod +x /usr/bin/create_ssh_key.sh
+    && chown -R java:java /home/java /docker /flyway /schemas
 
 ENV PATH="/flyway:/app:${PATH}"
 ENV PYTHONPATH="/python:${PYTHONPATH}"

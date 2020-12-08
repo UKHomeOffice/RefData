@@ -14,14 +14,11 @@ export FLYWAY_PLACEHOLDERS_REFERENCEOWNERNAME=${DB_OWNERNAME}
 export FLYWAY_PLACEHOLDERS_REFERENCEOWNERPASSWORD=${DB_OWNERPASSWORD}
 export FLYWAY_PLACEHOLDERS_REFERENCESCHEMA=${DB_SCHEMA}
 
-export BASEPATH="${PWD}"
-echo "Running from base path: ${BASEPATH}"
-
 env
 
 echo "Checking if postgres is up and ready for connections"
 i=0
-pg_isready -d ${URL} -U ${FLYWAY_USER} -t 60
+pg_isready -d ${URL} -t 60
 PG_EXIT=$?
 while [[ "${i}" -lt "5" && ${PG_EXIT} != 0 ]]
 do
@@ -33,7 +30,7 @@ do
         exit 1
     fi
     ((i++))
-    pg_isready -d ${URL} -U ${FLYWAY_USER} -t 60
+    pg_isready -d ${URL} -t 60
     PG_EXIT=$?
 done
 
@@ -45,15 +42,25 @@ then
     echo "Database already exists"
 else
     echo "Database does not exist creating - Bootstrapping databases"
-    export FLYWAY_LOCATIONS="filesystem:${BASEPATH}/schemas/init"
-    flyway -configFiles=${BASEPATH}/docker/flyway_init_docker.conf migrate
+    export FLYWAY_LOCATIONS="filesystem:/schemas/init"
+    flyway -configFiles=/docker/flyway_init_docker.conf migrate
     if [[ "$?" != 0 ]]
     then
         echo "Error: initialising database"
         exit 1
     fi
-    cd ${BASEPATH}/docker/
-    yasha bootstrap.j2 -o /tmp/bootstrap.sql
+
+cat <<EOF >>/tmp/bootstrap.sql
+\c $DB_DBNAME
+CREATE SCHEMA $DB_SCHEMA AUTHORIZATION $DB_OWNERNAME;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA $DB_SCHEMA;
+DROP SCHEMA public;
+\c $DB_DEFAULT_DBNAME
+REVOKE $DB_OWNERNAME FROM $FLYWAY_PLACEHOLDERS_MASTERUSER;
+\q
+EOF
+
+    cat /tmp/bootstrap.sql
     psql ${URL} < /tmp/bootstrap.sql
     if [[ "$?" != 0 ]]
     then
@@ -63,7 +70,7 @@ else
 fi
 
 #echo "Converting CSVs into bulk load"
-#yasha -v ${BASEPATH}/schemas/reference/bulkload/var.yaml ${BASEPATH}/schemas/reference/bulkload/bulkload.j2 -o ${BASEPATH}/schemas/reference/R__bulkload.sql
+#yasha -v /schemas/reference/bulkload/var.yaml /schemas/reference/bulkload/bulkload.j2 -o /schemas/reference/R__bulkload.sql
 #if [[ "$?" != 0 ]]
 #then
 #    echo "yasha conversion of csv's to bulk load file failed"
@@ -76,9 +83,9 @@ export FLYWAY_USER=${DB_OWNERNAME}
 export FLYWAY_PASSWORD=${DB_OWNERPASSWORD}
 export FLYWAY_SCHEMAS=${DB_SCHEMA}
 export FLYWAY_PLACEHOLDERS_SCHEMA=${DB_SCHEMA}
-export FLYWAY_LOCATIONS="filesystem:${BASEPATH}/schemas/reference"
+export FLYWAY_LOCATIONS="filesystem:/schemas/reference"
 
-flyway -configFiles=${BASEPATH}/docker/flyway_reference_docker.conf migrate
+flyway -configFiles=/docker/flyway_reference_docker.conf migrate
 if [[ "$?" != 0 ]]
 then
     echo "Error: migration of reference db failed"
