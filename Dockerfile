@@ -1,4 +1,3 @@
-
 FROM digitalpatterns/jre:latest
 
 # Add the flyway user and step in the directory
