@@ -11,3 +11,4 @@ id,name,parentgradetypeid,validfrom,validto
 "02de92d8-aad1-4663-a37f-a87012f60f1b","Assistant Officer / Administrative Officer","1c140011-46ad-4a5d-af25-e80a6fcdcdba",,
 "9910a29d-7fbb-451d-8729-f39f4373bbcc","Assistant Office / Messenger","02de92d8-aad1-4663-a37f-a87012f60f1b",,
 "073b92f8-7208-4026-a090-906c276079f1","Contractor",,,
+"c27cf914-0b97-4c4e-bb2d-2ae4b886baa5","Agency Staff",,,
