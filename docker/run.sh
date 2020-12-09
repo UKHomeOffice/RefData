@@ -36,7 +36,7 @@ done
 
 
 echo "Checking if database exists"
-STATUS=$( psql ${URL} -tc "SELECT 1 FROM pg_database WHERE datname='${DB_DBNAME}'" | sed -e 's/^[ \t]*//')
+STATUS=$( psql ${URL} -tc "SELECT 1 FROM pg_database WHERE datname='${DB_NAME}'" | sed -e 's/^[ \t]*//')
 if [[ "${STATUS}" == "1" ]]
 then
     echo "Database already exists"
@@ -51,10 +51,11 @@ else
     fi
 
 cat <<EOF >>/tmp/bootstrap.sql
-\c $DB_DBNAME
+\c $DB_NAME
 CREATE SCHEMA $DB_SCHEMA AUTHORIZATION $DB_OWNERNAME;
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA $DB_SCHEMA;
-\c $DB_DEFAULT_DBNAME
+DROP SCHEMA public;
+\c $DB_DEFAULT_NAME
 REVOKE $DB_OWNERNAME FROM $FLYWAY_PLACEHOLDERS_MASTERUSER;
 \q
 EOF
@@ -77,7 +78,7 @@ fi
 #fi
 
 echo "Starting migration of reference data"
-export FLYWAY_URL="jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_DBNAME}${DB_JDBC_OPTIONS}"
+export FLYWAY_URL="jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}${DB_JDBC_OPTIONS}"
 export FLYWAY_USER=${DB_OWNERNAME}
 export FLYWAY_PASSWORD=${DB_OWNERPASSWORD}
 export FLYWAY_SCHEMAS=${DB_SCHEMA}

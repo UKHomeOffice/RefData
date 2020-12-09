@@ -1,7 +1,0 @@
-\c {{ 'DB_DBNAME' | env }}
-CREATE SCHEMA {{ 'DB_SCHEMA' | env }} AUTHORIZATION {{ 'DB_OWNERNAME' | env }};
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp" SCHEMA {{ 'DB_SCHEMA' | env }};
-DROP SCHEMA public;
-\c {{ 'DB_DEFAULT_DBNAME' | env }}
-REVOKE {{ 'DB_OWNERNAME' | env }} FROM {{ 'FLYWAY_PLACEHOLDERS_MASTERUSER' | env }};
-\q
