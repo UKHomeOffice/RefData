@@ -19,6 +19,6 @@ COMMENT ON COLUMN ethnicity.validto IS '{"label": "Valid to date", "description"
 COMMENT ON COLUMN ethnicity.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT, INSERT, UPDATE ON ethnicity TO ${anonuser};
-GRANT SELECT ON ethnicity TO ${serviceuser};
+GRANT SELECT ON ethnicity TO ${anonuser};
+GRANT SELECT,INSERT,UPDATE  ON ethnicity TO ${serviceuser};
 GRANT SELECT ON ethnicity TO ${readonlyuser};

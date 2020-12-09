@@ -16,6 +16,6 @@ COMMENT ON COLUMN gender.validto IS '{"label": "Valid to date", "description": "
 COMMENT ON COLUMN gender.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT,INSERT,UPDATE ON gender TO ${anonuser};
-GRANT SELECT ON gender TO ${serviceuser};
+GRANT SELECT ON gender TO ${anonuser};
+GRANT SELECT,INSERT,UPDATE ON gender TO ${serviceuser};
 GRANT SELECT ON gender TO ${readonlyuser};
