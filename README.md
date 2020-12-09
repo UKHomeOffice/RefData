@@ -27,3 +27,7 @@ Optional entities for column comments:
 ## Local Deployment Testing
 
 Please see https://gitlab.digital.homeoffice.gov.uk/cop/manifest
+
+
+# There should be NO CSVs checked into the repo
+
