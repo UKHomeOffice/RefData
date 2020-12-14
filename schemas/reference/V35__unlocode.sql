@@ -26,12 +26,12 @@ CREATE TABLE unlocode (
 COMMENT ON TABLE unlocode IS '{"label": "United Nations location code", "description": "The United Nations location code list as defined in the ISO 3166-1 Standard.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN unlocode.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN unlocode.name IS '{"label": "Name", "description": "Location name", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN unlocode.name IS '{"label": "Name", "description": "Location name", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN unlocode.geolat IS '{"label": "Latitude", "description": "Geographic latitude", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.geolong IS '{"label": "Longitude", "description": "Geographic longitude", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.namewodiacritics IS '{"label": "Name with diacritics", "description": "Location name including diacritics.", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.iata IS '{"label": "IATA", "description": "IATA code", "summaryview": "false"}';
-COMMENT ON COLUMN unlocode.locode IS '{"label": "Locode", "businesskey": true, "description": "Location code", "summaryview": "false"}';
+COMMENT ON COLUMN unlocode.locode IS '{"label": "Locode", "businesskey": "true", "description": "Location code", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.seaport IS '{"label": "Sea port", "description": "Is this a sea port?", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.railterminal IS '{"label": "Rail terminal", "description": "Is this a rail terminal?", "summaryview": "false"}';
 COMMENT ON COLUMN unlocode.airport IS '{"label": "Airport", "description": "Is this an airport?", "summaryview": "false"}';

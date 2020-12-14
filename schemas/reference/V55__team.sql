@@ -22,8 +22,8 @@ CREATE TABLE team (
 COMMENT ON TABLE team IS '{"label": "Teams", "description": "A list of border force teams.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN team.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN team.name IS '{"label": "Name", "description": "The name of the team.", "businesskey": true, "summaryview": "true"}';
-COMMENT ON COLUMN team.code IS '{"label": "Code", "businesskey": true, "description": "The team code.", "summaryview": "true"}';
+COMMENT ON COLUMN team.name IS '{"label": "Name", "description": "The name of the team.", "businesskey": "true", "summaryview": "true"}';
+COMMENT ON COLUMN team.code IS '{"label": "Code", "businesskey": "true", "description": "The team code.", "summaryview": "true"}';
 COMMENT ON COLUMN team.description IS '{"label": "Description", "description": "A description of the team.", "summaryview": "true"}';
 COMMENT ON COLUMN team.costcentrecode IS '{"label": "Cost centre", "description": "The teams cost centre code.", "summaryview": "true"}';
 COMMENT ON COLUMN team.parentteamid IS '{"label": "Parent Team ID", "description": "The unique ID of the parten team.", "summaryview": "false"}';

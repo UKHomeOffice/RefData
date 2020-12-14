@@ -12,7 +12,7 @@ CREATE TABLE pstmethods (
 COMMENT ON TABLE pstmethods IS '{"label": "PST Methods", "description": "A list of PST methods", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN pstmethods.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN pstmethods.method IS '{"label": "Method", "description": "Technique method", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN pstmethods.method IS '{"label": "Method", "description": "Technique method", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN pstmethods.pressure IS '{"label": "Pressure", "description": "Is this a pressure method?", "summaryview": "true"}';
 COMMENT ON COLUMN pstmethods.nerve IS '{"label": "Nerve", "description": "Is this a nerve method?", "summaryview": "true"}';
 COMMENT ON COLUMN pstmethods.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';

@@ -11,7 +11,7 @@ CREATE TABLE portsize (
 COMMENT ON TABLE portsize IS '{"label": "Port Size", "description": "A scale categorizing the size of a port", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN portsize.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN portsize.rating IS '{"label": "Rating", "description": "Port Size Rating", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN portsize.rating IS '{"label": "Rating", "description": "Port Size Rating", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN portsize.description IS '{"label": "Description", "description": "A definition of the rating.", "summaryview": "false"}';
 COMMENT ON COLUMN portsize.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN portsize.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

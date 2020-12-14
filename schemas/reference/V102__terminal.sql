@@ -10,7 +10,7 @@ CREATE TABLE terminal (
 COMMENT ON TABLE terminal IS '{"label": "Terminals", "description": "A list of terminal options.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN terminal.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN terminal.name IS '{"label": "Name", "description": "Name of the terminal.", "businesskey": true, "summaryview": "false"}';
+COMMENT ON COLUMN terminal.name IS '{"label": "Name", "description": "Name of the terminal.", "businesskey": "true", "summaryview": "false"}';
 COMMENT ON COLUMN terminal.validfrom IS '{"label": "Valid from date", "description": "Terminal valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN terminal.validto IS '{"label": "Valid to date", "description": "Terminal valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN terminal.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

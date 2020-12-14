@@ -12,9 +12,9 @@ CREATE TABLE controlstrategy (
 COMMENT ON TABLE controlstrategy IS '{"label": "Control strategy", "description": "Details of the control strategy as set by Border Force.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "21/08/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN controlstrategy.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN controlstrategy.strategy IS '{"label": "Strategy", "description": "The strategy descriptor.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN controlstrategy.strategy IS '{"label": "Strategy", "description": "The strategy descriptor.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN controlstrategy.priority IS '{"label": "Priority", "description": "The priority letter assigned to the strategy.", "summaryview": "true"}';
-COMMENT ON COLUMN controlstrategy.code IS '{"label": "Code", "businesskey": true, "description": "Control Strategy Code.", "summaryview": "true"}';
+COMMENT ON COLUMN controlstrategy.code IS '{"label": "Code", "businesskey": "true", "description": "Control Strategy Code.", "summaryview": "true"}';
 COMMENT ON COLUMN controlstrategy.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN controlstrategy.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN controlstrategy.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

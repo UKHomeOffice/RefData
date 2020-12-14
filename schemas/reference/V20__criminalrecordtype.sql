@@ -10,7 +10,7 @@ CREATE TABLE criminalrecordtype (
 COMMENT ON TABLE criminalrecordtype IS '{"label": "Criminal record", "description": "Criminal record type and description.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN criminalrecordtype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN criminalrecordtype.recordname IS '{"label": "Record name", "businesskey": true, "description": "Record category", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN criminalrecordtype.recordname IS '{"label": "Record name", "businesskey": "true", "description": "Record category", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN criminalrecordtype.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN criminalrecordtype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN criminalrecordtype.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

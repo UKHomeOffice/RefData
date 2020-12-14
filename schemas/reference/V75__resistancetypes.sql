@@ -10,7 +10,7 @@ CREATE TABLE resistancetypes (
 COMMENT ON TABLE resistancetypes IS '{"label": "Resistance types", "description": "Types of resistance.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN resistancetypes.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN resistancetypes.label IS '{"label": "Resistance", "description": "Description of resistance type.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN resistancetypes.label IS '{"label": "Resistance", "description": "Description of resistance type.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN resistancetypes.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN resistancetypes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN resistancetypes.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

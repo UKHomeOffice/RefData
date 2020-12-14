@@ -13,7 +13,7 @@ COMMENT ON TABLE directorate IS '{"label": "Directorate names", "description": "
 -- Column comments
 COMMENT ON COLUMN directorate.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN directorate.name IS '{"label": "Name", "description": "The name of the directorate.", "summaryview": "true"}';
-COMMENT ON COLUMN directorate.code IS '{"label": "Code", "businesskey": true, "description": "The code associated with the directorate.", "summaryview": "true"}';
+COMMENT ON COLUMN directorate.code IS '{"label": "Code", "businesskey": "true", "description": "The code associated with the directorate.", "summaryview": "true"}';
 COMMENT ON COLUMN directorate.departmentid IS '{"label": "Department ID", "description": "Link to department entity.", "summaryview" : "false"}';
 COMMENT ON COLUMN directorate.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN directorate.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

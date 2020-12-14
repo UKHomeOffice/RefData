@@ -10,7 +10,7 @@ CREATE TABLE visas (
 COMMENT ON TABLE visas IS '{"label": "Types of visas", "description": "A list of different types of visas for entry to the UK.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN visas.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN visas.name IS '{"label": "Name", "description": "The type of visa.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN visas.name IS '{"label": "Name", "description": "The type of visa.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN visas.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN visas.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN visas.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

@@ -16,7 +16,7 @@ CREATE TABLE brand (
 COMMENT ON TABLE brand IS '{"label":"Brand Names", "description":"Common product brands", "schemalastupdated": "03/12/2020", "owner": "cop@homeoffice.gov.uk", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN brand.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN brand.name IS '{"label": "Brand Name", "description": "The name given to the brand.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN brand.name IS '{"label": "Brand Name", "description": "The name given to the brand.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN brand.tobaccobrand IS '{"label": "Tobacco Brands", "description": "Is the brand used exclusively for Tobacco products?", "summaryview": "true"}';
 COMMENT ON COLUMN brand.alcoholbrand IS '{"label": "Alcohol Brands", "description": "Is the brand used exclusively for Alcohol products?", "summaryview": "true"}';
 COMMENT ON COLUMN brand.vehiclebrand IS '{"label": "Vehicle Brands", "description": "Is the brand used exclusively for Vehicle products?", "summaryview": "true"}';

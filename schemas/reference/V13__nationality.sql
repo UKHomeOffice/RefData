@@ -20,7 +20,7 @@ CREATE TABLE nationality (
 COMMENT ON TABLE nationality IS '{"label": "Nationalities", "description": "A list of global nationalities.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN nationality.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN nationality.nationality IS '{"label": "Nationality", "businesskey": true, "description": "The name of the nationality.", "summaryview": "true"}';
+COMMENT ON COLUMN nationality.nationality IS '{"label": "Nationality", "businesskey": "true", "description": "The name of the nationality.", "summaryview": "true"}';
 COMMENT ON COLUMN nationality.description IS '{"label": "Description", "description": "Descriptions nationality.", "summaryview": "true"}';
 COMMENT ON COLUMN nationality.iso31661alpha3 IS '{"label": "3 digit alpha code", "description": "The countries 3 Character alpha code.", "summaryview": "true"}';
 COMMENT ON COLUMN nationality.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The countries 2 Character alpha code.", "summaryview": "true"}';

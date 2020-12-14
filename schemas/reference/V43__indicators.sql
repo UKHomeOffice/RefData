@@ -13,7 +13,7 @@ CREATE TABLE indicators (
 COMMENT ON TABLE indicators IS '{"label": "Intelligence indicators", "description": "A list of intelligence indicator types.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN indicators.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN indicators.indicator IS '{"label": "Indicator description", "description": "The type of indicator.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN indicators.indicator IS '{"label": "Indicator description", "description": "The type of indicator.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN indicators.ct IS '{"label": "CT", "description": "Valid type for counter terrorism.", "summaryview": "true"}';
 COMMENT ON COLUMN indicators.ien IS '{"label": "IEN", "description": "Valid type for immediate event notification.", "summaryview": "true"}';
 COMMENT ON COLUMN indicators.referral IS '{"label": "Referral", "description": "Valid types for referrals.", "summaryview": "true"}';

@@ -34,7 +34,7 @@ CREATE TABLE searchtype (
 COMMENT ON TABLE searchtype IS '{"label": "Search type", "description": "A list of the types of search that can be performed.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN searchtype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN searchtype.type IS '{"label": "Search type", "businesskey": true, "description": "The type of search.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.type IS '{"label": "Search type", "businesskey": "true", "description": "The type of search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.relevantpowerid IS '{"label": "Relevant Power ID", "description": "ID of the relevant power undertaking this search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.description IS '{"label": "Description", "description": "A description of the search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.usedonobject IS '{"label": "Used on objects", "description": "Search type used on objects.", "summaryview": "false"}';

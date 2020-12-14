@@ -11,7 +11,7 @@ CREATE TABLE financialinstrument (
 COMMENT ON TABLE financialinstrument IS '{"label": "Financial currency types", "description": "A list of financial instruments.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN financialinstrument.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN financialinstrument.type IS '{"label": "Status", "businesskey": true, "description": "The type of currency.", "summaryview": "true"}';
+COMMENT ON COLUMN financialinstrument.type IS '{"label": "Status", "businesskey": "true", "description": "The type of currency.", "summaryview": "true"}';
 COMMENT ON COLUMN financialinstrument.description IS '{"label": "Status", "description": "A description of the financial instrument.", "summaryview": "true"}';
 COMMENT ON COLUMN financialinstrument.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN financialinstrument.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';

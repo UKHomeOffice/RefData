@@ -10,7 +10,7 @@ CREATE TABLE paymenttypes (
 COMMENT ON TABLE paymenttypes IS '{"label": "Payment types", "description": "A list of different types of payment methods.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN paymenttypes.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN paymenttypes.name IS '{"label": "Name", "description": "The type of payment.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN paymenttypes.name IS '{"label": "Name", "description": "The type of payment.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN paymenttypes.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN paymenttypes.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN paymenttypes.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

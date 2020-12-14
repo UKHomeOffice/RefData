@@ -36,7 +36,7 @@ CREATE TABLE item (
 COMMENT ON TABLE item IS '{"label": "Items", "description": "Items that cross the border", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN item.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN item.name IS '{"label": "Name", "description": "Name of Item", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN item.name IS '{"label": "Name", "description": "Name of Item", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN item.description IS '{"label": "Description", "description": "Description of item", "summaryview": "true"}';
 COMMENT ON COLUMN item.itemcategoriesid IS '{"label": "Item Categories ID", "description": "Mapping for the item level categories", "summaryview": "false"}';
 COMMENT ON COLUMN item.cites IS '{"label": "CITES", "description": "Is this a Convention on International Trade in Endangered Species of Wild Fauna and Flora Item?", "summaryview": "true"}';

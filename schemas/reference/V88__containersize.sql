@@ -10,7 +10,7 @@ CREATE TABLE containersize (
 COMMENT ON TABLE containersize IS '{"label": "Container Size", "description": "A data set that contains various sizes of shipping or transport container.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN containersize.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN containersize.size IS '{"label": "Code", "businesskey": true, "description": "The size of the container.", "businesskey": true, "summaryview": "true"}';
+COMMENT ON COLUMN containersize.size IS '{"label": "Code", "businesskey": "true", "description": "The size of the container.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN containersize.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN containersize.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN containersize.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

@@ -12,7 +12,7 @@ CREATE TABLE marital (
 COMMENT ON TABLE marital IS '{"label": "Marital status", "description": "Marital statuses.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN marital.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN marital.code IS '{"label": "Short Code", "businesskey": true, "description": "Short code.", "summaryview": "true"}';
+COMMENT ON COLUMN marital.code IS '{"label": "Short Code", "businesskey": "true", "description": "Short code.", "summaryview": "true"}';
 COMMENT ON COLUMN marital.description IS '{"label": "Description", "description": "A description of the marital status.", "summaryview": "true"}';
 COMMENT ON COLUMN marital.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN marital.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
