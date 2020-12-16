@@ -27,7 +27,7 @@ jobs:
 #    needs: [test]
     runs-on: ubuntu-latest
     env:
-      IMAGE: 'RefData'
+      IMAGE: 'refdata'
       IMAGE_DOCKER_HUB: 'ukhomeofficedigital/refdata'
     steps:
       - uses: actions/checkout@v2
