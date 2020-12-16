@@ -71,8 +71,6 @@ steps:
 - name: deploy_to_dev
   pull: if-not-exists
   image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
-  commands:
-  - /docker/run.sh
   environment:
     DB_HOSTNAME:
       from_secret: DEV_DB_REF_HOSTNAME
@@ -106,22 +104,6 @@ steps:
       from_secret: DB_REF_REFERENCE_SERVICE_USERNAME
     FLYWAY_PLACEHOLDERS_READONLYUSER:
       from_secret: DB_REF_REFERENCE_READONLY_USERNAME
-    DB_REF_PRIVATE_GITKEY:
-      from_secret: DB_REF_PRIVATE_GITKEY
-    DB_REF_PRIVATE_GITREPO:
-      from_secret: DB_REF_PRIVATE_GITREPO
-    DB_REF_PROTOCOL:
-      from_secret: PROTOCOL_POSTGRES
-    DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD:
-      from_secret: DEV_DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD
-    DB_REF_REFERENCE_DBNAME:
-      from_secret: DB_REF_REFERENCE_DBNAME
-    GIT_REPO_PRIVATE_GITURL:
-      from_secret: GIT_REPO_PRIVATE_GITURL
-    GIT_REPO_PRIVATE_PORT:
-      from_secret: GIT_REPO_PRIVATE_PORT
-    GIT_REPO_PRIVATE_URL:
-      from_secret: GIT_REPO_PRIVATE_URL
   volumes:
   - name: dockersock
     path: /var/run
