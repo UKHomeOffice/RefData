@@ -68,23 +68,6 @@ steps:
     target:
     - secrets
 
-- name: validate_schema
-  pull: if-not-exists
-  image: python:3.6.1-alpine
-  commands:
-  - /docker/validateSchema.sh
-  environment:
-    WORKDIR: /schemas/reference
-  volumes:
-  - name: dockersock
-    path: /var/run
-  when:
-    branch:
-      exclude:
-      - master
-    event:
-    - push
-
 - name: deploy_to_dev
   pull: if-not-exists
   image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
