@@ -23,16 +23,17 @@ CREATE TABLE country (
   euoutermost BOOLEAN NOT NULL,
   euoverseasassociation BOOLEAN NOT NULL,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE
+  validto TIMESTAMP WITH TIME ZONE,
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment
-COMMENT ON TABLE country IS '{"label": "Countries", "description": "A list of territories, geographic areas and countries recognised by the Foreign and Commonwealth Office.", "schemalastupdated": "17/12/2019", "dataversion": 1}';
+COMMENT ON TABLE country IS '{"label": "Countries", "description": "A list of territories, geographic areas and countries recognised by the Foreign and Commonwealth Office.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN country.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN country.name IS '{"label": "Country name", "description": "The name of the country, territory or geographic area.", "summaryview": "true"}';
+COMMENT ON COLUMN country.name IS '{"label": "Country name", "description": "The name of the country, territory or geographic area.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN country.iso31661alpha2 IS '{"label": "2 digit alpha code", "description": "The country/territory/geographic areas 2 character alpha code.", "summaryview": "true"}';
-COMMENT ON COLUMN country.iso31661alpha3 IS '{"label": "3 digit alpha code", "description": "The country/territory/geographic areas 3 character alpha code.", "summaryview": "true"}';
+COMMENT ON COLUMN country.iso31661alpha3 IS '{"label": "3 digit alpha code", "businesskey": "true", "description": "The country/territory/geographic areas 3 character alpha code.", "summaryview": "true"}';
 COMMENT ON COLUMN country.continent IS '{"label": "Continent", "description": "The continent the country/territory/geographic areas is part of.", "summaryview": "true"}';
 COMMENT ON COLUMN country.dial IS '{"label": "Phone dial code", "description": "The country/territory/geographic areas dialing prefix.", "summaryview": "true"}';
 COMMENT ON COLUMN country.iso31661numeric IS '{"label": "3 digit numeric code", "description": "The country/territory/geographic areas numeric ISO code.", "summaryview": "true"}';
@@ -53,8 +54,9 @@ COMMENT ON COLUMN country.euoutermost IS '{"label": "EU Outermost Regions", "des
 COMMENT ON COLUMN country.euoverseasassociation IS '{"label": "EU Overseas Association", "description": "Is this country/territory/geographic area a member of the EUs OVerseas Association.", "summaryview": "false"}';
 COMMENT ON COLUMN country.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN country.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
+COMMENT ON COLUMN country.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
 GRANT SELECT ON country TO ${anonuser};
-GRANT SELECT ON country TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE ON country TO ${serviceuser};
 GRANT SELECT ON country TO ${readonlyuser};
