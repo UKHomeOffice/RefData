@@ -1,0 +1,13 @@
+id,method,pressure,nerve,validfrom,validto
+1,Mandibular angle,t,f,,
+2,Brachial plex origin,t,f,,
+3,Hypoglossal,t,f,,
+4,Sub calavian,t,f,,
+5,Brachial plex tie,t,f,,
+6,Knee strike,f,t,,
+7,Sweeping kick,f,t,,
+8,Bottom fist,f,t,,
+9,Palm heel,f,t,,
+10,Elbow,f,t,,
+11,Head butt,f,t,,
+12,Punch,f,t,,

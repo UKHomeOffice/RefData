@@ -1,0 +1,13 @@
+id,name,parentgradetypeid,validfrom,validto
+"373979c1-2360-46be-b712-0409ac068059","SCS4",,,
+"36c80dfe-0aae-455b-9445-2e1c09dcafdc","SCS3","373979c1-2360-46be-b712-0409ac068059",,
+"1b041cda-b151-4769-b76a-d42d67b0b960","Senior Director / SCS2","36c80dfe-0aae-455b-9445-2e1c09dcafdc",,
+"172de41d-f7b0-4be9-b7e8-0cf4f1a1342f","Director / SCS1","1b041cda-b151-4769-b76a-d42d67b0b960",,
+"39e18b45-0358-4a45-83ec-5a70b74641e8","Deputy Director / Grade 6","172de41d-f7b0-4be9-b7e8-0cf4f1a1342f",,
+"44855085-a36b-42e5-b805-f4ebe209ecf2","Assistant Director / Grade 7","39e18b45-0358-4a45-83ec-5a70b74641e8",,
+"4fad1115-7d12-4b6f-8d8a-97dbe469a346","Senior Officer / Senior Executive Officer","44855085-a36b-42e5-b805-f4ebe209ecf2",,
+"b512288d-95e3-4f60-ad4c-4cdfab68d841","Higher Officer / Higher Executive Officer","4fad1115-7d12-4b6f-8d8a-97dbe469a346",,
+"1c140011-46ad-4a5d-af25-e80a6fcdcdba","Officer / Executive Officer","b512288d-95e3-4f60-ad4c-4cdfab68d841",,
+"02de92d8-aad1-4663-a37f-a87012f60f1b","Assistant Officer / Administrative Officer","1c140011-46ad-4a5d-af25-e80a6fcdcdba",,
+"9910a29d-7fbb-451d-8729-f39f4373bbcc","Assistant Office / Messenger","02de92d8-aad1-4663-a37f-a87012f60f1b",,
+"073b92f8-7208-4026-a090-906c276079f1","Contractor",,,

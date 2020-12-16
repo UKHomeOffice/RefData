@@ -12,7 +12,7 @@ CREATE TABLE searchtype (
   searchofunaccfreight BOOLEAN,
   searchofcontainers BOOLEAN,
   airfreight BOOLEAN,
-  airpassenger BOOLEAN,
+  airpassenger BOOLEAN, 
   commercialmaritime BOOLEAN,
   generalmaritime BOOLEAN,
   generalaviation BOOLEAN,
@@ -26,15 +26,14 @@ CREATE TABLE searchtype (
   post BOOLEAN,
   internationaltrade BOOLEAN,
   validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE,
-  updatedby VARCHAR(60) NULL
+  validto TIMESTAMP WITH TIME ZONE
 );
 
 -- Table comment
-COMMENT ON TABLE searchtype IS '{"label": "Search type", "description": "A list of the types of search that can be performed.", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE searchtype IS '{"label": "Search type", "description": "A list of the types of search that can be performed.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN searchtype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN searchtype.type IS '{"label": "Search type", "businesskey": "true", "description": "The type of search.", "summaryview": "true"}';
+COMMENT ON COLUMN searchtype.type IS '{"label": "Search type", "description": "The type of search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.relevantpowerid IS '{"label": "Relevant Power ID", "description": "ID of the relevant power undertaking this search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.description IS '{"label": "Description", "description": "A description of the search.", "summaryview": "true"}';
 COMMENT ON COLUMN searchtype.usedonobject IS '{"label": "Used on objects", "description": "Search type used on objects.", "summaryview": "false"}';
@@ -61,8 +60,7 @@ COMMENT ON COLUMN searchtype.post IS '{"label": "Post", "description": "Search t
 COMMENT ON COLUMN searchtype.internationaltrade IS '{"label": "International Trade", "description": "Search technique used in International Trade", "summaryview": "false"}';
 COMMENT ON COLUMN searchtype.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN searchtype.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
-COMMENT ON COLUMN searchtype.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT,INSERT,UPDATE ON searchtype TO ${serviceuser};
+GRANT SELECT ON searchtype TO ${serviceuser};
 GRANT SELECT ON searchtype TO ${readonlyuser};
