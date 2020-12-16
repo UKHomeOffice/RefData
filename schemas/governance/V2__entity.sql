@@ -1,0 +1,10 @@
+CREATE TABLE entity (
+  id INTEGER PRIMARY KEY,
+  tablename CHARACTER VARYING(40) UNIQUE NOT NULL,
+  description TEXT NOT NULL,
+  schema JSON NOT NULL,
+  lastupdated TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+
+GRANT SELECT,UPDATE,INSERT ON entity TO ${serviceuser};

@@ -1,0 +1,7 @@
+id,status,validfrom,validto
+"2","Completed",,
+"3","Failed",,
+"4","Cancelled",,
+"5","TimedOut",,
+"6","NoResponseAckknowledged",,
+"1","In Progress",,

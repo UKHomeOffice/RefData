@@ -1,0 +1,1494 @@
+/*
+  MINISTRY
+*/
+
+CREATE TEMP TABLE tmpministry AS SELECT * FROM ministry WITH NO DATA;
+
+COPY tmpministry FROM STDIN CSV HEADER;
+{% include ministry %}
+
+\.
+
+INSERT INTO ministry
+  SELECT  *
+    FROM tmpministry
+  ON CONFLICT (id) DO
+    UPDATE
+      SET
+        name = EXCLUDED.name,
+        code = EXCLUDED.code,
+        validfrom = EXCLUDED.validfrom,
+        validto = EXCLUDED.validto;
+
+DROP TABLE tmpministry;
+
+
+
+/*
+ DEPARTMENT
+*/
+
+CREATE TEMP TABLE tmpdepartment AS SELECT * FROM department WITH NO DATA;
+
+COPY tmpdepartment FROM STDIN CSV HEADER;
+{% include department %}
+
+\.
+
+INSERT INTO department
+  SELECT  *
+  FROM tmpdepartment
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    ministryid = EXCLUDED.ministryid,
+    code = EXCLUDED.code,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpdepartment;
+
+
+
+/*
+ DIRECTORATE
+*/
+
+CREATE TEMP TABLE tmpdirectorate AS SELECT * FROM directorate WITH NO DATA;
+
+COPY tmpdirectorate FROM STDIN CSV HEADER;
+{% include directorate %}
+
+\.
+
+INSERT INTO directorate
+  SELECT  *
+  FROM tmpdirectorate
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    departmentid = EXCLUDED.departmentid,
+    code = EXCLUDED.code,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpdirectorate;
+
+
+
+/*
+ BRANCH
+*/
+
+CREATE TEMP TABLE tmpbranch AS SELECT * FROM branch WITH NO DATA;
+
+COPY tmpbranch FROM STDIN CSV HEADER;
+{% include branch %}
+
+\.
+
+INSERT INTO branch
+  SELECT  *
+  FROM tmpbranch
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    directorateid = EXCLUDED.directorateid,
+    code = EXCLUDED.code,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbranch;
+
+
+
+/*
+ GENDER
+*/
+
+CREATE TEMP TABLE tmpgender AS SELECT * FROM gender WITH NO DATA;
+
+COPY tmpgender FROM STDIN CSV HEADER;
+{% include gender %}
+
+\.
+
+INSERT INTO gender
+  SELECT  *
+  FROM tmpgender
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    gender = EXCLUDED.gender,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpgender;
+
+
+
+/*
+ SEX
+*/
+
+CREATE TEMP TABLE tmpsex AS SELECT * FROM sex WITH NO DATA;
+
+COPY tmpsex FROM STDIN CSV HEADER;
+{% include sex %}
+
+\.
+
+INSERT INTO sex
+  SELECT  *
+  FROM tmpsex
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpsex;
+
+
+
+/*
+ TITLE
+*/
+
+CREATE TEMP TABLE tmptitle AS SELECT * FROM title WITH NO DATA;
+
+COPY tmptitle FROM STDIN CSV HEADER;
+{% include title %}
+
+\.
+
+INSERT INTO title
+  SELECT  *
+  FROM tmptitle
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    title = EXCLUDED.title,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptitle;
+
+
+
+/*
+ ETHNICITY
+*/
+
+CREATE TEMP TABLE tmpethnicity AS SELECT * FROM ethnicity WITH NO DATA;
+
+COPY tmpethnicity FROM STDIN CSV HEADER;
+{% include ethnicity %}
+
+\.
+
+INSERT INTO ethnicity
+  SELECT  *
+  FROM tmpethnicity
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    ethnicity = EXCLUDED.ethnicity,
+    subethnicity = EXCLUDED.subethnicity,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpethnicity;
+
+
+
+/*
+ MARITAL
+*/
+
+CREATE TEMP TABLE tmpmarital AS SELECT * FROM marital WITH NO DATA;
+
+COPY tmpmarital FROM STDIN CSV HEADER;
+{% include marital %}
+
+\.
+
+INSERT INTO marital
+  SELECT  *
+  FROM tmpmarital
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    code = EXCLUDED.code,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpmarital;
+
+
+
+/*
+ RELIGION
+*/
+
+CREATE TEMP TABLE tmpreligion AS SELECT * FROM religion WITH NO DATA;
+
+COPY tmpreligion FROM STDIN CSV HEADER;
+{% include religion %}
+
+\.
+
+INSERT INTO religion
+  SELECT  *
+  FROM tmpreligion
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpreligion;
+
+
+
+/*
+ COUNTRY
+*/
+
+CREATE TEMP TABLE tmpcountry AS SELECT * FROM country WITH NO DATA;
+
+COPY tmpcountry FROM STDIN CSV HEADER;
+{% include country %}
+
+\.
+
+INSERT INTO country
+  SELECT  *
+  FROM tmpcountry
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    iso31661alpha2 = EXCLUDED.iso31661alpha2,
+    iso31661alpha3 = EXCLUDED.iso31661alpha3,
+    name = EXCLUDED.name,
+    continent = EXCLUDED.continent,
+    dial = EXCLUDED.dial,
+    iso31661numeric = EXCLUDED.iso31661numeric,
+    wicucode = EXCLUDED.wicucode,
+    unm49code = EXCLUDED.unm49code,
+    sovereignfcorecognisedstate = EXCLUDED.sovereignfcorecognisedstate,
+    linkedcountryiso3code = EXCLUDED.linkedcountryiso3code,
+    relationshipwithlinkedcountry = EXCLUDED.relationshipwithlinkedcountry,
+    fullname = EXCLUDED.fullname,
+    un = EXCLUDED.un,
+    nato = EXCLUDED.nato,
+    interpolcode = EXCLUDED.interpolcode,
+    visaregime = EXCLUDED.visaregime,
+    commonwealth = EXCLUDED.commonwealth,
+    eu = EXCLUDED.eu,
+    eea = EXCLUDED.eea,
+    euoutermost = EXCLUDED.euoutermost,
+    euoverseasassociation = EXCLUDED.euoverseasassociation,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcountry;
+
+
+
+/*
+ NATIONALITY
+*/
+
+CREATE TEMP TABLE tmpnationality AS SELECT * FROM nationality WITH NO DATA;
+
+COPY tmpnationality FROM STDIN CSV HEADER;
+{% include nationality %}
+
+\.
+
+INSERT INTO nationality
+  SELECT  *
+  FROM tmpnationality
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    iso31661alpha3 = EXCLUDED.iso31661alpha3,
+    iso31661alpha2 = EXCLUDED.iso31661alpha2,
+    nationality = EXCLUDED.nationality,
+    description = EXCLUDED.description,
+    visarequired = EXCLUDED.visarequired,
+    evwoptional = EXCLUDED.evwoptional,
+    diplomaticexception = EXCLUDED.diplomaticexception,
+    specialexception = EXCLUDED.specialexception,
+    countryid = EXCLUDED.countryid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpnationality;
+
+
+
+/*
+ CURRENCY
+*/
+
+CREATE TEMP TABLE tmpcurrency AS SELECT * FROM currency WITH NO DATA;
+
+COPY tmpcurrency FROM STDIN CSV HEADER;
+{% include currency %}
+
+\.
+
+INSERT INTO currency
+  SELECT  *
+  FROM tmpcurrency
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    currency = EXCLUDED.currency,
+    currencycode = EXCLUDED.currencycode,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcurrency;
+
+
+
+/*
+ BFFUNCTIONTYPES
+*/
+
+CREATE TEMP TABLE tmpbffunctiontypes AS SELECT * FROM bffunctiontypes WITH NO DATA;
+
+COPY tmpbffunctiontypes FROM STDIN CSV HEADER;
+{% include bffunctiontypes %}
+
+\.
+
+INSERT INTO bffunctiontypes
+  SELECT  *
+  FROM tmpbffunctiontypes
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    bffunction = EXCLUDED.bffunction,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbffunctiontypes;
+
+
+
+/*
+ BFLOCATIONTYPE
+*/
+
+CREATE TEMP TABLE tmpbflocationtype AS SELECT * FROM bflocationtype WITH NO DATA;
+
+COPY tmpbflocationtype FROM STDIN CSV HEADER;
+{% include bflocationtype %}
+
+\.
+
+INSERT INTO bflocationtype
+  SELECT  *
+  FROM tmpbflocationtype
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    seaport = EXCLUDED.seaport,
+    railterminal = EXCLUDED.railterminal,
+    airport = EXCLUDED.airport,
+    postexchange = EXCLUDED.postexchange,
+    multimodal = EXCLUDED.multimodal,
+    fixedtransport = EXCLUDED.fixedtransport,
+    bordercrossing = EXCLUDED.bordercrossing,
+    roadterminal = EXCLUDED.roadterminal,
+    portclassification = EXCLUDED.portclassification,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbflocationtype;
+
+
+
+/*
+ CARRIERLIST
+*/
+
+CREATE TEMP TABLE tmpcarrierlist AS SELECT * FROM carrierlist WITH NO DATA;
+
+COPY tmpcarrierlist FROM STDIN CSV HEADER;
+{% include carrierlist %}
+
+\.
+
+INSERT INTO carrierlist
+  SELECT  *
+  FROM tmpcarrierlist
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    twolettercode = EXCLUDED.twolettercode,
+    threelettercode = EXCLUDED.threelettercode,
+    designator = EXCLUDED.designator,
+    alliance = EXCLUDED.alliance,
+    aviation = EXCLUDED.aviation,
+    sea = EXCLUDED.sea,
+    land = EXCLUDED.land,
+    rail = EXCLUDED.rail,
+    parcel = EXCLUDED.parcel,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcarrierlist;
+
+
+
+/*
+ COMPETENCE
+*/
+
+CREATE TEMP TABLE tmpcompetence AS SELECT * FROM competence WITH NO DATA;
+
+COPY tmpcompetence FROM STDIN CSV HEADER;
+{% include competence %}
+
+\.
+
+INSERT INTO competence
+  SELECT  *
+  FROM tmpcompetence
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    description = EXCLUDED.description,
+    competence = EXCLUDED.competence,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcompetence;
+
+
+/*
+ CREWROLE
+*/
+
+CREATE TEMP TABLE tmpcrewrole AS SELECT * FROM crewrole WITH NO DATA;
+
+COPY tmpcrewrole FROM STDIN CSV HEADER;
+{% include crewrole %}
+
+\.
+
+INSERT INTO crewrole
+  SELECT  *
+  FROM tmpcrewrole
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    description = EXCLUDED.description,
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+
+DROP TABLE tmpcrewrole;
+
+
+
+/*
+ CRIMINALRECORDTYPE
+*/
+
+CREATE TEMP TABLE tmpcriminalrecordtype AS SELECT * FROM criminalrecordtype WITH NO DATA;
+
+COPY tmpcriminalrecordtype FROM STDIN CSV HEADER;
+{% include criminalrecordtype %}
+
+\.
+
+INSERT INTO criminalrecordtype
+  SELECT  *
+  FROM tmpcriminalrecordtype
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    recordname = EXCLUDED.recordname,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcriminalrecordtype;
+
+
+
+/*
+ DOCUMENTTYPE
+*/
+
+CREATE TEMP TABLE tmpdocumenttype AS SELECT * FROM documenttype WITH NO DATA;
+
+COPY tmpdocumenttype FROM STDIN CSV HEADER;
+{% include documenttype %}
+
+\.
+
+INSERT INTO documenttype
+  SELECT  *
+  FROM tmpdocumenttype
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    code = EXCLUDED.code,
+    shortdescription = EXCLUDED.shortdescription,
+    longdescription = EXCLUDED.longdescription,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpdocumenttype;
+
+
+
+/*
+ DOGROLE
+*/
+
+CREATE TEMP TABLE tmpdogrole AS SELECT * FROM dogrole WITH NO DATA;
+
+COPY tmpdogrole FROM STDIN CSV HEADER;
+{% include dogrole %}
+
+\.
+
+INSERT INTO dogrole
+  SELECT  *
+  FROM tmpdogrole
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    code = EXCLUDED.code,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpdogrole;
+
+
+
+/*
+ EMPLOYMENTTYPES
+*/
+
+CREATE TEMP TABLE tmpemploymenttypes AS SELECT * FROM employmenttypes WITH NO DATA;
+
+COPY tmpemploymenttypes FROM STDIN CSV HEADER;
+{% include employmenttypes %}
+
+\.
+
+INSERT INTO employmenttypes
+  SELECT  *
+  FROM tmpemploymenttypes
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpemploymenttypes;
+
+
+
+/*
+ EVENTSTATUS
+*/
+
+CREATE TEMP TABLE tmpeventstatus AS SELECT * FROM eventstatus WITH NO DATA;
+
+COPY tmpeventstatus FROM STDIN CSV HEADER;
+{% include eventstatus %}
+
+\.
+
+INSERT INTO eventstatus
+  SELECT  *
+  FROM tmpeventstatus
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    status = EXCLUDED.status,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpeventstatus;
+
+
+
+/*
+ FINANCIALINSTRUMENT
+*/
+
+CREATE TEMP TABLE tmpfinancialinstrument AS SELECT * FROM financialinstrument WITH NO DATA;
+
+COPY tmpfinancialinstrument FROM STDIN CSV HEADER;
+{% include financialinstrument %}
+
+\.
+
+INSERT INTO financialinstrument
+  SELECT  *
+  FROM tmpfinancialinstrument
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    type = EXCLUDED.type,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpfinancialinstrument;
+
+
+
+/*
+ GEOGRAPHICREGION
+*/
+
+CREATE TEMP TABLE tmpgeographicregion AS SELECT * FROM geographicregion WITH NO DATA;
+
+COPY tmpgeographicregion FROM STDIN CSV HEADER;
+{% include geographicregion %}
+
+\.
+
+INSERT INTO geographicregion
+  SELECT  *
+  FROM tmpgeographicregion
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    code = EXCLUDED.code,
+    name = EXCLUDED.name,
+    iso31661alpha2 = EXCLUDED.iso31661alpha2,
+    countryid = EXCLUDED.countryid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpgeographicregion;
+
+
+
+/*
+ GRADE
+*/
+
+CREATE TEMP TABLE tmpgrade AS SELECT * FROM grade WITH NO DATA;
+
+COPY tmpgrade FROM STDIN CSV HEADER;
+{% include grade %}
+
+\.
+
+INSERT INTO grade
+  SELECT  *
+  FROM tmpgrade
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    parentgradetypeid = EXCLUDED.parentgradetypeid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpgrade;
+
+
+
+/*
+ ICAO
+*/
+
+CREATE TEMP TABLE tmpicao AS SELECT * FROM icao WITH NO DATA;
+
+COPY tmpicao FROM STDIN CSV HEADER;
+{% include icao %}
+
+\.
+
+INSERT INTO icao
+  SELECT  *
+  FROM tmpicao
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    iata = EXCLUDED.iata,
+    municipality = EXCLUDED.municipality,
+    icao = EXCLUDED.icao,
+    geolat = EXCLUDED.geolat,
+    geolong = EXCLUDED.geolong,
+    type = EXCLUDED.type,
+    iso31661alpha2 = EXCLUDED.iso31661alpha2,
+    countryid = EXCLUDED.countryid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpicao;
+
+
+
+/*
+ LEGTYPES
+*/
+
+CREATE TEMP TABLE tmplegtypes AS SELECT * FROM legtypes WITH NO DATA;
+
+COPY tmplegtypes FROM STDIN CSV HEADER;
+{% include legtypes %}
+
+\.
+
+INSERT INTO legtypes
+  SELECT  *
+  FROM tmplegtypes
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmplegtypes;
+
+
+
+/*
+ MODEOFTRANSPORT
+*/
+
+CREATE TEMP TABLE tmpmodeoftransport AS SELECT * FROM modeoftransport WITH NO DATA;
+
+COPY tmpmodeoftransport FROM STDIN CSV HEADER;
+{% include modeoftransport %}
+
+\.
+
+INSERT INTO modeoftransport
+  SELECT  *
+  FROM tmpmodeoftransport
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    type = EXCLUDED.type,
+    ien = EXCLUDED.ien,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpmodeoftransport;
+
+
+
+/*
+ BORDERCROSSINGMODE
+*/
+
+CREATE TEMP TABLE tmpbordercrossingmode AS SELECT * FROM bordercrossingmode WITH NO DATA;
+
+COPY tmpbordercrossingmode FROM STDIN CSV HEADER;
+{% include bordercrossingmode %}
+
+\.
+
+INSERT INTO bordercrossingmode
+  SELECT  *
+  FROM tmpbordercrossingmode
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    border = EXCLUDED.border,
+    type = EXCLUDED.type,
+    personorfreight = EXCLUDED.personorfreight,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbordercrossingmode;
+
+
+
+/*
+ TDAAPPROVALSTATUS
+*/
+
+CREATE TEMP TABLE tmptdaapprovalstatus AS SELECT * FROM tdaapprovalstatus WITH NO DATA;
+
+COPY tmptdaapprovalstatus FROM STDIN CSV HEADER;
+{% include tdaapprovalstatus %}
+
+\.
+
+INSERT INTO tdaapprovalstatus
+  SELECT  *
+  FROM tmptdaapprovalstatus
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    status = EXCLUDED.status,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptdaapprovalstatus;
+
+
+
+/*
+ TDAREASONS
+*/
+
+CREATE TEMP TABLE tmptdareasons AS SELECT * FROM tdareasons WITH NO DATA;
+
+COPY tmptdareasons FROM STDIN CSV HEADER;
+{% include tdareasons %}
+
+\.
+
+INSERT INTO tdareasons
+  SELECT  *
+  FROM tmptdareasons
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    reason = EXCLUDED.reason,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptdareasons;
+
+
+
+/*
+ TECHNICALPROJECTSTATUS
+*/
+
+CREATE TEMP TABLE tmptechnicalprojectstatus AS SELECT * FROM technicalprojectstatus WITH NO DATA;
+
+COPY tmptechnicalprojectstatus FROM STDIN CSV HEADER;
+{% include technicalprojectstatus %}
+
+\.
+
+INSERT INTO technicalprojectstatus
+  SELECT  *
+  FROM tmptechnicalprojectstatus
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    status = EXCLUDED.status,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptechnicalprojectstatus;
+
+
+
+/*
+ UNLOCODE
+*/
+
+CREATE TEMP TABLE tmpunlocode AS SELECT * FROM unlocode WITH NO DATA;
+
+COPY tmpunlocode FROM STDIN CSV HEADER;
+{% include unlocode %}
+
+\.
+
+INSERT INTO unlocode
+  SELECT  *
+  FROM tmpunlocode
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    geolong = EXCLUDED.geolong,
+    geolat = EXCLUDED.geolat,
+    name = EXCLUDED.name,
+    namewodiacritics = EXCLUDED.namewodiacritics,
+    iata = EXCLUDED.iata,
+    locode = EXCLUDED.locode,
+    seaport = EXCLUDED.seaport,
+    railterminal = EXCLUDED.railterminal,
+    airport = EXCLUDED.airport,
+    postexchange = EXCLUDED.postexchange,
+    multimodal = EXCLUDED.multimodal,
+    fixedtransport = EXCLUDED.fixedtransport,
+    bordercrossing = EXCLUDED.bordercrossing,
+    subdivision = EXCLUDED.subdivision,
+    roadterminal = EXCLUDED.roadterminal,
+    iso31661alpha2 = EXCLUDED.iso31661alpha2,
+    countryid = EXCLUDED.countryid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+;
+
+DROP TABLE tmpunlocode;
+
+
+
+/*
+ WORKAREA
+*/
+
+CREATE TEMP TABLE tmpworkarea AS SELECT * FROM workarea WITH NO DATA;
+
+COPY tmpworkarea FROM STDIN CSV HEADER;
+{% include workarea %}
+
+\.
+
+
+INSERT INTO workarea
+  SELECT  *
+  FROM tmpworkarea
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    area = EXCLUDED.area,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpworkarea;
+
+/*
+ SECURITYCLEARANCE
+*/
+
+CREATE TEMP TABLE tmpclearancetype AS SELECT * FROM clearancetype WITH NO DATA;
+
+COPY tmpclearancetype FROM STDIN CSV HEADER;
+{% include clearancetype %}
+
+\.
+
+
+INSERT INTO clearancetype
+  SELECT  *
+  FROM tmpclearancetype
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    description = EXCLUDED.description,
+    validfrom = Excluded.validfrom,
+    validto = Excluded.validto;
+
+DROP TABLE tmpclearancetype;
+
+
+/*
+ UNIT
+*/
+
+CREATE TEMP TABLE tmpunit AS SELECT * FROM unit WITH NO DATA;
+
+COPY tmpunit FROM STDIN CSV HEADER;
+{% include unit %}
+
+\.
+
+
+INSERT INTO unit
+  SELECT  *
+  FROM tmpunit
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    unit = EXCLUDED.unit,
+    validfrom = Excluded.validfrom,
+    validto = Excluded.validto;
+
+DROP TABLE tmpunit;
+
+
+/*
+ FERRIES
+*/
+
+CREATE TEMP TABLE tmpferries AS SELECT * FROM ferries WITH NO DATA;
+
+COPY tmpferries FROM STDIN CSV HEADER;
+{% include ferries %}
+
+\.
+
+INSERT INTO ferries
+  SELECT  *
+  FROM tmpferries
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    carrierid = EXCLUDED.carrierid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpferries;
+
+
+/*
+ FERRYROUTES
+*/
+
+CREATE TEMP TABLE tmpferryroutes AS SELECT * FROM ferryroutes WITH NO DATA;
+
+COPY tmpferryroutes FROM STDIN CSV HEADER;
+{% include ferryroutes %}
+
+\.
+
+INSERT INTO ferryroutes
+  SELECT  *
+  FROM tmpferryroutes
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    route = EXCLUDED.route,
+    carrierid = EXCLUDED.carrierid,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpferryroutes;
+
+
+/*
+ TRAILERTYPES
+*/
+
+CREATE TEMP TABLE tmptrailertypes AS SELECT * FROM trailertypes WITH NO DATA;
+
+COPY tmptrailertypes FROM STDIN CSV HEADER;
+{% include trailertypes %}
+
+\.
+
+INSERT INTO trailertypes
+  SELECT  *
+  FROM tmptrailertypes
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptrailertypes;
+
+
+/*
+ PAYMENTTYPES
+*/
+
+CREATE TEMP TABLE tmppaymenttypes AS SELECT * FROM paymenttypes WITH NO DATA;
+
+COPY tmppaymenttypes FROM STDIN CSV HEADER;
+{% include paymenttypes %}
+
+\.
+
+INSERT INTO paymenttypes
+  SELECT  *
+  FROM tmppaymenttypes
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmppaymenttypes;
+
+
+/*
+ TYPESOFILLEGALS
+*/
+
+CREATE TEMP TABLE tmptypesofillegals AS SELECT * FROM typesofillegals WITH NO DATA;
+
+COPY tmptypesofillegals FROM STDIN CSV HEADER;
+{% include typesofillegals %}
+
+\.
+
+INSERT INTO typesofillegals
+  SELECT  *
+  FROM tmptypesofillegals
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptypesofillegals;
+
+
+/*
+ MEDICALASSISTANCE
+*/
+
+CREATE TEMP TABLE tmpmedicalassistance AS SELECT * FROM medicalassistance WITH NO DATA;
+
+COPY tmpmedicalassistance FROM STDIN CSV HEADER;
+{% include medicalassistance %}
+
+\.
+
+INSERT INTO medicalassistance
+  SELECT  *
+  FROM tmpmedicalassistance
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpmedicalassistance;
+
+
+/*
+  CONTAINERSIZE
+*/
+
+CREATE TEMP TABLE tmpcontainersize AS SELECT * FROM containersize WITH NO DATA;
+
+COPY tmpcontainersize FROM STDIN CSV HEADER;
+{% include containersize %}
+
+\.
+
+INSERT INTO containersize
+  SELECT *
+  FROM tmpcontainersize
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    size = EXCLUDED.size,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpcontainersize;
+
+
+/*
+  TRAININGLEVELS
+*/
+
+CREATE TEMP TABLE tmptraininglevels AS SELECT * FROM traininglevels WITH NO DATA;
+
+COPY tmptraininglevels FROM STDIN CSV HEADER;
+{% include traininglevels %}
+
+\.
+
+INSERT INTO traininglevels
+  SELECT *
+  FROM tmptraininglevels
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validpst = EXCLUDED.validpst,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmptraininglevels;
+
+
+/*
+  LASTTRAINED
+*/
+
+CREATE TEMP TABLE tmplasttrained AS SELECT * FROM lasttrained WITH NO DATA;
+
+COPY tmplasttrained FROM STDIN CSV HEADER;
+{% include lasttrained %}
+
+\.
+
+INSERT INTO lasttrained
+  SELECT *
+  FROM tmplasttrained
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validpst = EXCLUDED.validpst,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmplasttrained;
+
+
+/*
+  SUBJECTBEHAVIOUR
+*/
+
+CREATE TEMP TABLE tmpsubjectbehaviour AS SELECT * FROM subjectbehaviour WITH NO DATA;
+
+COPY tmpsubjectbehaviour FROM STDIN CSV HEADER;
+{% include subjectbehaviour %}
+
+\.
+
+INSERT INTO subjectbehaviour
+  SELECT *
+  FROM tmpsubjectbehaviour
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validpst = EXCLUDED.validpst,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpsubjectbehaviour;
+
+
+/*
+  BEHAVIOURSIGNS
+*/
+
+CREATE TEMP TABLE tmpbehavioursigns AS SELECT * FROM behavioursigns WITH NO DATA;
+
+COPY tmpbehavioursigns FROM STDIN CSV HEADER;
+{% include behavioursigns %}
+
+\.
+
+INSERT INTO behavioursigns
+  SELECT *
+  FROM tmpbehavioursigns
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    warning = EXCLUDED.warning,
+    danger = EXCLUDED.danger,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbehavioursigns;
+
+
+/*
+  PSTMETHODS
+*/
+
+CREATE TEMP TABLE tmppstmethods AS SELECT * FROM pstmethods WITH NO DATA;
+
+COPY tmppstmethods FROM STDIN CSV HEADER;
+{% include pstmethods %}
+
+\.
+
+INSERT INTO pstmethods
+  SELECT *
+  FROM tmppstmethods
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    method = EXCLUDED.method,
+    pressure = EXCLUDED.pressure,
+    nerve = EXCLUDED.nerve,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmppstmethods;
+
+
+/*
+  OCCUPATION
+*/
+
+CREATE TEMP TABLE tmpoccupation AS SELECT * FROM occupation WITH NO DATA;
+
+COPY tmpoccupation FROM STDIN CSV HEADER;
+{% include occupation %}
+
+\.
+
+INSERT INTO occupation
+  SELECT *
+  FROM tmpoccupation
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    occupation = EXCLUDED.occupation,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpoccupation;
+
+
+/*
+  BRAND
+*/
+
+CREATE TEMP TABLE tmpbrand AS SELECT * FROM brand WITH NO DATA;
+
+COPY tmpbrand FROM STDIN CSV HEADER;
+{% include brand %}
+
+\.
+
+INSERT INTO brand
+  SELECT *
+  FROM tmpbrand
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    tobaccobrand = EXCLUDED.tobaccobrand,
+    alcoholbrand = EXCLUDED.alcoholbrand,
+    vehiclebrand = EXCLUDED.vehiclebrand,
+    iprbrand = EXCLUDED.iprbrand,
+    goodsbrand = EXCLUDED.goodsbrand,
+    commoditybrand = EXCLUDED.commoditybrand,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpbrand;
+
+
+/*
+TERMINAL
+*/
+
+CREATE TEMP TABLE tmpterminal AS SELECT * FROM terminal WITH NO DATA;
+
+COPY  terminal FROM STDIN CSV HEADER;
+{% include terminal %}
+
+\.
+
+INSERT INTO terminal
+  SELECT *
+  FROM terminal
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpterminal;
+
+
+/*
+RELATION
+*/
+
+CREATE TEMP TABLE tmprelation AS SELECT * FROM relation WITH NO DATA;
+
+COPY  relation FROM STDIN CSV HEADER;
+{% include relation %}
+
+\.
+
+INSERT INTO relation
+  SELECT *
+  FROM relation
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    relation = EXCLUDED.relation,
+    description = EXCLUDED.description,
+    family = EXCLUDED.family,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmprelation;
+
+
+/*
+INJURYCAUSE
+*/
+
+CREATE TEMP TABLE tmpinjurycause AS SELECT * FROM injurycause WITH NO DATA;
+
+COPY  injurycause FROM STDIN CSV HEADER;
+{% include injurycause %}
+
+\.
+
+INSERT INTO injurycause
+  SELECT *
+  FROM injurycause
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    injurycause = EXCLUDED.injurycause,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpinjurycause;
+
+
+/*
+PROTECTEDCHARACTERISTICS
+*/
+
+CREATE TEMP TABLE tmpprotectedcharacteristics AS SELECT * FROM protectedcharacteristics WITH NO DATA;
+
+COPY  protectedcharacteristics FROM STDIN CSV HEADER;
+{% include protectedcharacteristics %}
+
+\.
+
+INSERT INTO protectedcharacteristics
+  SELECT *
+  FROM protectedcharacteristics
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    characteristic = EXCLUDED.characteristic,
+    description = EXCLUDED.description,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmpprotectedcharacteristics;
+
+
+/*
+LANGUAGE
+*/
+
+CREATE TEMP TABLE tmplanguage AS SELECT * FROM language WITH NO DATA;
+
+COPY  language FROM STDIN CSV HEADER;
+{% include language %}
+
+\.
+
+INSERT INTO language
+  SELECT *
+  FROM language
+ON CONFLICT (id) DO
+UPDATE
+  SET
+    name = EXCLUDED.name,
+    twolettercode = EXCLUDED.twolettercode,
+    threelettercode = EXCLUDED.threelettercode,
+    validfrom = EXCLUDED.validfrom,
+    validto = EXCLUDED.validto;
+
+DROP TABLE tmplanguage;

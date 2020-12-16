@@ -1,0 +1,8 @@
+id,code,description,validfrom,validto,,
+1,"D","Divorced / Person whose Civil Partnership has been dissolved",,
+2,"W","Widowed / Surviving Civil Partner",,
+3,"S","Single",,
+4,"P","Separated",,
+5,"N","Not Disclosed",,
+6,"M","Married / Civil Partnership",,
+7,"C","Cohabiting",,

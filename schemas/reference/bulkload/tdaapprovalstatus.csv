@@ -1,0 +1,8 @@
+id,status,validfrom,validto
+"1","Approved",,
+"2","Waiver Granted",,
+"3","Waiver Rejected",,
+"4","Dispensation Granted",,
+"5","Dispensation Rejected",,
+"6","Rejected",,
+"7","Information Only",,
