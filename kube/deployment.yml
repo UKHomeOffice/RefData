@@ -1,0 +1,111 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.REFDATA_NAME}}
+  labels:
+    service: {{ .REFDATA_NAME }}
+spec:
+  selector:
+    matchLabels:
+      name: {{.REFDATA_NAME}}
+  replicas: 3
+  revisionHistoryLimit: 3
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        name: {{.REFDATA_NAME}}
+        service: {{.REFDATA_NAME}}
+    spec:
+      restartPolicy: Always
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - name: {{.REFDATA_NAME}}
+        image: {{.REFDATA_IMAGE}}:{{.REFDATA_TAG}}
+        imagePullPolicy: Always
+        securityContext:
+          runAsUser: 1000
+          runAsNonRoot: true
+        command: ["/bin/sh"]
+        resources:
+          requests:
+            memory: "1024Mi"
+            cpu: "1000m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
+        ports:
+          - name: https
+            containerPort: 8443
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /actuator/info
+            port: 8443
+          initialDelaySeconds: 120
+          timeoutSeconds: 5
+        readinessProbe:
+          httpGet:
+            scheme: HTTPS
+            path: /actuator/health
+            port: 8443
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+        env:
+          - name: DB_HOSTNAME
+            value: "{{.DB_HOSTNAME}}"
+          - name: DB_PORT
+            value: "{{.DB_PORT}}"
+          - name: DB_NAME
+            value: "{{.DB_NAME}}"
+          - name: DB_DEFAULT_NAME
+            value: "{{.DB_DEFAULT_NAME}}"
+          - name: DB_OPTIONS
+            value: "{{.DB_OPTIONS}}"
+          - name: DB_JDBC_OPTIONS
+            value: "{{.DB_JDBC_OPTIONS}}"
+          - name: FLYWAY_USER
+            value: "{{.FLYWAY_USER}}"
+          - name: FLYWAY_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{.FLYWAY_PASSWORD}}
+                key: flywaypassword
+          - name: DB_OWNERNAME
+            value: "{{.DB_OWNERNAME}}"
+          - name: DB_OWNERPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{.DB_OWNERPASSWORD}}
+                key: dbownerpassword
+          - name: DB_SCHEMA
+            value: "{{.DB_SCHEMA}}"
+          - name: FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER
+            value: "{{.FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER}}"
+          - name: FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: {{.FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD}}
+                key: flywayauthenticatorpassword
+          - name: FLYWAY_PLACEHOLDERS_ANONUSER
+            value: "{{.FLYWAY_PLACEHOLDERS_ANONUSER}}"
+          - name: FLYWAY_PLACEHOLDERS_SERVICEUSER
+            value: "{{.FLYWAY_PLACEHOLDERS_SERVICEUSER}}"
+          - name: FLYWAY_PLACEHOLDERS_READONLYUSER
+            value: "{{.FLYWAY_PLACEHOLDERS_READONLYUSER}}"
+        volumeMounts:
+          - name: certs
+            mountPath: /certs
+            readOnly: true
+      volumes:
+      - name: certs
+        secret:
+          secretName: "{{.REFDATA_NAME}}-pod-cmio"
