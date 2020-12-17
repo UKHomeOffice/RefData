@@ -101,11 +101,3 @@ spec:
             value: "{{.FLYWAY_PLACEHOLDERS_SERVICEUSER}}"
           - name: FLYWAY_PLACEHOLDERS_READONLYUSER
             value: "{{.FLYWAY_PLACEHOLDERS_READONLYUSER}}"
-        volumeMounts:
-          - name: certs
-            mountPath: /certs
-            readOnly: true
-      volumes:
-      - name: certs
-        secret:
-          secretName: "{{.REFDATA_NAME}}-pod-cmio"
