@@ -8,7 +8,7 @@ CREATE TABLE is81riskfactors (
 );
 
 -- Table comment
-COMMENT ON TABLE is81riskfactors IS '{"label": "Risk factors", "description": "Risk factors to be considered when issuing an IS81", "schemalastupdated": "24/11/2020", "dataversion": 1}';
+COMMENT ON TABLE is81riskfactors IS '{"label": "Risk factors", "description": "Risk factors to be considered when issuing an IS81", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "24/11/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN is81riskfactors.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
 COMMENT ON COLUMN is81riskfactors.name IS '{"label": "Name", "description": "Name of the risk factor", "summaryview": "true"}';

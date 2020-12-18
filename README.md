@@ -20,7 +20,7 @@ Each Column must contain a comment in JSON format containing the following entit
 
 One column must also contain the comment:
 
-* businesskey: true
+* businesskey: "true"
 
 Optional entities for column comments:
 
@@ -57,7 +57,7 @@ COMMENT ON TABLE ministry IS '{"label": "Government ministries", "owner": "xyx@t
 -- Column comments
 COMMENT ON COLUMN ministry.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
 COMMENT ON COLUMN ministry.name IS '{"label": "Name", "description": "The name of the branch or region.", "summaryview": "true"}';
-COMMENT ON COLUMN ministry.code IS '{"label": "Code", "businesskey": true, "description": "The code associated with the branch or region.", "summaryview": "true"}';
+COMMENT ON COLUMN ministry.code IS '{"label": "Code", "businesskey": "true", "description": "The code associated with the branch or region.", "summaryview": "true"}';
 COMMENT ON COLUMN ministry.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN ministry.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 COMMENT ON COLUMN ministry.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';

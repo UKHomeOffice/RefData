@@ -8,7 +8,7 @@ CREATE TABLE honotificationreasons (
 );
 
 -- Table comment
-COMMENT ON TABLE honotificationreasons IS '{"label": "HO Notificaiton Reason", "description": "A list of reasons why a notification may be sent", "schemalastupdated": "24/11/2020", "dataversion": 1}';
+COMMENT ON TABLE honotificationreasons IS '{"label": "HO Notificaiton Reason", "description": "A list of reasons why a notification may be sent", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "24/11/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN honotificationreasons.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
 COMMENT ON COLUMN honotificationreasons.name IS '{"label": "Name", "description": "Name of the notification", "summaryview": "true"}';
