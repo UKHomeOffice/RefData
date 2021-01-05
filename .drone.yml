@@ -69,13 +69,13 @@ steps:
     - secrets
 
 - name: deploy_to_dev
-  pull: if-not-exists
+  pull: true
   image: quay.io/ukhomeofficedigital/kd
   commands:
   - export REFDATA_NAME="refdata"
   - export REFDATA_TAG=$${DRONE_COMMIT_SHA}
   - kd --insecure-skip-tls-verify -f kube/secret.yml
-  - kd --insecure-skip-tls-verify -f kube/deployment.yml --timeout 5m
+  - kd --insecure-skip-tls-verify -f kube/job.yml
   environment:
     DB_HOSTNAME:
       from_secret: DEV_DB_REF_HOSTNAME

@@ -1,39 +1,25 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: {{.REFDATA_NAME}}
-  labels:
-    service: {{ .REFDATA_NAME }}
+  namespace: {{.KUBE_NAMESPACE}}
 spec:
-  selector:
-    matchLabels:
-      name: {{.REFDATA_NAME}}
-  replicas: 3
-  revisionHistoryLimit: 3
-  minReadySeconds: 5
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  ttlSecondsAfterFinished: 900
+  activeDeadlineSeconds: 3600
+  backoffLimit: 0
   template:
-    metadata:
-      labels:
-        name: {{.REFDATA_NAME}}
-        service: {{.REFDATA_NAME}}
     spec:
-      restartPolicy: Always
-      securityContext:
-        fsGroup: 1000
+      restartPolicy: "Never"
       containers:
       - name: {{.REFDATA_NAME}}
         image: {{.REFDATA_IMAGE}}:{{.REFDATA_TAG}}
-        imagePullPolicy: Always
         securityContext:
           runAsUser: 1000
           runAsNonRoot: true
-        command: ["/bin/sh"]
         resources:
           requests:
             memory: "1024Mi"
@@ -41,24 +27,6 @@ spec:
           limits:
             memory: "1024Mi"
             cpu: "1000m"
-        ports:
-          - name: https
-            containerPort: 8443
-            protocol: TCP
-        livenessProbe:
-          httpGet:
-            scheme: HTTPS
-            path: /actuator/info
-            port: 8443
-          initialDelaySeconds: 120
-          timeoutSeconds: 5
-        readinessProbe:
-          httpGet:
-            scheme: HTTPS
-            path: /actuator/health
-            port: 8443
-          initialDelaySeconds: 30
-          timeoutSeconds: 1
         env:
           - name: DB_HOSTNAME
             value: "{{.DB_HOSTNAME}}"
