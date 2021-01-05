@@ -5,11 +5,6 @@ metadata:
   name: {{.REFDATA_NAME}}
   namespace: {{.KUBE_NAMESPACE}}
 spec:
-  successfulJobsHistoryLimit: 3
-  failedJobsHistoryLimit: 1
-  concurrencyPolicy: Forbid
-  ttlSecondsAfterFinished: 900
-  activeDeadlineSeconds: 3600
   backoffLimit: 0
   template:
     spec:
