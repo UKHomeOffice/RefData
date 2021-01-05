@@ -40,14 +40,14 @@ spec:
           - name: FLYWAY_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{.FLYWAY_PASSWORD}}
+                name: {{.REFDATA_NAME}}
                 key: flywaypassword
           - name: DB_OWNERNAME
             value: "{{.DB_OWNERNAME}}"
           - name: DB_OWNERPASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{.DB_OWNERPASSWORD}}
+                name: {{.REFDATA_NAME}}
                 key: dbownerpassword
           - name: DB_SCHEMA
             value: "{{.DB_SCHEMA}}"
@@ -56,7 +56,7 @@ spec:
           - name: FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD
             valueFrom:
               secretKeyRef:
-                name: {{.FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD}}
+                name: {{.REFDATA_NAME}}
                 key: flywayauthenticatorpassword
           - name: FLYWAY_PLACEHOLDERS_ANONUSER
             value: "{{.FLYWAY_PLACEHOLDERS_ANONUSER}}"
