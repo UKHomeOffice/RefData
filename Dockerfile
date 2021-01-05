@@ -25,6 +25,5 @@ ENV PATH="/flyway:/app:${PATH}"
 ENV PYTHONPATH="/python:${PYTHONPATH}"
 
 USER java
-ENTRYPOINT ["flyway"]
+ENTRYPOINT ["/docker/run.sh"]
 WORKDIR /docker/
-CMD ["-?"]
