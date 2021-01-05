@@ -82,7 +82,7 @@ steps:
     DB_PORT:
       from_secret: DB_REF_PORT
     DB_NAME:
-      from_secret: DEV_DB_REF_DEFAULT_DBNAME
+      from_secret: DB_REF_REFERENCE_DBNAME
     DB_DEFAULT_NAME:
       from_secret: DEV_DB_REF_DEFAULT_DBNAME
     DB_OPTIONS:
