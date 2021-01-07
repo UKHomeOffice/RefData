@@ -5,6 +5,8 @@ metadata:
   name: {{.REFDATA_NAME}}
   namespace: {{.KUBE_NAMESPACE}}
 spec:
+  ttlSecondsAfterFinished: 900
+  activeDeadlineSeconds: 3600
   backoffLimit: 0
   template:
     spec:
