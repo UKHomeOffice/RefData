@@ -13,10 +13,10 @@ CREATE TABLE flightlookup (
 );
 
 -- Table comment
-COMMENT ON TABLE flightlookup IS '{"label": "Flight Numbers", "description": "Scheduled flight numbers", "schemalastupdated": "08/01/2021", "dataversion": 1}';
+COMMENT ON TABLE flightlookup IS '{"label": "Flight Numbers", "owner": "cop@homeoffice.gov.uk", "description": "Scheduled flight numbers", "schemalastupdated": "08/01/2021", "dataversion": 1}';
 
 -- Column comments
-COMMENT ON COLUMN flightlookup.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
+COMMENT ON COLUMN flightlookup.id IS '{"label": "Identifier", "businessKey": true, "description": "Unique identifying column, coposed from flight number and flight time.", "summaryview": "false"}';
 COMMENT ON COLUMN flightlookup.flightnumber IS '{"label": "Flight Number", "description": "Flight number", "summaryview": "true"}';
 COMMENT ON COLUMN flightlookup.operator IS '{"label": "Flight Operator", "description": "Full name of flight operator", "summaryview": "true"}';
 COMMENT ON COLUMN flightlookup.departurecountryid IS '{"label": "Departure Country", "description": "ID of departure country (see country ref table).", "summaryview": "true"}';
@@ -29,5 +29,5 @@ COMMENT ON COLUMN flightlookup.validto IS '{"label": "Valid to date", "descripti
 COMMENT ON COLUMN flightlookup.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT,INSERT,UPDATE ON flightlookup TO ${serviceuser};
+GRANT SELECT,INSERT,UPDATE,DELETE ON flightlookup TO ${serviceuser};  -- we will need to delete old data often
 GRANT SELECT ON flightlookup TO ${readonlyuser};
