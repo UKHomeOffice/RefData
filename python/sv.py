@@ -16,7 +16,7 @@ except DuplicateDatabase:
     pass
 
 # find scripts
-root = "../../schemas/reference"
+root = "../schemas/reference"
 _, _, files =  next(os.walk(root))
 
 # sort by version number as integer
