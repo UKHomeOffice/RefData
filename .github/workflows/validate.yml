@@ -41,14 +41,21 @@ jobs:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install psycopg2
+          
+      - name: Run Schema Validation
+        run: |
+          python ./sv.py
+          working-directory: ./python
 
-      - name: Connect to PostgreSQL
-        # Runs a script that creates a PostgreSQL client, populates
-        # the client with data, and retrieves data
-        run: python --version
-        # Environment variable used by the `client.js` script to create a new PostgreSQL client.
-        env:
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: postgres
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+
+
