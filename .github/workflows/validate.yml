@@ -23,7 +23,7 @@ jobs:
 
     # Service containers to run with `container-job`
     services:
-      # Label used to access the service container
+      # Label used to access the service container (this is also the host name)
       postgres:
         # Docker Hub image
         image: postgres
