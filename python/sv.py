@@ -7,7 +7,7 @@ from psycopg2.errors import DuplicateDatabase
 import os
 
 # connect and create db
-conn = psycopg2.connect(host="localhost", database="postgres", user="postgres", password="postgres")
+conn = psycopg2.connect(host="postgres", database="postgres", user="postgres", password="postgres")
 conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 cur = conn.cursor()
 try:

@@ -92,3 +92,8 @@ GRANT SELECT ON ministry TO ${anonuser};
 * FLYWAY_PLACEHOLDERS_ANONUSER
 * FLYWAY_PLACEHOLDERS_SERVICEUSER
 * FLYWAY_PLACEHOLDERS_READONLYUSER
+
+## Development
+
+Launch PG database server in one line: `docker run -d --name refpg -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`. This uses standard port, username `postgres` and password `postgres`.
+
