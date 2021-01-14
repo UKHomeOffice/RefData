@@ -8,15 +8,19 @@ Each Table must contain a comment in JSON format containing the following entiti
 * description
 * schemalastupdated
 * dataversion
-* owner
+* `owner` - a group email like `cop@homeoffice.gov.uk`
+
+and these columns are required:
+
+* validfrom
+* validto
+
 
 Each Column must contain a comment in JSON format containing the following entities:
 
 * label
 * description
 * summaryview
-* validfrom
-* validto
 
 One column must also contain the comment:
 

@@ -22,6 +22,11 @@ script_root = "../schemas/reference"
 # connect and create db
 host = os.getenv("POSTGRES_HOST", "postgres")
 
+config = configparser.ConfigParser()
+with open("../docker/flyway_reference_docker.conf") as stream:
+    config.read_string("[top]\n" + stream.read())
+
+flyway_target = int(config["top"]["flyway.target"])
 
 def ensure_db():
     conn = psycopg2.connect(host=host, database="postgres", user="postgres", password="postgres")
@@ -193,6 +198,10 @@ def validate_tables(table_names: List[str]):
 
 
 sfiles, sfiles_max = find_and_sort_scripts()
+
+if sfiles_max != flyway_target:
+    print(f"flyway.target in docker/flyway_reference_docker.conf is {flyway_target} but the last script number is {sfiles_max}")
+    exit(1)
 
 apply_scripts(sfiles)
 
