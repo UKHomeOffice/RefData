@@ -11,3 +11,6 @@ COMMENT ON TABLE bordercrossingmode IS '{"label": "Type of Border Crossing", "de
 -- owner missing
 COMMENT ON TABLE honotificationreasons IS '{"label": "HO Notificaiton Reason", "description": "A list of reasons why a notification may be sent", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "24/11/2020", "dataversion": 1}';
 COMMENT ON TABLE is81riskfactors IS '{"label": "Risk factors", "description": "Risk factors to be considered when issuing an IS81", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "24/11/2020", "dataversion": 1}';
+
+-- businessKey should be lowercase
+COMMENT ON COLUMN flightlookup.id IS '{"label": "Identifier", "businesskey": true, "description": "Unique identifying column, coposed from flight number and flight time.", "summaryview": "false"}';
