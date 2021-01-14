@@ -37,6 +37,7 @@ def ensure_db():
     except DuplicateDatabase:
         pass
 
+ensure_db()
 
 # reconnect to the reference database
 conn = psycopg2.connect(host=host, database=db_name, user="postgres", password="postgres")
@@ -202,8 +203,6 @@ sfiles, sfiles_max = find_and_sort_scripts()
 if sfiles_max != flyway_target:
     print(f"flyway.target in docker/flyway_reference_docker.conf is {flyway_target} but the last script number is {sfiles_max}")
     exit(1)
-
-ensure_db()
 
 apply_scripts(sfiles)
 
