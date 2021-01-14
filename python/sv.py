@@ -203,6 +203,8 @@ if sfiles_max != flyway_target:
     print(f"flyway.target in docker/flyway_reference_docker.conf is {flyway_target} but the last script number is {sfiles_max}")
     exit(1)
 
+ensure_db()
+
 apply_scripts(sfiles)
 
 tables = list_tables()
