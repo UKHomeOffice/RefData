@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Schema Validation
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # Label of the container job
+  validate:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # use python image so we don't even have to install it
+    container: python
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container (this is also the host name)
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install psycopg2
+          
+      - name: Run Schema Validation
+        run: python sv.py
+        working-directory: ./python
+
+
+
