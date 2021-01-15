@@ -8,7 +8,7 @@ CREATE TABLE lasttrained (
 );
 
  -- Table comment
-COMMENT ON TABLE lasttrained IS '{"label": "Last Trained", "description": "When were you last trained periods", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
+COMMENT ON TABLE lasttrained IS '{"label": "Last Trained", "description": "When were you last trained periods", owner": "cop@homeoffice.gov.uk", "schemalastupdated": "03/12/2020", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN lasttrained.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN lasttrained.name IS '{"label": "Name", "description": "Last trained period.", "businesskey": "true", "summaryview": "true"}';
