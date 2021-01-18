@@ -99,5 +99,35 @@ GRANT SELECT ON ministry TO ${anonuser};
 
 ## Development
 
-Launch PG database server in one line: `docker run -d --name refpg -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres`. This uses standard port, username `postgres` and password `postgres`.
+### Setting Up
 
+This guide assumes you've already cloned this repo and have Docker available locally.
+
+Go to `mini` folder - there is a `docker-compose.yml` file that performs the following:
+1. Creates Postgres server - `localhost:5432`
+2. Creates PostgREST API - `localhost:3000`
+3. Applies all the flyway scripts on top of the local database.
+
+```bash
+❯ docker compose up
+...
+mini_flyway_1 | Migrating schema "public" to version "115 - is81riskfactors"
+mini_flyway_1 | Migrating schema "public" to version "116 - flightlookup"
+mini_flyway_1 | Migrating schema "public" to version "117 - validation"
+mini_flyway_1 | Successfully applied 117 migrations to schema "public" (execution time 00:04.489s)
+
+```
+
+The server will run as long as your terminal session is open. Closing it completely destroys services and data locally. Restart to get it back again.
+
+### Making Changes
+
+1. Create a new flyway file in `schemas/reference` - follow [flyway documentation](https://flywaydb.org/documentation/) if you are not familiar with this system. Look at the existing scripts and try to be like a ninja - make your scripts blend in.
+2. Change `flyway.target` in `docker/flyway_reference_docker.conf` to your script number.
+3. Raise a PR and wait for validation to complete. Check build logs if anything goes wrong - you will get a detailed reason why something is not working.
+
+### Reloading Schema
+
+If you are using PostgREST and need to refresh schema, execute the following command:
+
+`docker-compose kill -s SIGUSR1 rest`
