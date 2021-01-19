@@ -19,5 +19,5 @@ COMMENT ON COLUMN _data_change_history.validto IS '{"label": "Valid to date", "d
 COMMENT ON COLUMN _data_change_history.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
 
 -- GRANTs
-GRANT SELECT,INSERT,UPDATE ON flightlookup TO ${serviceuser};
-GRANT SELECT ON flightlookup TO ${readonlyuser};
+GRANT SELECT,INSERT,UPDATE ON _data_change_history TO ${serviceuser};
+GRANT SELECT ON _data_change_history TO ${readonlyuser};
