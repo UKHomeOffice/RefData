@@ -120,14 +120,10 @@ mini_flyway_1 | Successfully applied 117 migrations to schema "public" (executio
 
 The server will run as long as your terminal session is open. Closing it completely destroys services and data locally. Restart to get it back again.
 
+> Befause of the way [PostgREST caches schema](https://postgrest.org/en/v7.0.0/admin.html#schema-reloading), you need to run `docker-compose kill -s SIGUSR1 rest` after flyway has finished the job.
+
 ### Making Changes
 
 1. Create a new flyway file in `schemas/reference` - follow [flyway documentation](https://flywaydb.org/documentation/) if you are not familiar with this system. Look at the existing scripts and try to be like a ninja - make your scripts blend in.
 2. Change `flyway.target` in `docker/flyway_reference_docker.conf` to your script number.
 3. Raise a PR and wait for validation to complete. Check build logs if anything goes wrong - you will get a detailed reason why something is not working.
-
-### Reloading Schema
-
-If you are using PostgREST and need to refresh schema, execute the following command:
-
-`docker-compose kill -s SIGUSR1 rest`
