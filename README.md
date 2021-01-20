@@ -120,7 +120,17 @@ mini_flyway_1 | Successfully applied 117 migrations to schema "public" (executio
 
 The server will run as long as your terminal session is open. Closing it completely destroys services and data locally. Restart to get it back again.
 
-> Befause of the way [PostgREST caches schema](https://postgrest.org/en/v7.0.0/admin.html#schema-reloading), you need to run `docker-compose kill -s SIGUSR1 rest` after flyway has finished the job.
+> Befause of the way [PostgREST caches schema](https://postgrest.org/en/v7.0.0/admin.html#schema-reloading), you need to run `docker-compose kill -s SIGUSR1 rest` after flyway has finished the job and while docker compose is running. 
+
+### Tip
+
+You can start the server in the background as `docker compose up -d` to free up current console.
+
+To check the current logs type `docker compose logs`.
+
+Then you can force refresh schema with `docker-compose kill -s SIGUSR1 rest`.
+
+To stop the server running in the background type `docker compose down`.
 
 ### Making Changes
 
