@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{.REFDATA_NAME}}
+  name: refdata
   namespace: {{.KUBE_NAMESPACE}}
 spec:
   ttlSecondsAfterFinished: 900
