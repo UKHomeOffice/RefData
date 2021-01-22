@@ -1,1 +1,1 @@
-REVOKE SELECT ON _data_change_history TO ${readonlyuser};
+REVOKE SELECT ON _data_change_history FROM ${readonlyuser};
