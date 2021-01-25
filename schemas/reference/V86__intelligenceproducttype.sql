@@ -7,8 +7,7 @@ CREATE TABLE intelligenceproducttype (
   outgoinganalyst boolean,
   validfrom TIMESTAMP WITH TIME ZONE,
   validto TIMESTAMP WITH TIME ZONE,
-  updatedby VARCHAR(60) NULL,
-  intelreferralclassificationid INTEGER
+  updatedby VARCHAR(60) NULL
 );
 
 -- Table comment

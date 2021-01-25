@@ -10,8 +10,8 @@ CREATE TABLE intelreferralclassification (
 COMMENT ON TABLE intelreferralclassification IS '{"label": "Intelligence Referral Classificiation", "description": "Classifications of Intelligence Referrals", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "21/01/2021", "dataversion": 1}';
 -- Column comment
 COMMENT ON COLUMN intelreferralclassification.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN intelreferralclassification.name IS '{"label": "Subcategory", "description": "The SAMS specific subcategory.", "businesskey": "true", "summaryview": "false"}';
-COMMENT ON COLUMN intelreferralclassification.description IS '{"label": "Description", "description": "A short description of the subcategory.", "summaryview": "false"}';
+COMMENT ON COLUMN intelreferralclassification.name IS '{"label": "Name", "description": "Name of the Intelligence Referral Classification", "businesskey": "true", "summaryview": "false"}';
+COMMENT ON COLUMN intelreferralclassification.description IS '{"label": "Description", "description": "A short description of the Intelligence Referral Classification.", "summaryview": "false"}';
 COMMENT ON COLUMN intelreferralclassification.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
 COMMENT ON COLUMN intelreferralclassification.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
 
