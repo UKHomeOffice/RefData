@@ -7,9 +7,6 @@ platform:
   os: linux
   arch: amd64
 
-workspace:
-  path: /mnt
-
 steps:
 - name: synch_dev_secrets
   pull: if-not-exists
@@ -248,90 +245,88 @@ steps:
     target:
     - production
 
-- name: deploy_to_prod_old_approach
+- name: create-change-desc-production
   pull: if-not-exists
-  image: quay.io/ukhomeofficedigital/docker-flyway:9b4c62ed90c599a9bc3282ef06b58818b24762f9
+  image: docker:git
   commands:
-  - export PRIVATE_KEY=$${DB_REF_PRIVATE_GITKEY}
-  - export PRIVATE_GIT_URL="$${GIT_REPO_PRIVATE_GITURL}$${DB_REF_PRIVATE_GITREPO}.git"
-  - /usr/bin/create_ssh_key.sh
-  - /usr/bin/ssh-keyscan -T 10 -p $${GIT_REPO_PRIVATE_PORT} $${GIT_REPO_PRIVATE_URL}  >> ~/.ssh/known_hosts
-  - git clone $${PRIVATE_GIT_URL} private-refdata
-  - /mnt/docker/reset.sh
-  - /mnt/docker/run.sh
-  - cd /mnt/private-refdata
-  - /mnt/private-refdata/docker/run.sh
-  environment:
-    DB_REF_DEFAULT_DBNAME:
-      from_secret: PRODUCTION_DB_REF_DEFAULT_DBNAME
-    DB_REF_DEFAULT_PASSWORD:
-      from_secret: PRODUCTION_DB_REF_DEFAULT_PASSWORD
-    DB_REF_DEFAULT_USERNAME:
-      from_secret: DB_REF_DEFAULT_USERNAME
-    DB_REF_GOVERNANCE_ANON_USERNAME:
-      from_secret: DB_REF_GOVERNANCE_ANON_USERNAME
-    DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD:
-      from_secret: PRODUCTION_DB_REF_GOVERNANCE_AUTHENTICATOR_PASSWORD
-    DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME:
-      from_secret: DB_REF_GOVERNANCE_AUTHENTICATOR_USERNAME
-    DB_REF_GOVERNANCE_OWNER_PASSWORD:
-      from_secret: PRODUCTION_DB_REF_GOVERNANCE_OWNER_PASSWORD
-    DB_REF_GOVERNANCE_OWNER_USERNAME:
-      from_secret: DB_REF_GOVERNANCE_OWNER_USERNAME
-    DB_REF_GOVERNANCE_READONLY_USERNAME:
-      from_secret: DB_REF_GOVERNANCE_READONLY_USERNAME
-    DB_REF_GOVERNANCE_SCHEMA:
-      from_secret: DB_REF_GOVERNANCE_SCHEMA
-    DB_REF_GOVERNANCE_SERVICE_USERNAME:
-      from_secret: DB_REF_GOVERNANCE_SERVICE_USERNAME
-    DB_REF_HOSTNAME:
-      from_secret: PRODUCTION_DB_REF_HOSTNAME
-    DB_REF_JDBC_OPTIONS:
-      from_secret: DB_REF_JDBC_OPTIONS
-    DB_REF_OPTIONS:
-      from_secret: DB_REF_OPTIONS
-    DB_REF_PORT:
-      from_secret: DB_REF_PORT
-    DB_REF_PRIVATE_GITKEY:
-      from_secret: DB_REF_PRIVATE_GITKEY
-    DB_REF_PRIVATE_GITREPO:
-      from_secret: DB_REF_PRIVATE_GITREPO
-    DB_REF_PROTOCOL:
-      from_secret: PROTOCOL_POSTGRES
-    DB_REF_REFERENCE_ANON_USERNAME:
-      from_secret: DB_REF_REFERENCE_ANON_USERNAME
-    DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD:
-      from_secret: PRODUCTION_DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD
-    DB_REF_REFERENCE_AUTHENTICATOR_USERNAME:
-      from_secret: DB_REF_REFERENCE_AUTHENTICATOR_USERNAME
-    DB_REF_REFERENCE_DBNAME:
-      from_secret: DB_REF_REFERENCE_DBNAME
-    DB_REF_REFERENCE_OWNER_PASSWORD:
-      from_secret: PRODUCTION_DB_REF_REFERENCE_OWNER_PASSWORD
-    DB_REF_REFERENCE_OWNER_USERNAME:
-      from_secret: DB_REF_REFERENCE_OWNER_USERNAME
-    DB_REF_REFERENCE_READONLY_USERNAME:
-      from_secret: DB_REF_REFERENCE_READONLY_USERNAME
-    DB_REF_REFERENCE_SCHEMA:
-      from_secret: DB_REF_REFERENCE_SCHEMA
-    DB_REF_REFERENCE_SERVICE_USERNAME:
-      from_secret: DB_REF_REFERENCE_SERVICE_USERNAME
-    GIT_REPO_PRIVATE_GITURL:
-      from_secret: GIT_REPO_PRIVATE_GITURL
-    GIT_REPO_PRIVATE_PORT:
-      from_secret: GIT_REPO_PRIVATE_PORT
-    GIT_REPO_PRIVATE_URL:
-      from_secret: GIT_REPO_PRIVATE_URL
+  - n=0; while [ "$n" -lt 60 ] && [ ! -e /var/run/docker.sock ]; do n=$(( n + 1 )); sleep 1; done
+  - git show --name-only >> $SNOW_DESC_FILE
   volumes:
   - name: dockersock
     path: /var/run
+  environment:
+    SNOW_DESC_FILE: /drone/src/change-desc.txt
+    SNOW_INT_ID_FILE: /drone/src/internal-id
   when:
-    branch:
-    - master
     event:
     - promote
     target:
-    - old_production
+    - production
+
+- name: open-snow-change-production
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/snowtify:latest
+  environment:
+    SNOW_DESC_FILE: /drone/src/change-desc.txt
+    SNOW_INT_ID_FILE: /drone/src/internal-id
+    SNOW_ENDPOINT:
+      from_secret: PRODUCTION_SERVICE_NOW_URL
+    SNOW_EXTERNAL_ID: ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    SNOW_PROD_PASS:
+      from_secret: PRODUCTION_SERVICE_NOW_PASSWORD
+    SNOW_PROD_USER:
+      from_secret: PRODUCTION_SERVICE_NOW_USERNAME
+  when:
+    event:
+    - promote
+    target:
+    - production
+
+- name: complete-snow-change-production
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/snowtify:latest
+  settings:
+    comments: Successful deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    deployment_outcome: success
+  environment:
+    SNOW_DESC_FILE: /drone/src/change-desc.txt
+    SNOW_INT_ID_FILE: /drone/src/internal-id
+    SNOW_ENDPOINT:
+      from_secret: PRODUCTION_SERVICE_NOW_URL
+    SNOW_PROD_PASS:
+      from_secret: PRODUCTION_SERVICE_NOW_PASSWORD
+    SNOW_PROD_USER:
+      from_secret: PRODUCTION_SERVICE_NOW_USERNAME
+  when:
+    event:
+    - promote
+    status:
+    - success
+    target:
+    - production
+
+- name: cancel-snow-change-production
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/snowtify:latest
+  settings:
+    comments: Failed deployment of ${DRONE_REPO}:${DRONE_COMMIT_SHA}
+    deployment_outcome: fail
+  environment:
+    SNOW_DESC_FILE: /drone/src/change-desc.txt
+    SNOW_INT_ID_FILE: /drone/src/internal-id
+    SNOW_ENDPOINT:
+      from_secret: PRODUCTION_SERVICE_NOW_URL
+    SNOW_PROD_PASS:
+      from_secret: PRODUCTION_SERVICE_NOW_PASSWORD
+    SNOW_PROD_USER:
+      from_secret: PRODUCTION_SERVICE_NOW_USERNAME
+  when:
+    event:
+    - promote
+    status:
+    - failure
+    target:
+    - production
 
 - name: notify
   pull: if-not-exists
