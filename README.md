@@ -103,7 +103,7 @@ GRANT SELECT ON ministry TO ${anonuser};
 
 This guide assumes you've already cloned this repo and have Docker available locally.
 
-Go to `mini` folder - there is a `run.sh` file that performs the following:
+There is a `run.sh` file that performs the following:
 1. Creates Postgres server - `localhost:5432`
 2. Creates PostgREST API - `localhost:3000`
 3. Applies all the flyway scripts on top of the local database.
@@ -114,21 +114,24 @@ Essentially it makes refdata service ready to use.
 ```bash
 ❯ ./run.sh
 ...
+preliminary cleanup...
+No stopped containers
 starting services
-Creating mini_db_1 ... done
-Creating mini_rest_1   ... done
-Creating mini_flyway_1 ... done
+Creating network "refdata_default" with the default driver
+Creating refdata_db_1 ... done
+Creating refdata_rest_1   ... done
+Creating refdata_flyway_1 ... done
 waiting for flyway to finish.......
 Rrefreshing PostgREST schema...
-Killing mini_rest_1 ... done
+Killing refdata_rest_1 ... done
 
 All services are up. Press any key to shutdown when not required anymore
-Killing mini_rest_1 ... done
-Killing mini_db_1   ... done
-Going to remove mini_rest_1, mini_flyway_1, mini_db_1
-Removing mini_rest_1   ... done
-Removing mini_flyway_1 ... done
-Removing mini_db_1     ... done
+Killing refdata_rest_1 ... done
+Killing refdata_db_1   ... done
+Going to remove refdata_rest_1, refdata_flyway_1, refdata_db_1
+Removing refdata_rest_1   ... done
+Removing refdata_flyway_1 ... done
+Removing refdata_db_1     ... done
 
 ```
 

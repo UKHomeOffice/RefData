@@ -1,61 +1,40 @@
-version: '3.7'
+# docker-compose.yml
 
+version: '3'
 services:
-  postgres_refdata:
-    image: postgres:10-alpine
-    restart: on-failure
-    container_name: postgres_refdata
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: mysecretpassword
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 20s
+  rest:
+    image: postgrest/postgrest
     ports:
-      - 5433:5432
-    networks:
-      - db
-
-  public_refdata_flyway:
-    image: quay.io/ukhomeofficedigital/docker-flyway:0c81630decc5d7f6c6ec9070d7475b3f3f084153
-    container_name: public_refdata_flyway
-    command: /mnt/docker/run.sh
-    working_dir: /mnt
+      - "3000:3000"
+    links:
+      - db:db
     environment:
-      POSTGRES_DB: postgres
-      POSTGRES_SERVER: postgres_refdata
-      POSTGRES_PORT: 5432
-      FLYWAY_INIT_USER: postgres
-      FLYWAY_INIT_PASSWORD: mysecretpassword
-      FLYWAY_PLACEHOLDERS_REFERENCE_DB_NAME: reference
-      FLYWAY_PLACEHOLDERS_REFERENCE_OWNER_NAME: ownerreference
-      FLYWAY_PLACEHOLDERS_REFERENCE_OWNER_PASSWORD: mysecretpassword
-      FLYWAY_PLACEHOLDERS_REFERENCE_SCHEMA: reference
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_OWNER_NAME: ownergovernance
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_OWNER_PASSWORD: mysecretpassword
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_SCHEMA: governance
-      FLYWAY_PLACEHOLDERS_REFERENCE_AUTHENTICATOR_USER: authenticatorreference
-      FLYWAY_PLACEHOLDERS_REFERENCE_AUTHENTICATOR_PASSWORD: auth1234
-      FLYWAY_PLACEHOLDERS_REFERENCE_ANON_USER: webanon
-      FLYWAY_PLACEHOLDERS_REFERENCE_SERVICE_USER: servicereference
-      FLYWAY_PLACEHOLDERS_REFERENCE_READONLY_USER: readonlyreference
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_AUTHENTICATOR_USER: authenticatorgovernance
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_AUTHENTICATOR_PASSWORD: auth1234
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_ANON_USER: webanongovernance
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_SERVICE_USER: servicegovernance
-      FLYWAY_PLACEHOLDERS_GOVERNANCE_READONLY_USER: readonlygovernance
-    volumes:
-      - ${PUBLIC_REFDATA_FLYWAY}:/mnt
+      PGRST_DB_URI: postgres://app_user:password@db:5432/ref
+      PGRST_DB_SCHEMA: public
+      PGRST_DB_ANON_ROLE: app_user
     depends_on:
-      - postgres_refdata
-    networks:
       - db
-
-networks:
   db:
-    external:
-      name: db
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ref
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: password
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:postgresql://db:5432/ref -user=app_user -password=password -connectRetries=60 migrate
+    volumes:
+      - ./schemas/reference:/flyway/sql
+      - ./docker:/flyway/conf
+    environment:
+      FLYWAY_CONFIG_FILES: ./conf/flyway_reference_docker.conf
+      FLYWAY_PLACEHOLDERS_SCHEMA: public
+      FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER: authenticatorreference
+      FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD: auth1234
+      FLYWAY_PLACEHOLDERS_ANONUSER: webanon
+      FLYWAY_PLACEHOLDERS_SERVICEUSER: servicereference
+      FLYWAY_PLACEHOLDERS_READONLYUSER: readonlyreference
+    depends_on:
+      - db
