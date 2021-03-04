@@ -8,7 +8,7 @@ CREATE TABLE typeofmisdirection (
 );
 
 -- Table comment
-COMMENT ON TABLE typeofmisdirection IS '{"label": "Type of misdirection", "description": "The type of misdirection", "schemalastupdated": "owner": "cop@homeoffice.gov.uk", "02/03/2021", "dataversion": 1}';
+COMMENT ON TABLE typeofmisdirection IS '{"label": "Type of misdirection", "description": "The type of misdirection", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "02/03/2021", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN typeofmisdirection.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
 COMMENT ON COLUMN typeofmisdirection.label IS '{"label": "label", "description": "Name of the misdirection", "businesskey": "true", "summaryview": "true"}';
