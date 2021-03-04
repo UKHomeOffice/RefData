@@ -8,10 +8,10 @@ CREATE TABLE breachreason (
 );
 
 -- Table comment
-COMMENT ON TABLE breachreason IS '{"label": "Breach reason", "description": "The reason that a breach occured", "schemalastupdated": "02/03/2021", "dataversion": 1}';
+COMMENT ON TABLE breachreason IS '{"label": "Breach reason", "description": "The reason that a breach occured", "owner": "cop@homeoffice.gov.uk", "schemalastupdated": "02/03/2021", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN breachreason.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
-COMMENT ON COLUMN breachreason.label IS '{"label": "label", "description": "Name of the reason", "summaryview": "true"}';
+COMMENT ON COLUMN breachreason.label IS '{"label": "label", "description": "Name of the reason", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN breachreason.description IS '{"label": "Description", "description": "Description of the reason", "summaryview": "true"}';
 COMMENT ON COLUMN breachreason.validfrom IS '{"label": "Valid from date", "description": "Breach reason valid from date.", "summaryview": "false"}';
 COMMENT ON COLUMN breachreason.validto IS '{"label": "Valid to date", "description": "Breach reason valid to date.", "summaryview": "false"}';

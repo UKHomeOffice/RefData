@@ -8,10 +8,10 @@ CREATE TABLE typeofmisdirection (
 );
 
 -- Table comment
-COMMENT ON TABLE typeofmisdirection IS '{"label": "Type of misdirection", "description": "The type of misdirection", "schemalastupdated": "02/03/2021", "dataversion": 1}';
+COMMENT ON TABLE typeofmisdirection IS '{"label": "Type of misdirection", "description": "The type of misdirection", "schemalastupdated": "owner": "cop@homeoffice.gov.uk", "02/03/2021", "dataversion": 1}';
 -- Column comments
 COMMENT ON COLUMN typeofmisdirection.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
-COMMENT ON COLUMN typeofmisdirection.label IS '{"label": "label", "description": "Name of the misdirection", "summaryview": "true"}';
+COMMENT ON COLUMN typeofmisdirection.label IS '{"label": "label", "description": "Name of the misdirection", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN typeofmisdirection.description IS '{"label": "Description", "description": "Description of the misdirection", "summaryview": "true"}';
 COMMENT ON COLUMN typeofmisdirection.validfrom IS '{"label": "Valid from date", "description": "Breach reason valid from date.", "summaryview": "false"}';
 COMMENT ON COLUMN typeofmisdirection.validto IS '{"label": "Valid to date", "description": "Breach reason valid to date.", "summaryview": "false"}';
