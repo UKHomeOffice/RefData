@@ -25,7 +25,7 @@ COMMENT ON COLUMN workarea.area IS '{"label": "Area", "description": "A short de
 COMMENT ON COLUMN activitytype.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN activitytype.type IS '{"label": "Activity type", "businesskey": "true", "description": "Description of the activity type.", "summaryview": "true"}';
 COMMENT ON COLUMN activities.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
-COMMENT ON COLUMN activities.activity IS '{"label": "Activity", "description": "A description of the activity.", "summaryview": "true"}';
+COMMENT ON COLUMN activities.activity IS '{"label": "Activity", "description": "A description of the activity.", "businesskey": "true", "summaryview": "true"}';
 COMMENT ON COLUMN tdacodes.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
 COMMENT ON COLUMN tdacodes.code IS '{"label": "Code", "businesskey": "true", "description": "The code of the governing body.", "summaryview": "true"}';
 COMMENT ON COLUMN address.id IS '{"label": "Identifier", "description": "Unique identifying column.", "summaryview": "false"}';
