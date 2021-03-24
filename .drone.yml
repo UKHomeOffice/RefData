@@ -72,6 +72,7 @@ steps:
   - export REFDATA_NAME="refdata"
   - export REFDATA_TAG=$${DRONE_COMMIT_SHA}
   - kd --insecure-skip-tls-verify -f kube/secret.yml
+  - kubectl delete -f kube/job.yml
   - kd --insecure-skip-tls-verify -f kube/job.yml
   environment:
     DB_DEFAULT_NAME:
@@ -132,6 +133,7 @@ steps:
   - export REFDATA_NAME="refdata"
   - export REFDATA_TAG=$${DRONE_COMMIT_SHA}
   - kd --insecure-skip-tls-verify -f kube/secret.yml
+  - kubectl delete -f kube/job.yml
   - kd --insecure-skip-tls-verify -f kube/job.yml
   environment:
     DB_DEFAULT_NAME:
