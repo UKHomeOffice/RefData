@@ -13,7 +13,7 @@ do
     IS_RUNNING=`docker-compose ps --services --filter "status=running" | grep flyway`
     if [[ "$IS_RUNNING" == "" ]]; then
         echo ""
-        echo "Rrefreshing PostgREST schema..."
+        echo "Refreshing PostgREST schema..."
         `docker-compose kill -s SIGUSR1 rest`
         break
     else
