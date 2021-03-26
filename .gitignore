@@ -8,3 +8,4 @@ postgres_data_refdata/*
 private-refdata/*
 .DS_Store
 +docker/refenv
+postgres/data
