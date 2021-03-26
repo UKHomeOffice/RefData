@@ -89,11 +89,14 @@ services:
       - flyway
 
 
-#  csv_init:
-#    image: csvs:latest
-#    container_name: csv_init
-#    command: "-u demo -p demo -e docker -s http://postgrest:3000 --init"
-#    depends_on:
-#      - db
-#      - flyway
-#      - postgrest
+  csv_loader:
+    image: quay.io/ukhomeofficedigital/csv_loader:latest
+    container_name: csv_loader
+    command: "-u demo -p demo -e docker -s http://postgrest:3000"
+    volumes:
+      - ../csv/initial_csvs:/csvs/initial
+      - ../csv/patch_csvs:/csvs/patch
+    depends_on:
+      - db
+      - flyway
+      - postgrest
