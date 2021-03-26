@@ -94,8 +94,9 @@ services:
     container_name: csv_loader
     command: "-u demo -p demo -e docker -s http://postgrest:3000"
     volumes:
-      - ../csv/initial_csvs:/csvs/initial
-      - ../csv/patch_csvs:/csvs/patch
+      - ../csv/initial_csvs:/app/csvs/initial
+      - ../csv/patch_csvs:/app/csvs/patch
+      - ../csv/load_order.yaml:/app/load_order.yaml
     depends_on:
       - db
       - flyway
