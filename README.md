@@ -139,7 +139,7 @@ Create a new user called demo with the following settings:
 * first name: demo
 * last name: demo
 * email verified: true
-  Select save then on the credentials tab set the password to 'demo' and set Tempoary to false and set the password.
+  Select save then on the credentials tab set the password to 'demo' and set Temporary to false and set the password.
 
 
 
@@ -175,8 +175,7 @@ docker-compose up -d postgrest
 Load the initial CSV reference data
 
 ```
-docker-compose up csv_init
-docker-compose up csv_updates
+docker-compose up csv_loader
 ```
 
 
