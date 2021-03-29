@@ -2,39 +2,102 @@
 
 version: '3'
 services:
-  rest:
-    image: postgrest/postgrest
-    ports:
-      - "3000:3000"
-    links:
-      - db:db
-    environment:
-      PGRST_DB_URI: postgres://app_user:password@db:5432/ref
-      PGRST_DB_SCHEMA: public
-      PGRST_DB_ANON_ROLE: app_user
-    depends_on:
-      - db
   db:
-    image: postgres
+    image: digitalpatterns/timescaledb:latest
+    container_name: db
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: ref
-      POSTGRES_USER: app_user
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-  flyway:
-    image: flyway/flyway
-    command: -url=jdbc:postgresql://db:5432/ref -user=app_user -password=password -connectRetries=60 migrate
+      PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - ./schemas/reference:/flyway/sql
-      - ./docker:/flyway/conf
+      - ./postgres/data:/var/lib/postgresql/data/pgdata
+      - ./postgres/config/setup-keycloakdb.sh:/docker-entrypoint-initdb.d/004-setup-keycloakdb.sh
+
+  keycloak:
+    image: jboss/keycloak:latest
+    container_name: keycloak
+    restart: on-failure
+    command:
+      - "-b 0.0.0.0"
+      - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
     environment:
-      FLYWAY_CONFIG_FILES: ./conf/flyway_reference_docker.conf
-      FLYWAY_PLACEHOLDERS_SCHEMA: public
-      FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER: authenticatorreference
-      FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD: auth1234
-      FLYWAY_PLACEHOLDERS_ANONUSER: webanon
-      FLYWAY_PLACEHOLDERS_SERVICEUSER: servicereference
-      FLYWAY_PLACEHOLDERS_READONLYUSER: readonlyreference
+      DB_VENDOR: POSTGRES
+      DB_ADDR: db
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: keycloakPwd
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      #JDBC_PARAMS: "ssl=true"
+    volumes:
+      - ./keycloak/realm-export.json:/opt/jboss/keycloak/realm-export.json
+    ports:
+      - 8080:8080
     depends_on:
       - db
+
+  flyway:
+    image: quay.io/ukhomeofficedigital/refdata:latest
+    container_name: flyway
+    entrypoint: /bin/bash -c /docker/run.sh
+    volumes:
+      - ./schemas:/schemas
+      - ./docker:/docker
+    environment:
+      - DB_HOSTNAME=db
+      - DB_PORT=5432
+      - DB_NAME=ref
+      - DB_DEFAULT_NAME=postgres
+      - FLYWAY_USER=postgres
+      - FLYWAY_PASSWORD=password
+      - DB_OWNERNAME=dbowner
+      - DB_OWNERPASSWORD=dboPwd
+      - DB_SCHEMA=public
+      - FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER=authuser
+      - FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD=authPwd
+      - FLYWAY_PLACEHOLDERS_ANONUSER=anonuser
+      - FLYWAY_PLACEHOLDERS_READONLYUSER=readonlyuser
+      - FLYWAY_PLACEHOLDERS_SERVICEUSER=serviceuser
+      - FLYWAY_PLACEHOLDERS_REPORTUSER=reportuser
+    depends_on:
+      - db
+
+  postgrest:
+    image: postgrest/postgrest
+    container_name: postgrest
+    restart: on-failure
+    environment:
+      - POSTGREST_NAME=postgrest
+      - PGRST_DB_ANON_ROLE=anonuser
+      - PGRST_DB_SCHEMA=public
+      - PGRST_JWT_AUD=postgrest
+      - PGRST_ROLE_CLAIM_KEY=.postgrest
+      - PGRST_DB_URI=postgres://authuser:authPwd@db:5432/ref
+      - PGRST_SERVER_PROXY_URI=http://127.0.0.1:3000/
+      - PGRST_DB_POOL=30
+      - PGRST_DB_POOL_TIMEOUT=20
+      - PGRST_JWT_SECRET={"kid":"BGOrx6PIy4n_8dCPEuCLvo7MeVVuZ6vkfFCANOS9QsY","kty":"RSA","alg":"RS256","n":"qo-nf7P3uLILM78XJF5qY3_jDzXLGiIXIBFeCQNjAvYnOVIuGl1ys-QrisfxyRChavHN-dsXJoNIyWzPv1S-RMkmpQG3FXsIJW6PYyG6psTsMM8u70Hh_anhHvrwHG23x9gd7hUT8wZgpoFpvSJTk7aWisHcpAooY-qEr8OGc8NhN140FCy5QTpTjMMLmqCv2P2rbRQmW53i8hfRj3MDGr6tbjFU33BY6i0tRDKqCsZKWxCCIFs2KNPPevqNIAhNF4FaeUIAbpSa9cP6QJZNh1yYduJdxdV3CJOMkVBDa7wciQIJElOUL3C_05qwcbASqSCB5v1CgHCWR9ctJRhWCQ","e":"AQAB"}
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+      - flyway
+
+
+  csv_loader:
+    image: quay.io/ukhomeofficedigital/csv_loader:latest
+    container_name: csv_loader
+    command: "-u demo -p demo -e docker -s http://postgrest:3000"
+    volumes:
+      - ../csv/initial_csvs:/app/csvs/initial
+      - ../csv/patch_csvs:/app/csvs/patch
+      - ../csv/load_order.yaml:/app/load_order.yaml
+    depends_on:
+      - db
+      - flyway
+      - postgrest

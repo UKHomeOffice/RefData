@@ -23,8 +23,3 @@ do
     sleep 1s
 
 done
-
-echo ""
-read -p "All services are up. Press any key to shutdown when not required anymore"
-docker-compose kill
-docker-compose rm -f
