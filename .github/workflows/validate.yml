@@ -41,14 +41,21 @@ jobs:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v2
+        with:
+          path: /home/java
 
       - name: Install dependencies
         run: |
           ls -l
+          ls -l /home/java
+
+      - name: Run Schema Validation
+        run: /flyway/run.sh
+        working-directory: /
 
       - name: Run Schema Validation
         run: /validation/validate.py
-        working-directory: ./python
+        working-directory: /
 
 
 
