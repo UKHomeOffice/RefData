@@ -55,9 +55,6 @@ jobs:
         run: /flyway/run.sh
         working-directory: /
         env:
-          DB_HOSTNAME: postgres
-          DB_DEFAULT_NAME: postgres
-          FLYWAY_PASSWORD: postgres
           FLYWAY_LOCATIONS_INIT: "filesystem:/__w/RefData/RefData/flyway/schemas/init"
           FLYWAY_INIT_CONF: "/__w/RefData/RefData/flyway/conf/init.conf"
           FLYWAY_LOCATIONS_REFERENCE: "filesystem:/__w/RefData/RefData/flyway/schemas/reference"
@@ -65,10 +62,7 @@ jobs:
 
       - name: Run Schema Validation
         run: /validation/validate.py
-        working-directory: /
         env:
-          POSTGREST_HOST: postgres
-          POSTGRES_PASSWORD: postgres
-
-
-
+          FLYWAY_REFERENCE_CONF: "/__w/RefData/RefData/flyway/conf/reference.conf"
+          FLYWAY_LOCATIONS_REFERENCE: "/__w/RefData/RefData/flyway/schemas/reference"
+        working-directory: /
