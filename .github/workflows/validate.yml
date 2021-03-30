@@ -44,15 +44,13 @@ jobs:
 
       - name: Check out repository code
         uses: actions/checkout@v2
-        with:
-          path: /home/java
 
       - name: Install dependencies
         run: |
           ls -l
           ls -l /home/java
 
-      - name: Run Schema Validation
+      - name: Run flyway setup
         run: /flyway/run.sh
         working-directory: /
 
