@@ -39,6 +39,9 @@ jobs:
 
     steps:
       # Downloads a copy of the code in your repository before running CI tests
+      - name: get git version
+        run: git --version
+
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
