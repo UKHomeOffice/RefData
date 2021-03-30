@@ -7,4 +7,4 @@ begin
 end;$BODY$
     LANGUAGE plpgsql;
 
-GRANT EXECUTE ON FUNCTION refresh_materialized_views() TO ${serviceuser};
+GRANT EXECUTE ON PROCEDURE refresh_materialized_views() TO ${serviceuser};
