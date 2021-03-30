@@ -1,6 +1,10 @@
 CREATE OR REPLACE PROCEDURE "refresh_materialized_views"()
 AS $BODY$
 begin
+    REFRESH MATERIALIZED VIEW CONCURRENTLY m_unit;
     REFRESH MATERIALIZED VIEW CONCURRENTLY m_ministry;
+    REFRESH MATERIALIZED VIEW CONCURRENTLY m_abusetypes;
 end;$BODY$
-    LANGUAGE plpgsql
+    LANGUAGE plpgsql;
+
+GRANT EXECUTE ON FUNCTION refresh_materialized_views() TO ${serviceuser};
