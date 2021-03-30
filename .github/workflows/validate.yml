@@ -23,34 +23,26 @@ jobs:
       image: quay.io/ukhomeofficedigital/csv_loader:latest
       options: --user 1001
 
-#    # Service containers to run with `container-job`
-#    services:
-#      # Label used to access the service container (this is also the host name)
-#      postgres:
-#        # Docker Hub image
-#        image: postgres
-#        # Provide the password for postgres
-#        env:
-#          POSTGRES_PASSWORD: postgres
-#        # Set health checks to wait until postgres has started
-#        options: >-
-#          --health-cmd pg_isready
-#          --health-interval 10s
-#          --health-timeout 5s
-#          --health-retries 5
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container (this is also the host name)
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       # Downloads a copy of the code in your repository before running CI tests
       - name: get git version
         run: git --version
-
-      - name: checks
-        run: |
-          echo "/"
-          ls -l /
-          echo "working dir"
-          ls -l /__w
-          cat /etc/passwd
 
       - name: Check out repository code
         uses: actions/checkout@v2
@@ -58,15 +50,26 @@ jobs:
       - name: Install dependencies
         run: |
           ls -l
-          ls -l /home/java
+          ls -l /__w/RefData
 
       - name: Run flyway setup
         run: /flyway/run.sh
         working-directory: /
+        env:
+          DB_HOSTNAME: postgres
+          DB_DEFAULT_NAME: postgres
+          FLYWAY_PASSWORD: postgres
+          FLYWAY_LOCATIONS_INIT: "filesystem:/__w/RefData/flyway/schemas/init"
+          FLYWAY_INIT_CONF: "/__w/RefData/flyway/conf/init.conf"
+          FLYWAY_LOCATIONS_REFERENCE: "filesystem:/__w/RefData/flyway/schemas/reference"
+          FLYWAY_REFERENCE_CONF: "/__w/RefData/flyway/conf/reference.conf"
 
       - name: Run Schema Validation
         run: /validation/validate.py
         working-directory: /
+        env:
+          POSTGREST_HOST: postgres
+          POSTGRES_PASSWORD: postgres
 
 
 
