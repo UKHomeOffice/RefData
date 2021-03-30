@@ -21,7 +21,7 @@ jobs:
     # use python image so we don't even have to install it
     container:
       image: quay.io/ukhomeofficedigital/csv_loader:latest
-      options: --user 1000
+      options: --user 1001
 
 #    # Service containers to run with `container-job`
 #    services:
@@ -46,9 +46,11 @@ jobs:
 
       - name: checks
         run: |
-          ls -l
-          ls -l /home/java
+          echo "/"
+          ls -l /
+          echo "working dir"
           ls -l /__w
+          cat /etc/passwd
 
       - name: Check out repository code
         uses: actions/checkout@v2
