@@ -2,11 +2,11 @@
 
 name: Schema Validation
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [ master ]
+    branches: [ dev ]
   pull_request:
     branches: [ master ]
 
@@ -17,9 +17,9 @@ jobs:
   # Label of the container job
   validate:
     # Containers must run in Linux based operating systems
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     # use python image so we don't even have to install it
-    container: python
+    container: quay.io/ukhomeofficedigital/csv_loader:latest
 
     # Service containers to run with `container-job`
     services:
@@ -41,14 +41,13 @@ jobs:
       # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v2
-        
+
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install psycopg2
-          
+          ls -l
+
       - name: Run Schema Validation
-        run: python sv.py
+        run: /validation/validate.py
         working-directory: ./python
 
 
