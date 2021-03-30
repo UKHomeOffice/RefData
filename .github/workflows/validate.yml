@@ -58,10 +58,10 @@ jobs:
           DB_HOSTNAME: postgres
           DB_DEFAULT_NAME: postgres
           FLYWAY_PASSWORD: postgres
-          FLYWAY_LOCATIONS_INIT: "filesystem:$GITHUB_WORKSPACE/flyway/schemas/init"
-          FLYWAY_INIT_CONF: "$GITHUB_WORKSPACE/flyway/conf/init.conf"
-          FLYWAY_LOCATIONS_REFERENCE: "filesystem:$GITHUB_WORKSPACE/flyway/schemas/reference"
-          FLYWAY_REFERENCE_CONF: "$GITHUB_WORKSPACE/flyway/conf/reference.conf"
+          FLYWAY_LOCATIONS_INIT: "filesystem:/__w/RefData/RefData/flyway/schemas/init"
+          FLYWAY_INIT_CONF: "/__w/RefData/RefData/flyway/conf/init.conf"
+          FLYWAY_LOCATIONS_REFERENCE: "filesystem:/__w/RefData/RefData/flyway/schemas/reference"
+          FLYWAY_REFERENCE_CONF: "/__w/RefData/RefData/flyway/conf/reference.conf"
 
       - name: Run Schema Validation
         run: /validation/validate.py
