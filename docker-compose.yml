@@ -81,7 +81,8 @@ services:
       - PGRST_SERVER_PROXY_URI=http://127.0.0.1:3000/
       - PGRST_DB_POOL=30
       - PGRST_DB_POOL_TIMEOUT=20
-      - PGRST_JWT_SECRET={"kid":"BGOrx6PIy4n_8dCPEuCLvo7MeVVuZ6vkfFCANOS9QsY","kty":"RSA","alg":"RS256","n":"qo-nf7P3uLILM78XJF5qY3_jDzXLGiIXIBFeCQNjAvYnOVIuGl1ys-QrisfxyRChavHN-dsXJoNIyWzPv1S-RMkmpQG3FXsIJW6PYyG6psTsMM8u70Hh_anhHvrwHG23x9gd7hUT8wZgpoFpvSJTk7aWisHcpAooY-qEr8OGc8NhN140FCy5QTpTjMMLmqCv2P2rbRQmW53i8hfRj3MDGr6tbjFU33BY6i0tRDKqCsZKWxCCIFs2KNPPevqNIAhNF4FaeUIAbpSa9cP6QJZNh1yYduJdxdV3CJOMkVBDa7wciQIJElOUL3C_05qwcbASqSCB5v1CgHCWR9ctJRhWCQ","e":"AQAB"}
+      - PGRST_JWT_SECRET={"kid":"4sYilvPF_brQZ12FMI-Pq03SNIcWhGHDYrTv8eoznPs","kty":"RSA","alg":"RS256","n":"3LmBAoGbVIao_0J9-CUQjDPU4NLrXjV2z1g6QeIYlAXoWPQGM7ZZnTqhghNJFCpDubwUwHu93Eai2vdeBPEPNa5Lsp-UktdkydrflTOIdKGdSXvrTVH5trzpImq8RQocCsgq22gWsZqs8AHXzVYC4axJ4bqsqm1RSs3y7r7PTUd3BJkpMLp2klCMvS1LV0O8Mm_JaGsktSow61z9VTzT6t39CtDhxMwMUUfFKQj6Az11i62eDMaO7OV2dG8ZNFtCjrEIeV4LUlI9-hyBjV-xLf5aftZ35YUwAOvZWCdEBYE2k-kIhMvOpTf9EDGW1O4tZDlp_aPCPYxKAecTlRyzeQ","e":"AQAB"}
+
     ports:
       - 3000:3000
     depends_on:
@@ -92,7 +93,7 @@ services:
   csv_loader:
     image: quay.io/ukhomeofficedigital/csv_loader:latest
     container_name: csv_loader
-    command: "-u demo -p demo -e docker -s http://postgrest:3000"
+    command: "-e docker"
     volumes:
       - ../csv/initial_csvs:/app/csvs/initial
       - ../csv/patch_csvs:/app/csvs/patch
