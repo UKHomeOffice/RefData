@@ -1,5 +1,7 @@
 CREATE OR REPLACE FUNCTION RefreshAllMaterializedViews(schema_arg TEXT DEFAULT 'public')
-    RETURNS INT AS $$
+    RETURNS INT
+    SECURITY DEFINER
+    AS $$
 DECLARE
     r RECORD;
 BEGIN
