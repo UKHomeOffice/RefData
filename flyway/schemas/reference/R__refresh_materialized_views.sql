@@ -1,10 +1,11 @@
-CREATE OR REPLACE PROCEDURE "refresh_materialized_views"()
+CREATE OR REPLACE FUNCTION "refresh_materialized_views"() RETURNS void
 AS $BODY$
 begin
     REFRESH MATERIALIZED VIEW CONCURRENTLY m_unit;
     REFRESH MATERIALIZED VIEW CONCURRENTLY m_ministry;
     REFRESH MATERIALIZED VIEW CONCURRENTLY m_abusetypes;
+    REFRESH MATERIALIZED VIEW CONCURRENTLY m_partnersystems;
 end;$BODY$
     LANGUAGE plpgsql;
 
-GRANT EXECUTE ON PROCEDURE refresh_materialized_views() TO ${serviceuser};
+GRANT EXECUTE ON FUNCTION refresh_materialized_views() TO ${serviceuser};
