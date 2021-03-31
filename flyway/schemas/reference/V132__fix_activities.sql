@@ -1,5 +1,12 @@
 ALTER TABLE activities
-ADD COLUMN code SMALLINT NULL;
+    ADD COLUMN code SMALLINT NULL;
+
+ALTER TABLE activities
+    DROP CONSTRAINT activities_activitytypeid_fkey;
+
+ALTER TABLE activities
+    RENAME COLUMN activitytypeid TO activitytypecode;
+
 
 -- Column comments
 COMMENT ON COLUMN activities.code IS '{"label": "Code", "description": "activities shortcode", "summaryview": "false", "businesskey": "true"}';
