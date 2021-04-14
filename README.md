@@ -1,188 +1,80 @@
-# Reference data governance service
+# Reference Data Governance Service Schema Definitions
+
+> This repository contains table schema definitions only (no CSVs, no code to execute on database server).  It does not run Reference Data Service. To test these changes, you may use [CSV Loader](https://github.com/UKHomeOffice/csv_loader) service which performs schema validation and data ingestion.
+
+## Table Requirements
+
+In addition to your own fields, you *must* include the following system columns, typically in this order at the end of the table:
+
+### Columns
+
+| Column      | Description                                                  | Example                |
+| ----------- | ------------------------------------------------------------ | ---------------------- |
+| `validfrom` | Start time of when a record will be considered valid.        | 2021-04-08 00:01:00+00 |
+| `validto`   | End time of when a record will be considered valid. For new records this value defaults to NULL. | NULL                   |
+| `updatedby` | User/entity identifier of who created/updated a record. Optional. | NULL                   |
+
+### Table Comment
+
+A table  *must* have a comment attached in JSON format, containing the following *required* key-values:
+
+| Key                 | Value                                                        | Example                                        |
+| ------------------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| `description`       | Human-readable table description.                            | Stores postcode to latitude/longitude mapping. |
+| `schemalastupdated` | When did you update this schema. This must be a parseable date in `dd/MM/yyyy` format. | 06/03/2019                                     |
+| `dataversion`       | Version number. Starts from 1.                               | 1                                              |
+| `owner`             | Owner entity's identifier.                                   | team@domain.org                                |
+
+Table comment example:
+
+```sql
+COMMENT ON TABLE ministry IS '{"label": "Government ministries", "owner": "xyx@test.com", "description": "A list of departments, agencies and public bodies.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
+```
+
+### Column Comment
+
+Every column *must* have a comment attached in JSON format, containing the following *required* key-values:
+
+| Key             | Required | Value                                                        | Example                                        |
+| --------------- | -------- | ------------------------------------------------------------ | ---------------------------------------------- |
+| `label`         | Y        | Human-readable table description.                            | Stores postcode to latitude/longitude mapping. |
+| `description`   | Y        | When did you update this schema. This must be a parseable date in `dd/MM/yyyy` format. | `"06/03/2019"`                                 |
+| `summaryview`   | Y        | Version number. Starts from 1.                               | `1`                                            |
+| `businesskey`   | 1        | One of the columns, which is considered a logical key, needs to be marked with this key. Business key should not change when a record is updated. There can only be a single valid record with unique business key at a point of time. | `true`                                         |
+| `aliases`       | N        | Comma-separated list of column aliases.                      | `"alias1, alias2"`                             |
+| `minimumlength` | N        |                                                              |                                                |
+| `maximumlength` | N        |                                                              |                                                |
+| `minimumvalue`  | N        |                                                              |                                                |
+| `maximumvalue`  | N        |                                                              |                                                |
+
+Example:
+
+```sql
+COMMENT ON COLUMN is81riskfactors.id IS '{"label": "Identifier", "description": "Unique identifying column", "summaryview": "false"}';
+COMMENT ON COLUMN is81riskfactors.name IS '{"label": "Name", "description": "Name of the risk factor", "summaryview": "true"}';
+```
 
 
-## Database schema design
-
-Each Table must contain a comment in JSON format containing the following entities:
-
-* description
-* schemalastupdated
-* dataversion
-* `owner` - a group email like `cop@homeoffice.gov.uk`
-
-and these columns are required:
-
-* validfrom
-* validto
-
-
-Each Column must contain a comment in JSON format containing the following entities:
-
-* label
-* description
-* summaryview
-
-One column must also contain the comment:
-
-* businesskey: true
-
-Optional entities for column comments:
-
-* aliases (comma separated list)
-* minimumlength
-* maximumlength
-* minimumvalue
-* maximumvalue
-
-Please see https://gitlab.digital.homeoffice.gov.uk/cop/manifest
-
-
-# There should be NO CSVs checked into the repo
 
 ## Grants
 
 Each table must have at least two GRANTs, as follows:
-* serviceuser - This used by Camunda to allow new records to be added to the Reference data and current records to be updated.
-* readonlyuser - This user can read all records.
-* anonuser - This user should only be added to public tables where authentication is not needed to see the data.
+* `serviceuser` - This used by Camunda to allow new records to be added to the Reference data and current records to be updated.
+* `readonlyuser` - This user can read all records.
+* `anonuser` - This user should only be added to public tables where authentication is not needed to see the data.
 This should be the default for all datasets unless they are deemed sensitive.
 
 
 ### Example
 
 ```sql
-CREATE TABLE ministry (
-  id INTEGER NOT NULL PRIMARY KEY,
-  name VARCHAR(60) NOT NULL,
-  code VARCHAR(8) NOT NULL,
-  validfrom TIMESTAMP WITH TIME ZONE,
-  validto TIMESTAMP WITH TIME ZONE,
-  updatedby VARCHAR(60) NULL
-);
-
--- Table comment
-COMMENT ON TABLE ministry IS '{"label": "Government ministries", "owner": "xyx@test.com", "description": "A list of departments, agencies and public bodies.", "schemalastupdated": "06/03/2019", "dataversion": 1}';
--- Column comments
-COMMENT ON COLUMN ministry.id IS '{"label": "Identifier", "description": "Database unique identity record.", "summaryview": "false"}';
-COMMENT ON COLUMN ministry.name IS '{"label": "Name", "description": "The name of the branch or region.", "summaryview": "true"}';
-COMMENT ON COLUMN ministry.code IS '{"label": "Code", "businesskey": true, "description": "The code associated with the branch or region.", "summaryview": "true"}';
-COMMENT ON COLUMN ministry.validfrom IS '{"label": "Valid from date", "description": "Item valid from date.", "summaryview" : "false"}';
-COMMENT ON COLUMN ministry.validto IS '{"label": "Valid to date", "description": "Item valid to date.", "summaryview" : "false"}';
-COMMENT ON COLUMN ministry.updatedby IS '{"label": "Updated By", "description": "Record updated by", "summaryview": "false"}';
-
 -- GRANTs
 GRANT SELECT,INSERT,UPDATE ON ministry TO ${serviceuser};
 GRANT SELECT ON ministry TO ${readonlyuser};
 GRANT SELECT ON ministry TO ${anonuser};
 ```
 
-
-
-## Environment variables
-
-* DB_HOSTNAME
-* DB_PORT
-* DB_NAME
-* DB_DEFAULT_NAME
-* DB_OPTIONS
-* DB_JDBC_OPTIONS
-* FLYWAY_USER
-* FLYWAY_PASSWORD
-* DB_OWNERNAME
-* DB_OWNERPASSWORD
-* DB_SCHEMA
-* FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER
-* FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD
-* FLYWAY_PLACEHOLDERS_ANONUSER
-* FLYWAY_PLACEHOLDERS_SERVICEUSER
-* FLYWAY_PLACEHOLDERS_READONLYUSER
-
-## Development
-
-### Setting Up
-
-#### Required dependencies (Ubuntu)
-
-```
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-sudo apt-add-repository https://cli.github.com/packages
-sudo apt update
-snap install docker
-sudo groupadd docker
-sudo chgrp docker /var/run/docker.sock
-sudo apt install git vim jq curl postgresql-client-common postgresql-client-12 gh
-```
-
-
-### useful
-
-- [Get Postman](https://www.postman.com/downloads/)
-
-
-
-## Start up Docker
-
-
-### Stage 1
-
-Start the supporting services.
-
-```
-docker-compose up -d db keycloak
-```
-
-
-Go to the following url [http://localhost:8080/auth/admin/master/console/#/realms/rocks/users](http://localhost:8080/auth/admin/master/console/#/realms/rocks/users) Login as admin/admin.
-Create a new user called demo with the following settings:
-* username: demo
-* email: demo@localhost
-* first name: demo
-* last name: demo
-* email verified: true
-  Select save then on the credentials tab set the password to 'demo' and set Temporary to false and set the password.
-
-
-
-### Stage 2
-
-Once the services are online you can next seed the database using flyway.
-
-```
-docker-compose up flyway
-```
-
-### JWT keysetup for postgres
-
-Execute the following command to get the correct JWT key then use the output of the echo as the value in docker-compose.yml file for the key postgrest.environment.PGRST_JWT_SECRET
-
-```
-export JWT="$(curl -s http://localhost:8080/auth/realms/rocks/protocol/openid-connect/certs | jq -rc '.keys | first | {kid, kty, alg, n, e}')"
-echo $JWT
-```
-
-
-### Stage 3
-
-Start API server and load the CSV's
-
-```
-docker-compose up -d postgrest
-```
-
-
-### Stage 4
-
-Load the initial CSV reference data
-
-```
-docker-compose up csv_loader
-```
-
-
-
-You can clean up the docker by running the ./cleanup.sh script.
-
-### Making Changes
+## Making Changes
 
 1. Create a new flyway file in `schemas/reference` - follow [flyway documentation](https://flywaydb.org/documentation/) if you are not familiar with this system. Look at the existing scripts and try to be like a ninja - make your scripts blend in.
 2. Change `flyway.target` in `docker/flyway_reference_docker.conf` to your script number.
