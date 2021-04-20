@@ -1,2 +1,2 @@
 ALTER TABLE clearancetype
-    ALTER code type char(10) code::char;
+    ALTER code type varchar(10) code::varchar(10);
