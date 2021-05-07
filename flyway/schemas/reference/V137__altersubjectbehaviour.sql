@@ -1,0 +1,1 @@
+ALTER TABLE subjectbehaviour ALTER COLUMN name VARCHAR(40) NULL;
