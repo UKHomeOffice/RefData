@@ -1,5 +1,4 @@
-ALTER TABLE crewrole
-    ADD COLUMN code VARCHAR(5);
+ALTER TABLE crewrole ADD COLUMN code VARCHAR(5);
 
 -- Column comments
 COMMENT ON COLUMN crewrole.name IS '{"label": "Name", "description": "The name of the crew position.", "summaryview": "true"}';
