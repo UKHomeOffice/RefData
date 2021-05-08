@@ -27,6 +27,25 @@ steps:
     target:
     - secrets
 
+- name: synch_sit_secrets
+  pull: if-not-exists
+  image: quay.io/ukhomeofficedigital/cop-secrets
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: DEV_DRONE_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: DEV_DRONE_AWS_SECRET_ACCESS_KEY
+    DEPLOY_ENV: sit
+    DRONE_SERVER: https://drone-gh.acp.homeoffice.gov.uk
+    DRONE_TOKEN:
+      from_secret: DRONE_V1_PUBLIC_TOKEN
+    DRONE_VERSION: ${DRONE_SYSTEM_VERSION}
+  when:
+    event:
+    - promote
+    target:
+    - secrets
+
 - name: synch_staging_secrets
   pull: if-not-exists
   image: quay.io/ukhomeofficedigital/cop-secrets
@@ -125,6 +144,68 @@ steps:
     - promote
     target:
     - dev
+
+- name: deploy_to_sit
+  pull: true
+  image: quay.io/ukhomeofficedigital/kd
+  commands:
+  - export REFDATA_NAME="refdata"
+  - export REFDATA_TAG=$${DRONE_COMMIT_SHA}
+  - kd --insecure-skip-tls-verify -f kube/secret.yml
+  - kd --insecure-skip-tls-verify --delete -f kube/job.yml
+  - kd --insecure-skip-tls-verify -f kube/job.yml
+  environment:
+    DB_DEFAULT_NAME:
+      from_secret: SIT_DB_REF_DEFAULT_DBNAME
+    DB_HOSTNAME:
+      from_secret: SIT_DB_REF_HOSTNAME
+    DB_JDBC_OPTIONS:
+      from_secret: DB_REF_JDBC_OPTIONS
+    DB_NAME:
+      from_secret: DB_REF_REFERENCE_DBNAME
+    DB_OPTIONS:
+      from_secret: DB_REF_OPTIONS
+    DB_OWNERNAME:
+      from_secret: DB_REF_REFERENCE_OWNER_USERNAME
+    DB_OWNERPASSWORD:
+      from_secret: SIT_DB_REF_REFERENCE_OWNER_PASSWORD
+    DB_PORT:
+      from_secret: DB_REF_PORT
+    DB_SCHEMA:
+      from_secret: DB_REF_REFERENCE_SCHEMA
+    FLYWAY_PASSWORD:
+      from_secret: SIT_DB_REF_DEFAULT_PASSWORD
+    FLYWAY_PLACEHOLDERS_ANONUSER:
+      from_secret: DB_REF_REFERENCE_ANON_USERNAME
+    FLYWAY_PLACEHOLDERS_AUTHENTICATORPASSWORD:
+      from_secret: SIT_DB_REF_REFERENCE_AUTHENTICATOR_PASSWORD
+    FLYWAY_PLACEHOLDERS_AUTHENTICATORUSER:
+      from_secret: DB_REF_REFERENCE_AUTHENTICATOR_USERNAME
+    FLYWAY_PLACEHOLDERS_READONLYUSER:
+      from_secret: DB_REF_REFERENCE_READONLY_USERNAME
+    FLYWAY_PLACEHOLDERS_SERVICEUSER:
+      from_secret: DB_REF_REFERENCE_SERVICE_USERNAME
+    FLYWAY_USER:
+      from_secret: DB_REF_DEFAULT_USERNAME
+    KUBE_NAMESPACE:
+      from_secret: SIT_KUBE_NAMESPACE_REFDATA
+    KUBE_SERVER:
+      from_secret: SIT_KUBE_SERVER
+    KUBE_TOKEN:
+      from_secret: SIT_API_REF_KUBE_TOKEN
+    REFDATA_IMAGE:
+      from_secret: SIT_REFDATA_IMAGE
+  volumes:
+  - name: dockersock
+    path: /var/run
+  when:
+    branch:
+    - master
+    event:
+    - promote
+    target:
+    - sit
+
 
 - name: deploy_to_staging
   pull: true
